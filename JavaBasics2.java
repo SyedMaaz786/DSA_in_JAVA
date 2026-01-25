@@ -34,19 +34,20 @@ public class JavaBasics2 {
         
         int var1= 20;                  //Arithmetic operator rest all are easy you know it already.
         int var2 = 30;
-        System.out.println("The Addition of var1 and var 2 is " +(var1+var2));
+        System.out.println("The Addition of var1 and var2 is " +(var1+var2));
 
         int Var1 = 10;                   //unary you can also give var1++ same with negative(--) aswell.
-        int Var2 = Var1+Var1;
-        System.out.println("The addition of the two is: " +(Var2));
+        int Var2 = ++Var1;
+        System.out.println("The ans is: " +(Var2));
 
         int VAR1 = 10;               //Relational operator rest are written in notes check.
-        int VAR2 = 20;
+        int VAR2 = 20;               //Gives boolean result 
         System.out.println(VAR1==VAR2);
 
         System.out.println((1<2)&&(2>1));  //logical operator AND(&&)
         System.out.println((1<2)||(2>1));  //OR(||) refer notes for clarification.
-        
+        System.out.println(!(1>2));        //NOT(!) operator 
+
         int Numb = 10;          //Assignment operator
         Numb += 10;             //Here i have written only for +, we also have for -,*,/
         System.out.println(Numb);

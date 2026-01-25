@@ -1,11 +1,10 @@
 import java.util.*;   // This is the package we have imported to take the input (Scanner)
 public class JavaBasics {        //This is the boilerplate code for java
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         System.out.println("Heyy, finally started with JAVA :)");  //Here println is used to print the next print statement in the next line.
         System.out.println("Finally started with JAVA :)");
-        System.out.println("***");
-        System.out.println("**");
-        System.out.println("*");
+        System.out.println("****\n***\n**\n*");
+        
 
         int a = 10;
         int b = 20;
