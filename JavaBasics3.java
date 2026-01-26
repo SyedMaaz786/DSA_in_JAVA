@@ -56,13 +56,13 @@ public class JavaBasics3 {
         int C = SC.nextInt();
         
         if ((A>=B) && (A>=C)){
-            System.out.println("A is largest");
+            System.out.println("A " +A+ " is largest");
         }
         else if(B>=C){
-            System.out.println("B is largest");
+            System.out.println("B " +B+ " is largest");
         }
         else{
-            System.out.println("C is largest");
+            System.out.println("C " +C+ " is largest");
         }
 
 
