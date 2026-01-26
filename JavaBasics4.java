@@ -8,17 +8,17 @@ public class JavaBasics4 {
         // }
 
 
-        // int number = 1;  //While loope to print numbers from 1-10
+        // //While loope to print numbers from 1-10
+        // int number = 1;  
         // while(number<11){
         //     System.out.print(number); //println on the different line
         //     number++;                 //print on the same line
         // }
 
 
-
-
+        // //Printing numbers from 1-n using user input.
         // int num = 1;
-        // Scanner sc = new Scanner(System.in);  //Printing numbers from 1-n using user input.
+        // Scanner sc = new Scanner(System.in);  
         // int numb = sc.nextInt();
         // while(num <= numb ){
         //     System.out.println( num );
@@ -26,96 +26,106 @@ public class JavaBasics4 {
         // }
 
 
-
-        // Scanner s = new Scanner(System.in);  //Sum of n numbers
-        // int n = s.nextInt();
-        // int i = 0;
+        // //Sum of n numbers(meaning ex - n=5, 1+2+3+4+5=15)
+        // Scanner s = new Scanner(System.in);  
+        // int input = s.nextInt();
+        // int i = 0; // This is nothing but counter
         // int sum = 0;
-        // while (i<=n){
+        // while (i <= input){
         //     sum = sum + i;
         //     i++;
         // }
         // System.out.println(sum);
 
 
-
-
-        // for (int j=1; j<=5; j++){   //for loop
+        // //for loop
+        // for (int j=1; j<=5; j++){   
         //     System.out.println("Maaz");
         // }
 
 
-        // for (int line = 1; line <=4; line++){  //square pattern 
+        // //square pattern 
+        // for (int line=1; line<=4; line++){  
         //     System.out.println("* * * *");
         // }
 
 
-
-
-
-        // int a = 123456;  //reversing a number
-        // while (a > 0){
-        //     int reverse = a%10;
+        // //reversing a number (check notes dry run if dought)
+        // int n = 123456;  
+        // while (n > 0){
+        //     int reverse = n%10;  // reminder (to get the last digit)
         //     System.out.print(reverse);
-        //     a = a/10;
+        //     n = n/10;  // to remove the last digit from the number, this gives quotient which is used in next iteration above to get reminder
         // }
-        // System.out.println();
 
 
+        // //reversing n numbers (uses input from user)
+        // Scanner sc = new Scanner(System.in);
+        // int input = sc.nextInt();
+        // while (input > 0) {
+        //     int reverse = input%10;
+        //     System.out.println(reverse);
+        //     input = input / 10;
+        // }
 
 
-
-        // int counter = 1;                //do while loop
-        // do{                             //In do while same logic first do then condition
+        // //do while loop
+        // int counter = 1;                
+        // do {                             //In do while same logic first do then condition
         //     System.out.println("Heyy");
         //     counter++;
-        // }while (counter <=4 );
+        // } while (counter <=4 );
 
 
-
-
-
-        // for (int k=1; k<=5; k++){        //Break - To exit
-        //     if (k == 3){
+        // //Break - To exit
+        // for (int i=1; i<=5; i++) {
+        //     if (i == 3) {
         //         break;
         //     }
-        //     System.out.println("Hiii");
+        //     System.out.println(i);
         // }
+
+        // //Break if the user enters 10 
+        // Scanner sc = new Scanner(System.in);
+        // while (true) {
+        //     int input = sc.nextInt();
+        //     if (input == 10) {
+        //         System.out.println("Sorry, 10 is not allowed");
+        //         break;
+        //     }
+        //     System.out.println(input);
+        // }
+
         
-        // for (int l=0; l<=5; l++){        //Continue - To skip 
+        // //Continue - To skip 
+        // for (int l=0; l<=5; l++){        
         //     if (l == 3){
         //         continue;
         //     }
         //     System.out.println(l);
         // }
 
-
-
-
-        // Scanner sc = new Scanner(System.in);  //Prime number or not
-        // int n = sc.nextInt();
+        
+        //Prime number or not (Divisible by 1 and itself)
+        // Scanner sc = new Scanner(System.in);  
+        // int input = sc.nextInt();
 
         // boolean isPrime = true;
 
-        // if (n<=1){
+        // if (input<=1) {
         //     isPrime = false;
         // }
-
-        // for (int i=2; i*i<=n; i++){
-        //     if (n%i==0){
+        // for (int i=2; i<=input-1; i++) {
+        //     if (input%1==0) {
         //         isPrime = false;
         //     }
         // }
-
-        // if (isPrime){
-        //     System.out.println(n + " is a prime number");
+        // if (isPrime == true) {
+        //     System.err.println("Input is a Prime number");
         // }
-        // else{
-        //     System.out.println(n + " is NOT a prime number");
+        // else {
+        //     System.out.println("Input is NOT a Prime number");
         // }
-
-
-
 
     }
            
