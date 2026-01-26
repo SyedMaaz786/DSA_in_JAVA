@@ -65,6 +65,16 @@ public class JavaBasics3 {
             System.out.println("C " +C+ " is largest");
         }
 
+        //ternary Operator
+
+        Scanner sC = new Scanner(System.in);
+        
+        System.out.println("Please enter 10:");
+
+        int input = sC.nextInt();
+
+        System.out.println(input == 10 ? "input is 10" : "input is not 10");
+
 
         //Switch cases
 
