@@ -106,17 +106,17 @@ public class JavaBasics4 {
         // }
 
         
-        //Prime number or not (Divisible by 1 and itself)
+        // //Prime number or not (Divisible by 1 and itself)
         // Scanner sc = new Scanner(System.in);  
         // int input = sc.nextInt();
 
         // boolean isPrime = true;
 
-        // if (input<=1) {
+        // if (input<=1) {       
         //     isPrime = false;
         // }
-        // for (int i=2; i<=input-1; i++) {
-        //     if (input%1==0) {
+        // for (int i=2; i<input; i++) {   //Here we are initialising i=2 because we need to remove the edge cases of a number being divided by 1 and itself, ie why we are not initialising i with 1 and condition i<input will kickout the another edge case of dividing by itself.
+        //     if (input%i==0) {
         //         isPrime = false;
         //     }
         // }
