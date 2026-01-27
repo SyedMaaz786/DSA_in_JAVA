@@ -1,14 +1,14 @@
 import java.util.*;
 public class JavaBasics5 {
     public static void main (String args[]){
-
-        // for (int i = 1; i<=4; i++ ){      // star pattern program, This is a nested loop
-        //     for (int j = 1; j<=i; j++){   //inner loop 
-        //         System.out.print("*");    //i and the outer for loop is used to print the number of lines
-        //     }
-        //     System.out.println();
-        // }
-
+        
+        //star pattern program, This is a nested loop
+        for (int i = 1; i<=4; i++ ){         //Outer loop
+            for (int j = 1; j<=i; j++){      //inner loop 
+                System.out.print("*");    //i ie the outer for loop is used to print the number of lines
+            }                                //j ie is inner loop is used to print how many stars in each line
+            System.out.println();
+        }
 
 
                                       
