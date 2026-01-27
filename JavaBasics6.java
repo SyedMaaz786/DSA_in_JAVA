@@ -111,4 +111,64 @@ public class JavaBasics6 {
     // }
 
 
+    // //fnx overloading - fnx with same name but diff number of args
+    // public static int sum (int a, int b) {
+    //     return a + b;
+    // }
+    // public static int sum(int a, int b, int c) {
+    //     return a + b + c;
+    // }
+    // public static void main (String args[]) {
+    //     System.out.println(sum(2,2));
+    //     System.out.println(sum(2,2,2));
+    // }
+
+
+    // //prime or not with fnx
+    // public static boolean isPrime (int n) {
+    //     boolean isPrime = true;
+    //     if (n<=1) {
+    //         isPrime = false;
+    //     }
+    //     for (int i=2; i<n; i++) {
+    //         if (n%i==0) {
+    //             isPrime = false;
+    //             break;
+    //         }
+    //     }
+    //     return isPrime;
+    // }
+    // public static void main (String args[]) {
+    //     System.out.println(isPrime(5));
+    // }
+
+
+    // //prime number in a range (we need to write the isprime logic first and in another range fnx this isprime fnx will act like a helper fnx)
+    // public static boolean isPrime (int n) {
+    //     boolean isPrime = true;
+    //     if (n<=1) {
+    //         isPrime = false;
+    //     }
+    //     for (int i=2; i<=Math.sqrt(n); i++) {
+    //         if (n%i==0) {
+    //             isPrime = false;
+    //             break;
+    //         }
+    //     }
+    //     return isPrime;
+    // }
+    // public static void primeInRange(int n) {
+    //     for (int i=2; i<=n; i++) {
+    //         if (isPrime(i)) {
+    //             System.out.println(i);
+    //         }
+    //     }
+    //     System.out.println();
+    // }
+    // public static void main (String args[]) {
+    //     primeInRange(20);
+    // }
+
+
+
 
