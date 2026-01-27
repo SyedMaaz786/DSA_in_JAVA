@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class JavaBasics6 {
     public static void printHelloWorld() {      //This is the function we have created named printHelloWorld where void is the return type like int float or anyother which returns nothing
@@ -32,4 +32,32 @@ public class JavaBasics6 {
     //     int b = sc.nextInt();
     //     int sum = CalculateSum(a, b);    //Arguments which are passed while calling the fnx
     //     System.out.println(sum);
+    // }
+
+
+    // //Swapping values into others
+    // public static void main (String args[]) {
+    //     int a = 5;
+    //     int b = 10;
+    //     //Swapping
+    //     int temp = a;
+    //     a = b;
+    //     b = temp;
+    //     System.out.println(a);
+    //     System.out.println(b);
+    // } 
+
+
+    // //call by value (Java always calls by value) meaning when the values of one fnx is called by another fnx then the original values are not sent instead a copy is sent.
+    // public static void swap(int a, int b) {
+    //     int temp = a;
+    //     a = b;
+    //     b = temp;
+    // }
+    // public static void main (String args[]) {
+    //     int a = 5;
+    //     int b = 10;
+    //     swap(a, b);
+    //     System.out.println(a);
+    //     System.out.println(b);
     // }
