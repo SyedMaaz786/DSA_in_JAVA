@@ -75,3 +75,17 @@ public class JavaBasics6 {
     //     int product = multiply(num1, num2);
     //     System.out.println(product);
     // }
+
+
+    // //Factorial of n number (n!)
+    // public static int Factorial(int n) {
+    //     int f = 1;  
+    //     for (int i=1; i<=n; i++) {
+    //         f = f * i;
+    //     }
+    //     return f;
+    // }
+    // public static void main (String args[]) {
+    //     System.out.println(Factorial(4));  //Here we are calling the fnx directly in the print statement
+    // }
+
