@@ -22,15 +22,15 @@ public class JavaBasics6 {
 
 
     // //function with parameters being passed
-    // public static int CalculateSum(int num1, int num2) {  //parameters which are passed while creating the fnx
-    //     int sum = num1 + num2;
+    // public static int CalculateSum(int a, int b) {  //parameters which are passed while creating the fnx
+    //     int sum = a + b;
     //     return sum;
     // }
     // public static void main (String args[]) {
     //     Scanner sc = new Scanner(System.in);
-    //     int a = sc.nextInt();
-    //     int b = sc.nextInt();
-    //     int sum = CalculateSum(a, b);    //Arguments which are passed while calling the fnx
+    //     int num1 = sc.nextInt();
+    //     int num2 = sc.nextInt();
+    //     int sum = CalculateSum(num1, num2);    //Arguments which are passed while calling the fnx
     //     System.out.println(sum);
     // }
 
@@ -60,4 +60,18 @@ public class JavaBasics6 {
     //     swap(a, b);
     //     System.out.println(a);
     //     System.out.println(b);
+    // }
+
+
+    // //Product of two numbers
+    // public static int multiply (int a, int b) {
+    //     int product = a * b;
+    //     return product;
+    // }
+    // public static void main (String args[]) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int num1 = sc.nextInt();
+    //     int num2 = sc.nextInt();
+    //     int product = multiply(num1, num2);
+    //     System.out.println(product);
     // }
