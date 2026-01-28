@@ -175,7 +175,6 @@ public class JavaBasics6 {
     //     int myNum = binNum;
     //     int pow = 0;
     //     int dec = 0;
-
     //     while (binNum > 0) {
     //         int lastDigit = binNum % 10;
     //         dec = dec + (lastDigit * (int)Math.pow(2, pow));
@@ -187,6 +186,24 @@ public class JavaBasics6 {
     // }
     // public static void main (String args[]) {
     //     binToDec(101);
+    // }
+
+
+    // //decimal to binary conversion
+    // public static void decToBin (int decNum) {
+    //     int myNum = decNum;
+    //     int pow = 0;
+    //     int bin = 0;
+    //     while (decNum > 0) {
+    //         int rem = decNum % 2;
+    //         bin = bin + (rem * (int)Math.pow(10, pow));  // 10 power 0 gives zeroth value, 10 power 1 gives oneth value, 10 power 2 gives hunderth value, 10 power 3 gives thousanth value check notes.
+    //         pow ++;
+    //         decNum = decNum / 2;
+    //     }
+    //     System.out.println("Binary value of " + myNum + " = " + bin);
+    // }
+    // public static void main (String args[]) {
+    //     decToBin(10);
     // }
 
 
