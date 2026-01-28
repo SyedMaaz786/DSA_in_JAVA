@@ -38,5 +38,22 @@ public class JavaBasics7 {
 // }
 
 
+// public static void half_pyr (int totRows, int totCols) { //dry run you will get it
+//     for (int i=1; i<=totRows; i++) {     
+//         for (int j=1; j<=totCols; j++) { 
+//             if (j <= totCols - i + 1) {  //just keep this if similar to above one just few changes    
+//                 System.out.print(j);    
+//             }
+//             else {
+//                 System.out.print(" ");
+//             }
+//         }
+//         System.out.println();
+//     }
+// }
+// public static void main (String args[]) {
+//     half_pyr(4, 4);
+// }
+
 
 }
