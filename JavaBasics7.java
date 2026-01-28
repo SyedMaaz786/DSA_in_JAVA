@@ -95,7 +95,7 @@ public class JavaBasics7 {
 // }
 
 
-// //Butterfly pattern
+// //Butterfly pattern (check phone pic for logic)
 // public static void Butterfly (int n) {
 //     //1st half
 //     for (int i=1; i<=n; i++) {  //Here i is runned from 1 to n, i for printing how many number of rows
