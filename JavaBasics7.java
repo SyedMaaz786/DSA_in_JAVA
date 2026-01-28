@@ -56,4 +56,24 @@ public class JavaBasics7 {
 // }
 
 
+// //floyds triangle pattern
+// public static void half_pyr (int totRows, int totCols) { //dry run you will get it
+//     int num = 1; //counter to get next number
+//     for (int i=1; i<=totRows; i++) {    
+//         for (int j=1; j<=totCols; j++) { 
+//             if (j <= i) {       
+//                 System.out.print(num);
+//                 num ++;    
+//             }
+//             else {
+//                 System.out.print(" ");
+//             }
+//         }
+//         System.out.println();
+//     }
+// }
+// public static void main (String args[]) {
+//     half_pyr(4, 4);
+// }
+
 }
