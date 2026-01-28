@@ -38,7 +38,8 @@ public class JavaBasics7 {
 // }
 
 
-// public static void half_pyr (int totRows, int totCols) { //dry run you will get it
+//// inverted half pyramid
+// public static void half_pyr_inv (int totRows, int totCols) { //dry run you will get it
 //     for (int i=1; i<=totRows; i++) {     
 //         for (int j=1; j<=totCols; j++) { 
 //             if (j <= totCols - i + 1) {  //just keep this if similar to above one just few changes    
@@ -52,12 +53,12 @@ public class JavaBasics7 {
 //     }
 // }
 // public static void main (String args[]) {
-//     half_pyr(4, 4);
+//     half_pyr_inv(4, 4);
 // }
 
 
 // //floyds triangle pattern
-// public static void half_pyr (int totRows, int totCols) { //dry run you will get it
+// public static void floyds (int totRows, int totCols) { //dry run you will get it
 //     int num = 1; //counter to get next number
 //     for (int i=1; i<=totRows; i++) {    
 //         for (int j=1; j<=totCols; j++) { 
@@ -73,7 +74,25 @@ public class JavaBasics7 {
 //     }
 // }
 // public static void main (String args[]) {
-//     half_pyr(4, 4);
+//     floyds(4, 4);
 // }
+
+
+// //0-1 triangle pattern
+// public static void zeroToOne (int totRows, int totCols) {
+//     for (int i=1; i<=totRows; i++) {
+//         for (int j=1; j<=totCols; j++) {
+//             if (j <= i) {
+//                 System.out.print(((i+j) % 2 == 0) ? "1": "0");  //if even "1" else "0"
+//             } 
+            
+//         }
+//         System.out.println();
+//     }
+// }
+// public static void main (String args[]) {
+//     zeroToOne(5, 5);
+// }
+
 
 }
