@@ -24,7 +24,7 @@ public class b_JavaArrays01 {
 
 
 // //Arrays as fnx parameters
-// public static void update (int marks[]) {
+// public static void update (int marks[]) {  //remember this arr[] as parameter in the fnx is used to update the values of the arr in the main fnx.
 //     for (int i=0; i<marks.length; i++) {  //looping till length but indexing so only <
 //         marks[i] = marks[i] + 1;          //Updating marks by 1
 //     }
@@ -35,7 +35,9 @@ public class b_JavaArrays01 {
 //     for (int i=0; i<marks.length; i++) {   //for printing we are again using the for loop here
 //         System.out.println(marks[i]);
 //     }
-//     }
 // }
 
 
+
+
+}
