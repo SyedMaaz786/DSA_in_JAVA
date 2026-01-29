@@ -38,6 +38,7 @@ public class b_JavaArrays01 {
 // }
 
 
+// //Linear Search
 // //find index of an element in array
 // public static int linearSearch (int numbers[], int key) {
 //     for (int i=0; i<numbers.length; i++) {
@@ -98,5 +99,29 @@ public class b_JavaArrays01 {
 // }
 
 
+// // Binary Search (for ascending sorted arr)
+// // find index value of an element in an array
+// public static int binarySearch (int arr[], int key) {
+//     int start = 0, end = arr.length - 1;  //length will start from 1 but we need the index which starts from 0 so (-1) GPT if dought
+//     while (start <= end ) { //from start to end of the arr
+//         int mid = (start + end) / 2;
+//         if (arr[mid] == key) {
+//             return mid;
+//         }
+//         if (arr[mid] < key) {
+//             start = mid + 1;   //if the middle value is smaller than key search on the right side
+//         }
+//         else {
+//             end = mid - 1;     //if the middle value is larger than key then search on the left side
+//         }
+//     }
+//     return -1;
+// }
+// public static void main(String args[]) {
+//     int arr[] = {2,4,6,8,10,12,14};
+//     int key = 10;
+//     int index = binarySearch(arr, key);
+//     System.out.println(index);
+// }
 
 }
