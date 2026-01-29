@@ -11,7 +11,7 @@ public class b_JavaArrays01 {
 
         int marks[] = new int[100];  //Here we have created a array of length 100
         Scanner sc = new Scanner(System.in);
-        //using indexing we are taking input on that particular arr index
+        //using indexing we are taking input on that particular arr index.
         marks[0] = sc.nextInt();  //phy
         marks[1] = sc.nextInt();  //chem
         marks[2] = sc.nextInt();  //math
