@@ -124,4 +124,30 @@ public class b_JavaArrays01 {
 //     System.out.println(index);
 // }
 
+
+// //Binary search (for descending sorted arr)
+// public static int binarySearch (int arr[], int key) {
+//     int start = 0, end = arr.length - 1;
+//     while (start <= end) {
+//         int mid = (start + end) / 2;
+//         if (arr[mid] == key) {
+//             return mid;
+//         }
+//         if (arr[mid] > key) {
+//             start = mid + 1;
+//         }
+//         else {
+//             end = mid - 1;
+//         }
+//     }
+//     return -1;
+// }
+// public static void main(String args[]) {
+//     int arr[] = {16,14,12,10,8,6,4,2};
+//     int key = 14;
+//     int index = binarySearch(arr, key);
+//     System.out.println("Index value is " + index);
+// }
+
+
 }
