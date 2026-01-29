@@ -136,7 +136,7 @@ public class JavaBasics7 {
 
 
 // // //Solid Rhombus
-// public static void solid_rhombus (int n) {
+// public static void solidRhombus (int n) {
 //     for (int i=1; i<=n; i++) {
 //         for (int j=1; j<=(n-i); j++){
 //             System.out.print(" ");
@@ -148,8 +148,30 @@ public class JavaBasics7 {
 //     }
 // }
 // public static void main (String args[]) {
-//     solid_rhombus(5);
+//     solidRhombus(5);
 // }
 
+
+// //Hollow Rhombus
+// public static void hollowRhombus (int n) {
+//     for (int i=1; i<=n; i++) {
+//         for (int j=1; j<=(n-i); j++) {
+//             System.out.print(" ");   
+//         }
+//         for (int j=1; j<=n; j++) {
+//             //same hollow rectangle logic just because we are running this loop after printing spaces it will automatically tilt
+//             if (i == 1 || i == n || j == 1 || j == n) {  //i for rows j for cols
+//                 System.out.print("*");
+//             }
+//             else {
+//                 System.out.print(" ");
+//             }
+//         }
+//         System.out.println();
+//     }
+// }
+// public static void main (String arggs[]) {
+//     hollowRhombus(8);
+// }
 
 }
