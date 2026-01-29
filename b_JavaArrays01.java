@@ -5,7 +5,7 @@ public class b_JavaArrays01 {
         // int numbers[] = {1,2,3};  //Here we are directly specifying the values java will automatically detect the size
         // String myName[] = {"Syed", "Maaz"};
         // System.out.println(marks.length);
-        // System.out.println(Arrays.toString(numbers)); //we are using type conversion
+        // System.out.println(Arrays.toString(numbers)); //we are using type conversion.
         // System.out.println(Arrays.toString(myName));
 
 
