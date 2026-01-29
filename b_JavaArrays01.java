@@ -38,6 +38,50 @@ public class b_JavaArrays01 {
 // }
 
 
+// //find index of an element in array
+// public static int linearSearch (int numbers[], int key) {
+//     for (int i=0; i<numbers.length; i++) {
+//         if (numbers[i] == key) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+// public static void main (String args[]) {
+//     int numbers[] = {2,4,6,8,10};
+//     int key = 10;
+//     int index = linearSearch(numbers, key);
+//     if (index == -1) {
+//         System.out.println("Index NOT found");
+//     }
+//     else {
+//         System.out.println("Index is = " + index);
+//     }
+// }
+
+
+// //find index value of an element in an array
+// public static int linearSearch (String arr[], String key) {
+//     for (int i=0; i<arr.length; i++) {
+//         if (arr[i] == key) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+// public static void main(String args[]) {
+//     String arr[] = {"creatine", "whey", "'chicken"};
+//     String key = "creatine";
+//     int index = linearSearch(arr, key);
+//     if (index == -1) {
+//         System.out.println("Take Sattu");
+//     }
+//     else {
+//         System.out.print(arr[index]);
+//     }
+    
+// }
+
 
 
 }
