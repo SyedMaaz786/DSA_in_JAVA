@@ -1,14 +1,14 @@
 import java.util.*;
 
 public class JavaBasics6 {
-    public static void printHelloWorld() {      //This is the function we have created named printHelloWorld where void is the return type like int float or anyother which returns nothing
-        System.out.println("Hello World executed!");
-    }
-    public static void main (String args[]) {
-        printHelloWorld();                     //Here we are calling our function we create above.
+//     public static void printHelloWorld() {      //This is the function we have created named printHelloWorld where void is the return type like int float or anyother which returns nothing
+//         System.out.println("Hello World executed!");
+//     }
+//     public static void main (String args[]) {
+//         printHelloWorld();                     //Here we are calling our function we create above.
 
-    }
-}
+//     }
+// }
 
 
 //    //function with return type int                            
@@ -204,7 +204,10 @@ public class JavaBasics6 {
     // }
     // public static void main (String args[]) {
     //     decToBin(10);
-    // }
+    }
+
+
+    
 
 
 

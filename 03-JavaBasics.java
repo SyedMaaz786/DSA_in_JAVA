@@ -104,7 +104,7 @@ public class JavaBasics3 {
         Scanner SCN = new Scanner(System.in);
 
         System.out.println("Enter First Number: ");
-        double num1 = SCN.nextDouble();         //double is used because what if the user input is in decimal form like.
+        double num1 = SCN.nextDouble();         //double is used because what if the user input is in decimal form like 2.2
 
         System.out.println("Enter Second Number: ");
         double num2 = SCN.nextDouble();         //num1 and num2 input we are taking.

@@ -106,26 +106,26 @@ public class JavaBasics4 {
         // }
 
         
-        //Prime number or not (Divisible by 1 and itself)
-        Scanner sc = new Scanner(System.in);  
-        int input = sc.nextInt();
+        // //Prime number or not (Divisible by 1 and itself)
+        // Scanner sc = new Scanner(System.in);  
+        // int input = sc.nextInt();
 
-        boolean isPrime = true;
+        // boolean isPrime = true;
 
-        if (input<=1) {       
-            isPrime = false;
-        }
-        for (int i=2; i<input; i++) {   //Here we are initialising i=2 because we need to remove the edge cases of a number being divided by 1 and itself, ie why we are not initialising i with 1 and condition i<input will kickout the another edge case of dividing by itself.
-            if (input%i==0) {           //To make code more optimised we can give i<Math.sqrt(input) this is for condition
-                isPrime = false;
-            }
-        }
-        if (isPrime == true) {
-            System.err.println("Input is a Prime number");
-        }
-        else {
-            System.out.println("Input is NOT a Prime number");
-        }
+        // if (input<=1) {       
+        //     isPrime = false;
+        // }
+        // for (int i=2; i<input; i++) {   //Here we are initialising i=2 because we need to remove the edge cases of a number being divided by 1 and itself, ie why we are not initialising i with 1 and condition i<input will kickout the another edge case of dividing by itself.
+        //     if (input%i==0) {           //To make code more optimised we can give i<Math.sqrt(input) this is for condition
+        //         isPrime = false;
+        //     }
+        // }
+        // if (isPrime == true) {
+        //     System.err.println("Input is a Prime number");
+        // }
+        // else {
+        //     System.out.println("Input is NOT a Prime number");
+        // }
 
     }
            
