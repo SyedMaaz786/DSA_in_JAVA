@@ -104,7 +104,7 @@ public class b_JavaArrays01 {
 // public static int binarySearch (int arr[], int key) {
 //     int start = 0, end = arr.length - 1;  //length will start from 1 but we need the index which starts from 0 so (-1) GPT if dought
 //     while (start <= end ) { //from start to end of the arr
-//         int mid = (start + end) / 2;
+//         int mid = (start + end) / 2;  // formula to get mid value
 //         if (arr[mid] == key) {
 //             return mid;
 //         }
