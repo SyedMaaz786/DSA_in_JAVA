@@ -191,14 +191,17 @@ public class b_JavaArrays01 {
 
 // //print subarrays
 // public static void printSubarray (int numbers[]) {
+//     int ts = 0;
 //     for (int i=0; i<numbers.length; i++) {      //starting index
 //         for (int j=i; j<numbers.length; j++) {  //ending index
 //             for (int k=i; k<=j; k++) {          //printing elements
 //                 System.out.print(numbers[k]);
 //             }
+//             ts ++;
 //             System.out.println();
 //         }
 //     }
+//     System.out.println("Total subarrays = " + ts);
 // }
 // public static void main (String args[]) {
 //     int numbers[] = {2,4,6,8,10};
