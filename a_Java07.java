@@ -11,7 +11,7 @@ public class a_Java07 {
 //                     System.out.print(" ");
 //                 } 
 //             }
-//             System.out.println();  //after traversing one complete line to come to the next line
+//             System.out.println();  //after traversing one complete line to come to the next line.
 //         }
 //     }
 //     public static void main (String args[]) {
