@@ -1,3 +1,4 @@
+import java.util.*;
 public class b_JavaArrays02 {
     
 // // subarray sum with max sum (Brute Force) - time complexity On3
@@ -47,6 +48,26 @@ public class b_JavaArrays02 {
 // }
 // public static void main (String args[]) {
 //     int arr[] = {1,2,3,4};
+//     maxSubarraySum(arr);
+// }
+
+
+// // // //max subarray sum (kadane's) - time complexity On
+// public static void maxSubarraySum (int arr[]) {
+//     int currSum = 0;
+//     int maxSum = Integer.MIN_VALUE;
+
+//     for (int i=0; i<arr.length; i++) {
+//         currSum = currSum + arr[i];
+//         if (currSum < 0){
+//             currSum = 0;
+//         }
+//         maxSum = Math.max(currSum, maxSum);
+//     }
+//     System.out.println("Max subarray sum is: " + maxSum);
+// }
+// public static void main (String args[]) {
+//     int arr[] = {1,-2,3,-4,5,-6};
 //     maxSubarraySum(arr);
 // }
 
