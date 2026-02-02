@@ -3,7 +3,7 @@ public class a_Java07 {
 // // Hollow_rectangle   
 //     public static void hollow_rectangle (int totRows, int totCols) {
 //         for (int i=1; i<=totRows; i++) { // outer loop for printing lines
-//             for (int j=1; j<=totCols; j++) {  //inner loop for printing *
+//             for (int j=1; j<=totCols; j=j+1) {  //inner loop for printing *
 //                 if (i == 1 || i == totRows  || j == 1 || j == totCols) {
 //                     System.out.print("*");
 //                 }
