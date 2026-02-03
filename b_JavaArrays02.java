@@ -126,9 +126,9 @@ public class b_JavaArrays02 {
 // }
 
 
-// //Bubble Sort
+// //Bubble Sort (acsending order)
 // public static void bubbleSort (int arr[]) {
-//     for (int i=0; i<arr.length-1; i++) {
+//     for (int i=0; i<arr.length-1; i++) {  //run till 0 to simply length it works but it includes unnecessary comparisons so this is more optimised
 //         for (int j=0; j<=arr.length-2; j++) {
 //             if (arr[j] > arr[j+1]) {   //if my current element is greater than its next element swap
 //                 //swap
@@ -146,11 +146,38 @@ public class b_JavaArrays02 {
 //     System.out.println();
 // }
 // public static void main(String args[]) {
-//     int arr[] = {5,4,3,2,1};
+//     int arr[] = {5,4,3,2,1,0};
 //     bubbleSort(arr);
 //     printArr(arr);
 // }
 
+
+// //Selection sort (ascending order)
+// public static void selectionSort (int arr[]) {
+//     for (int i=0; i<arr.length-1; i++) {
+//         int smallestnum = i;  //here we are assuming our current i is the smallest num
+//         for (int j=i+1; j<arr.length; j++) { //we are checking from j=i+1 because we have already assumed that i is smallest check next ie i+1 comparing with i
+//             if (arr[smallestnum] > arr[j]) {  
+//                 smallestnum = j;
+//             }
+//         }
+//         //swap 
+//         int temp = arr[smallestnum];
+//         arr[smallestnum] = arr[i];
+//         arr[i] = temp;
+//     }
+// }
+// public static void printArr(int arr[]) {
+//     for (int i=0; i<arr.length; i++) {
+//         System.out.print(arr[i]);
+//     }
+//     System.out.println();
+// }
+// public static void main(String args[]) {
+//     int arr[] = {5,4,3,2,1};
+//     selectionSort(arr);
+//     printArr(arr);
+// }
 
 
 }
