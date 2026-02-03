@@ -103,28 +103,53 @@ public class b_JavaArrays02 {
 // }
 
 
-//BuyAndSellStock
-public static int BuyAndSellStock (int prices[]) {
-    int buyPrice = Integer.MAX_VALUE;
-    int maxProfit = 0;
-    for (int i=0; i<prices.length; i++) {
-        if (buyPrice < prices[i]) {  //profit
-            int profit = prices[i] - buyPrice;
-            System.out.println("Profit is " + profit + " when price = " + prices[i]);
-            maxProfit = Math.max(maxProfit, profit);
-        } 
-        else {
-            buyPrice = prices[i];
-            System.out.println("You can buy it at " + buyPrice);
-        }
-    }
-    return maxProfit;
-}
-public static void main(String args[]) {
-    int prices[] = {7,1,5,3,6,4};
-    System.out.println("Maximum profit is " + BuyAndSellStock(prices));
-}
+// //BuyAndSellStock
+// public static int BuyAndSellStock (int prices[]) {
+//     int buyPrice = Integer.MAX_VALUE;
+//     int maxProfit = 0;
+//     for (int i=0; i<prices.length; i++) {
+//         if (buyPrice < prices[i]) {  //profit
+//             int profit = prices[i] - buyPrice;
+//             System.out.println("Profit is " + profit + " when price = " + prices[i]);
+//             maxProfit = Math.max(maxProfit, profit);
+//         } 
+//         else {
+//             buyPrice = prices[i];
+//             System.out.println("You can buy it at " + buyPrice);
+//         }
+//     }
+//     return maxProfit;
+// }
+// public static void main(String args[]) {
+//     int prices[] = {2,5,3,6,4};
+//     System.out.println("Maximum profit is " + BuyAndSellStock(prices));
+// }
 
+
+// //Bubble Sort
+// public static void bubbleSort (int arr[]) {
+//     for (int i=0; i<arr.length-1; i++) {
+//         for (int j=0; j<=arr.length-2; j++) {
+//             if (arr[j] > arr[j+1]) {   //if my current element is greater than its next element swap
+//                 //swap
+//                 int temp = arr[j];
+//                 arr[j] = arr[j+1];
+//                 arr[j+1] = temp;
+//             }
+//         }
+//     }
+// }
+// public static void printArr (int arr[]) {
+//     for (int i=0; i<arr.length; i++) {
+//         System.out.print(arr[i]);
+//     }
+//     System.out.println();
+// }
+// public static void main(String args[]) {
+//     int arr[] = {5,4,3,2,1};
+//     bubbleSort(arr);
+//     printArr(arr);
+// }
 
 
 
