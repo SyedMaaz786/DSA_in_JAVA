@@ -102,4 +102,27 @@ public class b_JavaArrays02 {
 //     System.err.println(trappedRainWater(height));
 // }
 
+
+// //BuyAndSellStock
+// public static int BuyAndSellStock (int prices[]) {
+//     int buyPrice = Integer.MAX_VALUE;
+//     int maxProfit = 0;
+//     for (int i=0; i<prices.length; i++) {
+//         if (buyPrice < prices[i]) {  //profit
+//             int profit = prices[i] - buyPrice;
+//             System.out.println("Profit is " + profit + " when price = " + prices[i]);
+//             maxProfit = Math.max(maxProfit, profit);
+//         } 
+//         else {
+//             buyPrice = prices[i];
+//             System.out.println("Its a loss so dont sell today better you can buy it at " + buyPrice);
+//         }
+//     }
+//     return maxProfit;
+// }
+// public static void main(String args[]) {
+//     int prices[] = {7,1,5,3,6,4};
+//     System.out.println(BuyAndSellStock(prices));
+// }
+
 }
