@@ -13,7 +13,7 @@ public class b_JavatwoDArrays {
     //     System.out.print("Key NOT found");
     //     return false;
     // }
-    // // fnx for twoDArr
+    // // fnx for twoDArr.
     // public static void main(String args[]) {
     //     int twoD[][] = new int [3][3];
     //     int n = twoD.length, m = twoD[0].length;
