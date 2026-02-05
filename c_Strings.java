@@ -57,5 +57,35 @@ public class c_Strings {
     // }
 
 
+    // //shortest distance (for logic check notes from phone)
+    // public static float shortestDistance(String str) {
+    //     int x = 0, y = 0; //initializing axis
+    //     for (int i=0; i<str.length(); i++) {
+    //         char dir = str.charAt(i);
+    //         //North
+    //         if (dir == 'N') {
+    //             y++;  //according to the char dir changing the axis
+    //         }
+    //         else if (dir == 'S') {
+    //             y--;
+    //         }
+    //         else if (dir == 'E') {
+    //             x++;
+    //         }
+    //         else {
+    //             x--;
+    //         }
+    //     }
+    //     //distance formula 
+    //     int X2 = x*x;
+    //     int Y2 = y*y;
+    //     return (float)Math.sqrt(X2 + Y2);
+    // }
+    // public static void main(String args[]) {
+    //     String str = "WNEENESENNN";
+    //     System.out.println(shortestDistance(str));
+    // }
+
+
 
 }
