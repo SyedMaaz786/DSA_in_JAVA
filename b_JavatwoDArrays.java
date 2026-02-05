@@ -98,7 +98,7 @@ public class b_JavatwoDArrays {
     // }
 
 
-    // //Diagonal sum (Check notes from phone) - O(n2)
+    // //Diagonal sum (Check notes from phone for logic) - O(n2)
     // public static int printDiagonal(int matrix[][]) {
     //     int sum = 0;
     //     for (int i=0; i<matrix.length; i++) {
@@ -147,6 +147,31 @@ public class b_JavatwoDArrays {
     // }
 
 
+    // // Searching an element in sorted matrix (This is top to bottom, You can also check for bottom to top) - O(n)
+    // public static boolean staircaseSearch(int matrix[][], int key ){
+    //     int row = 0, col = matrix[0].length-1;  //logic to start from top right element ie 40 for this 
+    //     while(row < matrix.length && col>=0) {  //logic so that we dont go beyond our matrix rows and cols
+    //         if (matrix[row][col] == key) {
+    //             System.out.print("Key found at (" + row + "," + col + ")");
+    //             return true;
+    //         }
+    //         else if (key < matrix[row][col]) {
+    //             col--; //to go on the left
+    //         }
+    //         else {
+    //             row ++; //to go on the bottom
+    //         }
+    //     }
+    //     System.out.println("Key NOT found");
+    //     return false;
+    // }
+    // public static void main(String args[]) {
+    //     int matrix[][] = {{10, 20, 30, 40},
+    //                       {15, 25, 35, 45},
+    //                       {27, 29, 37, 48},
+    //                       {32, 33, 39, 50}};
+    //     int key = 33;
+    //     staircaseSearch(matrix, key);                 
 
 
 
