@@ -98,7 +98,7 @@ public class b_JavatwoDArrays {
     // }
 
 
-    // //Diagonal sum (Check notes from phone)
+    // //Diagonal sum (Check notes from phone) - O(n2)
     // public static int printDiagonal(int matrix[][]) {
     //     int sum = 0;
     //     for (int i=0; i<matrix.length; i++) {
@@ -121,6 +121,29 @@ public class b_JavatwoDArrays {
     //                       {9,10,11,12},
     //                       {13,14,15,16}};
     //     System.out.println(printDiagonal(matrix));   
+    // }
+
+
+    // //Diagonal sum - O(n)
+    // public static int printDiagonal(int matrix[][]) {
+    //     int sum = 0;
+    //     int n = matrix.length;
+    //     for (int i=0; i<n; i++) {
+    //         //primary diagonal
+    //         sum = sum + matrix[i][i];
+    //         //secondary diagonal
+    //         if (i != n - 1 - i) { // avoid double checking
+    //             sum = sum + matrix[i][n - 1 - i];  // dont scratch your head just remember n-1-i
+    //         }
+    //     }
+    //     return sum;
+    // }
+    // public static void main(String args[]) {
+    //     int matrix[][] = {{1,2,3,4},
+    //                       {5,6,7,8},
+    //                       {9,10,11,12},
+    //                       {13,14,15,16}};
+    //     System.out.println(printDiagonal(matrix));
     // }
 
 
