@@ -87,5 +87,49 @@ public class c_Strings {
     // }
 
 
+    // //compare
+    // public static void main(String args[]) {
+    //     String s1 = "Syed";
+    //     String s2 = "Syed";
+    //     String s3 = new String("Syed");
+    //     if (s1 == s2) {  
+    //         System.out.println("Same");
+    //     }
+    //     else {
+    //         System.out.println("Different");
+    //     }
+    //     if (s1 == s3) {
+    //         System.out.println("same");
+    //     }
+    //     else {
+    //         System.out.println("Different");
+    //     }
+    //     //compare in string
+    //     if (s1.equals(s3)) {
+    //         System.out.println("same");
+    //     }
+    //     else {
+    //         System.out.println("Different");
+    //     }
+    // }
+
+
+    // //SubString
+    // public static String subString(String str, int startindex, int endindex) {
+    //     String substr = "";
+    //     for (int i=startindex; i<endindex; i++) {
+    //         substr += str.charAt(i);
+    //     }
+    //     return substr;
+    // }
+    // public static void main(String args[]) {
+    //     String str = "Hello World";
+    //     System.out.println(subString(str, 0, 5));
+    //     //Inbuilt substring fnx in Java
+    //     System.out.println(str.substring(0, 11));
+    // }
+
+
+
 
 }
