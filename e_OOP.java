@@ -3,15 +3,15 @@ public class e_OOP {
 
     Pen myPen = new Pen();  //created an object named mypen
     myPen.setColor("Black");  //Here we are using our obj we craeted . fnx we created and passing the values
-    System.out.println(myPen.color);  //In print statement we need to pass object.property 
-    myPen.setTip(5);
-    System.out.println(myPen.tip);
-    myPen.color="Blue";
-    System.out.println(myPen.color);
+    System.out.println(myPen.getColor());  
+    myPen.setTip(5);  //obj . setter for assigning 
+    System.out.println(myPen.getTip());  //obj . getter for printing
+    myPen.setColor("Blue");
+    System.out.println(myPen.getColor());
 
     Student stud = new Student();
     stud.studName("Syed Maaz");
-    System.out.println(stud.username);
+    System.out.println(stud.username);  //In print statement we need to pass object.property 
     stud.calcPerc(98, 96, 90);
     System.out.println(stud.percentage);
 
@@ -26,15 +26,22 @@ public class e_OOP {
 //Here we have created 2 class Pen and Student and using main fnx above to print the values
 class Pen {
     //properties
-    String color;
-    int tip;
+    private String color;
+    private int tip;
 
-    //fnx
+    //fnx (setters)
     void setColor(String newColor) {
         color = newColor;
     }
     void setTip(int newTip) {
         tip = newTip;
+    }
+    //(getters)
+    String getColor() {
+        return this.color;
+    }
+    int getTip() {
+        return this.tip;
     }
 
 }
