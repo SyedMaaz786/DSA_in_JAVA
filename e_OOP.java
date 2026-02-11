@@ -39,6 +39,24 @@ public class e_OOP {
     // for (int i=0; i<2; i++) {
     //     System.out.println(e2.salary[i]);
     // }
+
+    // Fish shark = new Fish();
+    // shark.eat();
+
+    // Dog husky = new Dog();
+    // husky.breathe();
+    // husky.legs = 4;
+    // System.err.println(husky.legs);
+
+    // Cat meow = new Cat();
+    // meow.legs = 4;
+    // System.out.println(meow.legs);
+    // meow.eat();
+
+    // Monkey gorilla = new Monkey();
+    // gorilla.play();
+    // gorilla.eat();
+
 }
 }
 
@@ -95,35 +113,92 @@ class Employee {
     int salary[];
 
 
-    // //This is also an ex of constructor overloading where in one class we have multiple constructors with same name and diff parameters, so that objects can be created in diff ways.
+    //This is also an ex of constructor overloading where in one class we have multiple constructors with same name and diff parameters, so that objects can be created in diff ways.
 
     //constructor(Non parameterized - no parameters are being passed while creating the constructor)
     Employee() {
         salary = new int[2];
         System.out.println("Constructor is called...");
     }
-    // //constructor(parameterized - parameters are being passed while creating the constructor)
-    // Employee(String name) {
-    //     this.name = name;
-    //     System.out.println(name);
-    // }
-    // Employee(int empId) {
-    //     this.empId = empId;
-    //     System.out.println(empId);
-    // }
+    //constructor(parameterized - parameters are being passed while creating the constructor)
+    Employee(String name) {
+        this.name = name;
+        System.out.println(name);
+    }
+    Employee(int empId) {
+        this.empId = empId;
+        System.out.println(empId);
+    }
     // // Shallow copy constructor (Same memory loc)
     // Employee(Employee e1) {
     //     this.name = e1.name;
     //     this.empId = e1.empId;
     //     this.salary = e1.salary;
     // }
-    // //deep copy constructor (Different memory loc)
-    // Employee (Employee e1) {
-    //     salary = new int[2];
-    //     this.name = e1.name;
-    //     this.empId = e1.empId;
-    //     for (int i=0; i<2; i++) {
-    //         this.salary[i] = e1.salary[i];
-    //     }    
-    // }
+    //deep copy constructor (Different memory loc)
+    Employee (Employee e1) {
+        salary = new int[2];
+        this.name = e1.name;
+        this.empId = e1.empId;
+        for (int i=0; i<2; i++) {
+            this.salary[i] = e1.salary[i];
+        }    
+     }
+}
+
+
+//Inheritance 
+//Single level inheritance
+//Base class / Parent class
+class Animal {
+    String color;
+
+    void eat() {
+        System.out.println("Eats");
+    }
+    void breathe() {
+        System.out.println("Breathe's");
+    }
+}
+//Derived class / Child class
+class Fish extends Animal {
+    int fins;
+
+    void swims() {
+        System.out.println("Swims in water");
+    }
+}
+
+//Multi level inheritance
+class Mammal extends Animal {
+    int legs;
+}
+class Dog extends Mammal {
+    String breed;
+}
+
+//Hierarchial inheritance
+class Hen extends Animal {
+    int legs;
+
+    void layEggs() {
+        System.out.println("Lay's Egg's");
+    }
+}
+class Cat extends Animal {
+    int legs;
+
+    void sipsMilk() {
+        System.out.println("Sip's Milk");
+    }
+}
+
+//Hybrid inheritance
+interface Pet {
+    public void play();
+}
+class Monkey extends Animal implements Pet{
+    public void play() {
+        System.out.println("Playing...");
+    }
 }
