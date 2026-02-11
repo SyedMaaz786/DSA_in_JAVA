@@ -4,7 +4,7 @@ public class e_OOP {
     public static void main(String args[]) {
 
     // Pen myPen = new Pen();  //created an object named mypen
-    // myPen.setColor("Black");  //Here we are using our obj we craeted . fnx we created and passing the values
+    // myPen.setColor("Black");  //Here we are using our obj we created . fnx we created and passing the values
     // System.out.println(myPen.getColor());  
     // myPen.setTip(5);  //obj . setter for assigning 
     // System.out.println(myPen.getTip());  //obj . getter for printing
@@ -19,8 +19,8 @@ public class e_OOP {
 
     // BankAccount myAcc = new BankAccount();
     // myAcc.username = "Syed Maaz";
-    // myAcc.setPassword("LionHeart");
     // System.out.println(myAcc.username);
+    // myAcc.setPassword("LionHeart");
 
     // Employee emp1 = new Employee(); //Where Employee() is the cons call
     // Employee emp2 = new Employee("Syed");
@@ -115,8 +115,8 @@ class Student {
     float percentage;
 
     //fnx
-    void studName(String newStud) {
-        username = newStud;
+    void studName(String name) {
+        username = name;
     }
     void calcPerc(int phy, int chem, int math) {
         percentage = (phy + chem + math) / 3;
@@ -139,9 +139,7 @@ class Employee {
     String password;
     int salary[];
 
-
     //This is also an ex of constructor overloading where in one class we have multiple constructors with same name and diff parameters, so that objects can be created in diff ways.
-
     //constructor(Non parameterized - no parameters are being passed while creating the constructor)
     Employee() {
         salary = new int[2];
