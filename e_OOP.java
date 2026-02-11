@@ -57,6 +57,13 @@ public class e_OOP {
     // gorilla.play();
     // gorilla.eat();
 
+    // Calculator calc = new Calculator();
+    // System.out.println(calc.sum(1, 2));
+    // System.out.println(calc.sum((float)1.5, (float)2.5));
+    // System.out.println(calc.sum(1, 2, 3));
+
+    BrownHen gori = new BrownHen();
+    gori.layEgg();
 }
 }
 
@@ -200,5 +207,32 @@ interface Pet {
 class Monkey extends Animal implements Pet{
     public void play() {
         System.out.println("Playing...");
+    }
+}
+
+//Polymorphism
+
+//Method Overloading
+class Calculator {
+    int sum(int a, int b) {
+        return a + b;
+    }
+    float sum(float a, float b) {
+        return a + b;
+    }
+    int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+// Method Overriding
+class WhiteHen {
+    void layEgg() {
+        System.out.println("Lay's White Eggs");
+    }
+}
+class BrownHen extends WhiteHen{
+    void layEgg() {
+        System.out.println("Lay's Brown Eggs");
     }
 }
