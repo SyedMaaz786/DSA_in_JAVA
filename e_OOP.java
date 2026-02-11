@@ -81,6 +81,9 @@ public class e_OOP {
     // Students s2 = new Students();
     // System.out.println(s2.schoolName); // s2 schoolname is also same because it was static
     // System.out.println(s1.percentage(70, 80, 90));
+
+    B b = new B();
+    System.out.println(b.color);
 }
 }
 
@@ -303,4 +306,21 @@ class Students {
     int percentage(int math, int phy, int chem) {
         return (math + phy + chem) / 3;
     } 
+}
+
+//Super keyword
+class A {
+    String color;
+
+    A() {
+        System.out.println("A is called");
+    }
+
+}
+class B extends A {
+    B() {
+        super(); 
+        super.color = "Black"; //Super as properties
+        System.out.println("B is called");
+    }
 }
