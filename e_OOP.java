@@ -82,8 +82,8 @@ public class e_OOP {
     // System.out.println(s2.schoolName); // s2 schoolname is also same because it was static
     // System.out.println(s1.percentage(70, 80, 90));
 
-    B b = new B();
-    System.out.println(b.color);
+    // B b = new B();
+    // System.out.println(b.color);
 }
 }
 
