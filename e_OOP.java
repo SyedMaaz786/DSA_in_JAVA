@@ -62,8 +62,25 @@ public class e_OOP {
     // System.out.println(calc.sum((float)1.5, (float)2.5));
     // System.out.println(calc.sum(1, 2, 3));
 
-    BrownHen gori = new BrownHen();
-    gori.layEgg();
+    // BrownHen gori = new BrownHen();
+    // gori.layEgg();
+
+    // Horse h = new Horse();
+    // h.eat();
+    // h.walk();
+    // h.changeColor();
+    // Chicken c = new Chicken();
+    // c.eat();
+    // c.walk();
+    // c.changeColor();
+    // Mustang myMustang = new Mustang(); //Animal -> Horse -> Mustang
+
+    // Students s1 = new Students();
+    // s1.schoolName = "Presidency";  
+    // System.out.println(s1.schoolName);
+    // Students s2 = new Students();
+    // System.out.println(s2.schoolName); // s2 schoolname is also same because it was static
+    // System.out.println(s1.percentage(70, 80, 90));
 }
 }
 
@@ -204,7 +221,7 @@ class Cat extends Animal {
 interface Pet {
     public void play();
 }
-class Monkey extends Animal implements Pet{
+class Monkey extends Animal implements Pet{  // Also it is a ex of multiple inheritance because we are using properties of 2 classes
     public void play() {
         System.out.println("Playing...");
     }
@@ -235,4 +252,55 @@ class BrownHen extends WhiteHen{
     void layEgg() {
         System.out.println("Lay's Brown Eggs");
     }
+}
+
+
+//Abstraction
+
+// Abstract class
+abstract class Animals {
+    String color;
+
+    Animals() {  //constructor 
+        System.out.println("Animal constructor called");
+    }
+    void eat() {  //fnx
+        System.out.println("Animal Eat's");
+    }
+    // Abstract method / fnx
+    abstract void walk();
+}
+class Horse extends Animals {
+    void changeColor() {
+        color = "Dark Brown";
+    }
+    Horse() {
+        System.out.println("Horse constructor called");
+    }
+    void walk() {
+        System.out.println("Horse walk's on 4 leg's");
+    }
+}
+class Mustang extends Horse {
+    Mustang() {
+        System.out.println("Mustang constructor called");
+    }
+}
+class Chicken extends Animals {
+    void changeColor() {
+        color = "Yellow";
+    }
+    void walk() {
+        System.out.println("Chicken walk's on 2 leg's");
+    }
+}
+
+//Static keyword
+class Students {
+    //Static var
+    static String schoolName;
+    //Static fnx
+    int percentage(int math, int phy, int chem) {
+        return (math + phy + chem) / 3;
+    } 
 }
