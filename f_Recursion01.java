@@ -85,13 +85,14 @@ public class f_Recursion01 {
         int xn = x * xnm1;
         return xn;
     }
-    //Optimised power code (Check notes if dought)
+    //Optimised power code (Check notes if dought) Ologn
     public static int optimisedPower(int x, int n) {
         if (n == 0) { //Base case
             return 1;
         }
         // if n is even
-        int halfPowersq = optimisedPower(x, n/2) * optimisedPower(x, n/2);
+        int halfPower = optimisedPower(x, n/2);
+        int halfPowersq = halfPower * halfPower;
         // if n is odd
         if (n % 2 == 1) {
             halfPowersq = x * halfPowersq;
