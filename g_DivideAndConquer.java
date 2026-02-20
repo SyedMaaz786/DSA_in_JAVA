@@ -84,7 +84,7 @@ public class g_DivideAndConquer {
         int temp = pivot;  //here pivot is ei element check above
         arr[ei] = arr[i];
         arr[i] = temp;
-        return i;  //i = pIdx
+        return i;  //i = pIdx.
     }
     public static void printArr( int arr[]) {
     for (int i=0; i<=arr.length-1; i++) {
