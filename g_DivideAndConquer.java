@@ -62,8 +62,8 @@ public class g_DivideAndConquer {
         }
         //Last element
         int pIdx = partition(arr, si, ei);  //pivot index
-        quickSort(arr, si, pIdx-1);  //left
-        quickSort(arr, pIdx+1, ei);  //right
+        quickSort(arr, si, pIdx-1);  //left  pIdx-1 is the ending index for left
+        quickSort(arr, pIdx+1, ei);  //right pIdx+1 is the starting index for right
 
     }
     public static int partition(int arr[], int si, int ei) {
