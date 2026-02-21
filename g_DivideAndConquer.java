@@ -54,50 +54,92 @@ public class g_DivideAndConquer {
     // }
 
     
-    //Quick Sort 
-    public static void quickSort (int arr[], int si, int ei) {
-        //Base case
-        if (si >= ei) {
-            return;
+    // //Quick Sort 
+    // public static void quickSort (int arr[], int si, int ei) {
+    //     //Base case
+    //     if (si >= ei) {
+    //         return;
+    //     }
+    //     //Last element
+    //     int pIdx = partition(arr, si, ei);  //pivot index
+    //     quickSort(arr, si, pIdx-1);  //left  pIdx-1 is the ending index for left
+    //     quickSort(arr, pIdx+1, ei);  //right pIdx+1 is the starting index for right
+
+    // }
+    // public static int partition(int arr[], int si, int ei) {
+    //     int pivot = arr[ei];
+    //     int i = si-1; //iterator to make place for elements smaller than pivot
+
+    //     for (int j=si; j<ei; j++) {
+    //         if (arr[j] <= pivot) {
+    //             i++; 
+    //             //swap
+    //             int temp = arr[j];
+    //             arr[i] = arr[j];
+    //             arr[j] = temp; 
+    //         }
+    //     }
+    //     //swap
+    //     i++;  //used to increment i=-1 to next i = 0, 1, 2 and so on
+    //     int temp = pivot;  //here pivot is ei element check above
+    //     arr[ei] = arr[i];
+    //     arr[i] = temp;
+    //     return i;  //i = pIdx.
+    // }
+    // public static void printArr( int arr[]) {
+    // for (int i=0; i<=arr.length-1; i++) {
+    //     System.out.print(arr[i] + " ");
+    // }
+    //     System.out.println();
+    // }
+
+
+    //Search in rotated sorted arr
+    public static int search(int arr[], int target, int si, int ei) {
+        //Base case (Check GPT for this base case if dought explains clearly)
+        if (si > ei) {
+            return -1;
         }
-        //Last element
-        int pIdx = partition(arr, si, ei);  //pivot index
-        quickSort(arr, si, pIdx-1);  //left  pIdx-1 is the ending index for left
-        quickSort(arr, pIdx+1, ei);  //right pIdx+1 is the starting index for right
-
-    }
-    public static int partition(int arr[], int si, int ei) {
-        int pivot = arr[ei];
-        int i = si-1; //iterator to make place for elements smaller than pivot
-
-        for (int j=si; j<ei; j++) {
-            if (arr[j] <= pivot) {
-                i++; 
-                //swap
-                int temp = arr[j];
-                arr[i] = arr[j];
-                arr[j] = temp; 
+        //finding mid 
+        int mid = si + (ei - si) / 2;
+        //case FOUND
+        if (arr[mid] == target) {
+            return mid;
+        }
+        //mid on L1
+        if (arr[si] <= arr[mid]) {
+            //case : a (left side of L1)
+            if (arr[si] <= target && target <= arr[mid]) {
+                return search(arr, target, si, mid-1);
+            }
+            //case : b (right side of L1)
+            else {
+                return search(arr, target, mid+1, ei);
             }
         }
-        //swap
-        i++;  //used to increment i=-1 to next i = 0, 1, 2 and so on
-        int temp = pivot;  //here pivot is ei element check above
-        arr[ei] = arr[i];
-        arr[i] = temp;
-        return i;  //i = pIdx.
-    }
-    public static void printArr( int arr[]) {
-    for (int i=0; i<=arr.length-1; i++) {
-        System.out.print(arr[i] + " ");
-    }
-        System.out.println();
+        //mid on L2
+        else {
+            //case : c (right side of L2)
+            if (arr[mid] <=target && target <= arr[ei]) {
+                return search(arr, target, mid+1, ei);
+            }
+            //case : d (left side of L2)
+            else {
+                return search(arr, target, si, mid-1);
+            }
+        }
+        
     }
     public static void main(String args[]) {
-        int arr[] = {6,5,4,3,2,1};
+        // int arr[] = {6,5,4,3,2,1};
         // mergeSort(arr, 0, arr.length-1);
         // printArr(arr);
-        quickSort(arr, 0, arr.length-1);
-        printArr(arr);
+        // quickSort(arr, 0, arr.length-1);
+        // printArr(arr);
+        int arr[] = {4,5,6,7,0,1,2};
+        int target = 0;
+        int tarIdx = search(arr, target, 0, arr.length-1);
+        System.out.println(tarIdx);
 
     }
 }
