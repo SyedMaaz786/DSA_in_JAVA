@@ -102,24 +102,24 @@ public class b_JavaArrays01 {
 // // Binary Search (for ascending sorted arr)
 // // find index value of an element in an array
 // public static int binarySearch (int arr[], int key) {
-//     int start = 0, end = arr.length - 1;  //length will start from 1 but we need the index which starts from 0 so (-1) GPT if dought
-//     while (start <= end ) { //from start to end of the arr
-//         int mid = (start + end) / 2;  // formula to get mid value
+//     int si = 0, ei = arr.length - 1;  //length will start from 1 but we need the index which starts from 0 so (-1) GPT if dought
+//     while (si <= ei ) { //from si to ei of the arr
+//         int mid = si + (ei - si) / 2;  // formula to get mid value
 //         if (arr[mid] == key) {
 //             return mid;
 //         }
 //         if (arr[mid] < key) {
-//             start = mid + 1;   //if the middle value is smaller than key search on the right side
+//             si = mid + 1;   //if the middle value is smaller than key search on the right side
 //         }
 //         else {
-//             end = mid - 1;     //if the middle value is larger than key then search on the left side
+//             ei = mid - 1;     //if the middle value is larger than key then search on the left side
 //         }
 //     }
 //     return -1;
 // }
 // public static void main(String args[]) {
 //     int arr[] = {2,4,6,8,10,12,14};
-//     int key = 10;
+//     int key = 12;
 //     int index = binarySearch(arr, key);
 //     System.out.println(index);
 // }
@@ -127,24 +127,24 @@ public class b_JavaArrays01 {
 
 // //Binary search (for descending sorted arr)
 // public static int binarySearch (int arr[], int key) {
-//     int start = 0, end = arr.length - 1;
-//     while (start <= end) {
-//         int mid = (start + end) / 2;
+//     int si = 0, ei = arr.length - 1;
+//     while (si <= ei) {
+//         int mid = si + (ei - si)/2;
 //         if (arr[mid] == key) {
 //             return mid;
 //         }
 //         if (arr[mid] > key) {
-//             start = mid + 1;
+//             si = mid + 1;
 //         }
 //         else {
-//             end = mid - 1;
+//             ei = mid - 1;
 //         }
 //     }
 //     return -1;
 // }
 // public static void main(String args[]) {
 //     int arr[] = {16,14,12,10,8,6,4,2};
-//     int key = 14;
+//     int key = 8;
 //     int index = binarySearch(arr, key);
 //     System.out.println("Index value is " + index);
 // }
@@ -152,20 +152,20 @@ public class b_JavaArrays01 {
 
 // // //Reverse an array
 // public static void reverseArr (int numbers[]) {
-//     int start = 0, end = numbers.length-1;
-//     while (start < end) {
-//         int temp = numbers[start];
-//         numbers[start] = numbers[end];
-//         numbers[end] = temp;
-//         start ++;  //we will swap from start and end value so start will increment and go to next from last end decrement and come one value reverse
-//         end --;
+//     int si = 0, ei = numbers.length-1;
+//     while (si < ei) {
+//         int temp = numbers[si];
+//         numbers[si] = numbers[ei];
+//         numbers[ei] = temp;
+//         si ++;  //we will swap from start and end value so start will increment and go to next from last end decrement and come one value reverse
+//         ei --;
 //     }
 // }
 // public static void main(String args[]) {
 //     int numbers[] = {1,2,3,4,5,6,7,8,9};
 //     reverseArr(numbers);
 //     for (int i=0; i<numbers.length; i++) {
-//         System.out.print(numbers[i]);
+//         System.out.print(numbers[i] + " ");
 //     }
 //     System.out.println();
 // }
