@@ -126,7 +126,7 @@ public class b_JavaArrays02 {
 // }
 
 
-// //Bubble Sort (acsending order)
+// //Bubble Sort (ascending order)
 // public static void bubbleSort (int arr[]) {
 //     for (int i=0; i<arr.length-1; i++) {  //run till 0 to simply length it works but it includes unnecessary comparisons so this is more optimised
 //         for (int j=0; j<=arr.length-2; j++) {
@@ -148,6 +148,36 @@ public class b_JavaArrays02 {
 // public static void main(String args[]) {
 //     int arr[] = {5,4,3,2,1,0};
 //     bubbleSort(arr);
+//     printArr(arr);
+// }
+
+// //Bubble Sort Modified (ascending order)
+// public static void modifiedBubbleSort (int arr[]) {
+//     for (int i=0; i<arr.length-1; i++) {  //run till 0 to simply length it works but it includes unnecessary comparisons so this is more optimised
+//         boolean swapped = false;  //This is more optimised bubble sort where for i=0 if no swap happens that means the arr is already sorted
+//         for (int j=0; j<=arr.length-2; j++) {
+//             if (arr[j] > arr[j+1]) {   //if my current element is greater than its next element swap
+//                 //swap
+//                 int temp = arr[j];
+//                 arr[j] = arr[j+1];
+//                 arr[j+1] = temp;
+//                 swapped = true;
+//             }
+//         }
+//         if (swapped == false) {
+//             break;
+//         }
+//     }
+// }
+// public static void printArr (int arr[]) {
+//     for (int i=0; i<arr.length; i++) {
+//         System.out.print(arr[i]);
+//     }
+//     System.out.println();
+// }
+// public static void main(String args[]) {
+//     int arr[] = {5,4,3,2,1,0};
+//     modifiedBubbleSort(arr);
 //     printArr(arr);
 // }
 
