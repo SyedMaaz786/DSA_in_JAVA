@@ -206,4 +206,14 @@ public class a_Java07 {
 //     diamond(4);
 // }
 
+public static void change(int[] a) {
+    a[0] = 99;
+    a = new int[]{9,9,9};
+}
+public static void main(String args[]) {
+    int[] numb = {1,2,3,4};
+    change(numb);
+    System.out.println(numb[1]);
+}
+
 }
