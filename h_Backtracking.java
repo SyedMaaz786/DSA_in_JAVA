@@ -1,4 +1,5 @@
 public class h_Backtracking {
+    //Backtracking on arr
     public static void changeArr(int arr[], int i, int val) {
         //base case
         if (i == arr.length) {
@@ -17,9 +18,26 @@ public class h_Backtracking {
         }
         System.out.println();
     }
+
+
+    //Find subsets
+    public static void findSubsets(String str, String ans, int i) {  //we created a empty String ans inside which the values are stored
+        //base case
+        if (i == str.length()) {
+            System.out.println(ans);
+            return;
+        }
+        //recursion
+        //Yes Choice
+        findSubsets(str, ans + str.charAt(i), i+1);
+        //No Choice
+        findSubsets(str, ans, i+1);
+    }
     public static void main(String args[]) {
-        int arr[] = new int[5];
-        changeArr(arr, 0, 1);
-        printArr(arr);
+        // int arr[] = new int[5];
+        // changeArr(arr, 0, 1);
+        // printArr(arr);
+        String str = "abc";
+        findSubsets(str, "", 0);
     }
 }
