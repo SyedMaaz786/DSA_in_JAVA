@@ -52,7 +52,7 @@ public class h_Backtracking {
     }
 
 
-    //find Permutations (For this explain the dry run in notes)
+    //find Permutations (For this explain the dry run in interview)
     public static void findPermutations(String str, String ans) {
         //base case 
         if (str.length() == 0) {
