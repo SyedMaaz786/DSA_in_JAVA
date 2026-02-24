@@ -33,11 +33,46 @@ public class h_Backtracking {
         //No Choice
         findSubsets(str, ans, i+1);
     }
+
+
+    //Find subsets using StringBuilder
+    public static void printSubsets(String str, StringBuilder ans, int i) {
+        //base case
+        if (i == str.length()) {
+            System.out.println(ans);
+            return;
+        }
+        //recursion
+        //Yes choice
+        printSubsets(str, ans.append(str.charAt(i)), i+1);
+        //Backtrack
+        ans.deleteCharAt(ans.length() - 1);  //This line is used because we used StringBuilder which is mutable and hence it will not create a new string object for next step (GPT)
+        //No choice
+        printSubsets(str, ans, i+1);
+    }
+
+
+    //find Permutations (For this explain the dry run in notes)
+    public static void findPermutations(String str, String ans) {
+        //base case 
+        if (str.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+        //recursion
+        for (int i=0; i<str.length(); i++) {
+            char curr = str.charAt(i);
+            String newStr = str.substring(0, i) + str.substring(i + 1); //Check this line in GPT
+            findPermutations(newStr, ans + curr);
+        }
+    }
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
         // printArr(arr);
         String str = "abc";
-        findSubsets(str, "", 0);
+        // printSubsets(str,new StringBuilder() , 0);
+        // findSubsets(str, "", 0);
+        findPermutations(str, "");
     }
 }
