@@ -143,6 +143,23 @@ public class h_Backtracking {
         }
     }
     static int count = 0;
+
+
+    //Grid ways (for going right and down only)
+    public static int gridWays(int i, int j, int n, int m) {
+        //base case
+        if (i == n-1 && j == m-1) {  //condition for last cell
+            return 1;
+        }
+        else if (i == n || j == n) {  //boundary condition
+            return 0;
+        }
+        //recursion
+        int way1 = gridWays(i+1, j, n, m); //going down
+        int way2 = gridWays(i, j+1, n, m); //going right
+        return way1 + way2;
+        }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
@@ -151,21 +168,24 @@ public class h_Backtracking {
         // printSubsets(str,new StringBuilder() , 0);
         // findSubsets(str, "", 0);
         // findPermutations(str, "");
-        int n = 4;
-        char board[][] = new char[n][n];
-        //Initializing value in board
-        for (int row=0; row<n; row++) {
-            for (int col=0; col<n; col++) {
-                board[row][col] = '_';
-            }
-        }
-        nQueens(board, 0);
-        System.out.println("Total numb of ways to solve nQueens problem is: " + count);
+        // int n = 4;
+        // char board[][] = new char[n][n];
+        // //Initializing value in board
+        // for (int row=0; row<n; row++) {
+        //     for (int col=0; col<n; col++) {
+        //         board[row][col] = '_';
+        //     }
+        // }
+        // nQueens(board, 0);
+        // System.out.println("Total numb of ways to solve nQueens problem is: " + count);
         // if (nQueens(board, 0)) {
         //     System.out.println("Solution is possible");
         // }
         // else {
         //     System.out.println("Solution is not possible");
         // }
+        int n = 3, m = 3;
+        System.out.println(gridWays(0, 0, n, m));
+
     }
 }
