@@ -171,22 +171,22 @@ public class b_JavaArrays01 {
 // }
 
 
-//Print Pairs
-public static void printPairs (int numbers[]) {
-    int tp = 0;
-    for (int i=0; i<numbers.length; i++) {  //Stare the code you will get it, this basically prints lines until the nth value because we are printing it in the same line dont get confuse and that lines 1st index value we are priniting ie 2
-        for (int j=i+1; j<numbers.length; j++) {  //initialising from 2nd index because we need to print it from 2nd index
-            System.out.print("(" + numbers[i] + "," + numbers[j] + ")");
-            tp ++;
-        }
-        System.out.println();
-    }
-    System.out.println("Total pairs = " + tp);
-}
-public static void main(String args[]) {
-    int numbers[] = {2, 4, 6, 8, 10};
-    printPairs(numbers);
-}
+// //Print Pairs
+// public static void printPairs (int numbers[]) {
+//     int tp = 0;
+//     for (int i=0; i<numbers.length; i++) {  //Stare the code you will get it, this basically prints lines until the nth value because we are printing it in the same line dont get confuse and that lines 1st index value we are priniting ie 2
+//         for (int j=i+1; j<numbers.length; j++) {  //initialising from 2nd index because we need to print it from 2nd index
+//             System.out.print("(" + numbers[i] + "," + numbers[j] + ")");
+//             tp ++;
+//         }
+//         System.out.println();
+//     }
+//     System.out.println("Total pairs = " + tp);
+// }
+// public static void main(String args[]) {
+//     int numbers[] = {2, 4, 6, 8, 10};
+//     printPairs(numbers);
+// }
 
 
 // //print subarrays
