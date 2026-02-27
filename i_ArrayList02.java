@@ -140,7 +140,7 @@ public class i_ArrayList02 {
 // public static boolean pairSum(ArrayList<Integer> list, int target) {
 //     int lp = 0;
 //     int rp = list.size()-1;
-//     while (lp < rp) {
+//     while (lp != rp) {
 //         int sum = list.get(lp) + list.get(rp);
 //         //case 1
 //         if (sum == target) {
@@ -172,6 +172,50 @@ public class i_ArrayList02 {
 //         System.out.println(pairSum(list, target));
 //     }
 
+
+
+// //pair sum 2  O(n)
+// public static boolean pairSum(ArrayList<Integer> list, int target) {
+//     int bp = -1; //breaking point invalid idx we are taking
+//     int n = list.size();
+//     for (int i=0; i<list.size()-1; i++) {
+//         if (list.get(i) > list.get(i+1)) {  //stare it here we got the breaking point check notes if dought
+//             bp = i;
+//             break;
+//         }
+//     }
+//     int lp = bp+1; //smallest
+//     int rp = bp; //largest
+//     while (lp !=  rp) {
+//         //case 1
+//         if (list.get(lp) + list.get(rp) == target) {
+//             return true;
+//         }
+//         //case 2
+//         if (list.get(lp) + list.get(rp) < target) {
+//             lp = (lp+1) % n;  //byheart this
+//         }
+//         else {
+//         //case 3
+//             rp = (n+rp-1) % n; //byheart this
+//         }
+//     }
+//     return false;
+// }
+// public static void main(String args[]) {
+//     ArrayList<Integer> list = new ArrayList<>();
+
+//     // 11, 15, 6, 8, 9, 10 - Sorted & Rotated
+//     list.add(11);
+//     list.add(15);
+//     list.add(6);
+//     list.add(8);
+//     list.add(9);
+//     list.add(10);
+
+//     int target = 16;
+//     System.out.println(pairSum(list, target));
+// }
 
 
 }
