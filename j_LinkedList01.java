@@ -111,6 +111,37 @@ public class j_LinkedList01 {
         return val;
     }
 
+    //iterative search
+    public int itrSearch(int key) {
+        Node temp = head;
+        int i = 0;
+        while (temp != null) {
+            if (temp.data == key) {  //key Found case
+                return i;  //returns the idx of the element
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1;  //key not Found case
+    }
+
+    //recursive search
+    public int recSearch(Node head, int key) {
+        //base case
+        if (head == null) {
+            return -1;
+        }
+        if (head.data == key) {
+            return 0;
+        }
+        //recursive call
+        int idx = recSearch(head.next, key);
+        if (idx == -1) {
+            return -1;
+        }
+        return idx + 1;
+    }
+
     public static void main(String args[]) {
         j_LinkedList01 ll = new j_LinkedList01();
         ll.print();
@@ -129,6 +160,10 @@ public class j_LinkedList01 {
         ll.print();
         ll.removeLast();
         ll.print();
+        System.out.println(ll.itrSearch(2));
+        System.out.println(ll.itrSearch(10));
+        System.out.println(ll.recSearch(head, 2));
+        System.out.println(ll.recSearch(head, 10));
     }
 }
 
