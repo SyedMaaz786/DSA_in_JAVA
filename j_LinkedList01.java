@@ -204,7 +204,7 @@ public class j_LinkedList01 {
             return true;
         }
         //step1 - find mid
-        Node midNode = findMid(head);
+        Node midNode = findMid(head);  
 
         //step2 - reverse 2nd half
         Node prev = null;
