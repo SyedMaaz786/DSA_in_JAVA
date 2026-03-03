@@ -142,6 +142,94 @@ public class j_LinkedList01 {
         return idx + 1;
     }
 
+    //reverse a linked list O(n)
+    public void reverse() {
+        //initialising 3 var ie prev, curr, next
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while (curr != null) {  //byheart this steps
+            //step1
+            next = curr.next;
+            //step2
+            curr.next = prev;  //reverse main step
+            //step3
+            prev = curr;
+            //step4
+            curr = next;
+        }
+        head = prev;
+    }
+
+    //delete nth node from the end
+    public void deleteNthNode(int n) {
+        //calculate size of the LL
+        int sz = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+        //corner case
+        if (n == sz) {
+            head = head.next; //removeFirst
+            return;
+        }
+        //sz-n -> Main formula to find the nth node which is to be deleted
+        int i = 1;
+        int iToFind = sz-n;
+        Node prev = head;
+        while (i < iToFind) {  //traversing from starting to the nth node 
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;  //then assigning the next value to the next of next so that the middle next value ie nth node will be moven to the garbage collector by Java
+        return;
+    }
+
+    //palindrome 
+    //Slow-Fast(turtle-rabbit) Approach
+    public Node findMid(Node head) {
+        Node turtle = head;
+        Node rabbit = head;
+        while (rabbit != null && rabbit.next != null) {
+            turtle = turtle.next; //+1
+            rabbit = rabbit.next.next; //+2
+        }
+        return turtle; //turtle is the midNode
+    }
+    public boolean checkPalindrome() {
+        if (head == null || head.next == null) {
+            return true;
+        }
+        //step1 - find mid
+        Node midNode = findMid(head);
+
+        //step2 - reverse 2nd half
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev; //right is the head now for righthalf 
+        Node left = head;  //left is the head now for lefthalf
+
+        //step3 - check if lefthalf == right half
+        while(right != null) {
+            if(left.data != right.data) {
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
     public static void main(String args[]) {
         j_LinkedList01 ll = new j_LinkedList01();
         ll.print();
@@ -164,6 +252,11 @@ public class j_LinkedList01 {
         System.out.println(ll.itrSearch(10));
         System.out.println(ll.recSearch(head, 2));
         System.out.println(ll.recSearch(head, 10));
+        ll.reverse();
+        ll.print();
+        ll.deleteNthNode(2); //idx value to be passed
+        ll.print();
+        System.out.println(ll.checkPalindrome());
     }
 }
 
