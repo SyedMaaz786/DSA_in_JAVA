@@ -230,6 +230,104 @@ public class j_LinkedList01 {
         return true;
     }
 
+
+    //Merge Sort on ll O(logn)
+
+    //2nd
+    private Node getMid(Node head) {
+        Node slow = head;
+        Node fast = head.next; //when a even sized ll divides we need the last element of the leftside as mid
+        while (fast != null && fast.next != null) {
+            slow = slow.next;  //+1
+            fast = fast.next.next; //+2
+        }
+        return slow; //mid node
+    }
+
+    //3rd
+    private Node merge(Node leftHead, Node rightHead) {
+        Node mergedLL = new Node(-1); //create a ll with dummy value
+        Node temp = mergedLL;  //temp stores the values now
+        while (leftHead!= null && rightHead != null) {
+            if (leftHead.data <= rightHead.data) {  //if it is true then the temp will store the values in ascending order followed by -1
+                temp.next = leftHead;  //stare it, it is easy
+                leftHead = leftHead.next; 
+                temp = temp.next;
+            }
+            else {
+                temp.next = rightHead;
+                rightHead = rightHead.next;
+                temp = temp.next;
+            }
+        }
+        //for the leftover ele on leftside same as merge sort in divide and conquer
+        while (leftHead != null) {
+            temp.next = leftHead;
+            leftHead = leftHead.next;
+            temp = temp.next;
+        }
+        //for the leftover ele on rightside
+        while (rightHead != null) {
+            temp.next = rightHead;
+            rightHead = rightHead.next;
+            temp = temp.next;
+        }
+        return mergedLL.next;  //to remove the dummy value -1 we created above
+    }
+
+    //1st
+    public Node mergeSort(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        //step1 - Find mid
+        Node mid = getMid(head);
+        //step2 - lefthead, righthead
+        Node rightHead = mid.next;
+        mid.next = null;
+        Node newLeft = mergeSort(head);  //recursive call
+        Node newRight = mergeSort(rightHead);  //recursive call
+        //step3 - Merge
+        return merge(newLeft, newRight);
+    }
+
+
+    //ZigZag merge
+    public void zigZag() {
+        //step1 - Find mid
+        Node slow = head;
+        Node fast = head.next; //to get last ele from 1st half ie leftside
+        while(fast != null && fast.next != null) {
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+        }
+        Node mid = slow; //before we were returning mid, because it used to be a diff fnx here we are just assigning mid as slow directly
+        //step2 - reverse 2nd half (3 var, 4 steps)
+        Node curr = mid.next;  //for 2nd half
+        mid.next = null;  //both left and right have null now, they are divided now
+        Node prev = null;
+        Node next;
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr; 
+            curr = next;
+        }
+        //step3 - zigzag merge
+        Node lh = head; //lh -> lefthead
+        Node rh = prev; //rh -> righthead
+        Node tempL, tempR;
+        while(lh != null && rh != null) {
+            //zigzag
+            tempL = lh.next;
+            lh.next = rh;
+            tempR = rh.next;
+            rh.next = tempL;
+            //update
+            lh = tempL;
+            rh = tempR;
+        }
+    }
     public static void main(String args[]) {
         j_LinkedList01 ll = new j_LinkedList01();
         ll.print();
@@ -257,6 +355,15 @@ public class j_LinkedList01 {
         ll.deleteNthNode(2); //idx value to be passed
         ll.print();
         System.out.println(ll.checkPalindrome());
+        //merge sort 
+        ll.addLast(1);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.print();
+        ll.head = ll.mergeSort(ll.head);
+        ll.print();
+        ll.zigZag();
+        ll.print();
     }
 }
 

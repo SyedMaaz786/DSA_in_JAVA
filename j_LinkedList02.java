@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class j_LinkedList02 {
     public static class Node {
         int data;
@@ -73,5 +75,19 @@ public class j_LinkedList02 {
         System.out.println(isCycle());  //true cycle present 
         removeCycle();
         System.out.println(isCycle());  //false cycle removed
+
+        //Using Java Collection framework to create the ll
+        //create
+        LinkedList<Integer> ll = new LinkedList<>();
+        //add
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addFirst(0);
+        //0 -> 1 -> 2
+        System.out.println(ll);
+        //remove
+        ll.removeFirst();
+        ll.removeLast();
+        System.out.println(ll);
     }
 }
