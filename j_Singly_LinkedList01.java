@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class j_LinkedList01 {
+public class j_Singly_LinkedList01 {
     public static class Node {  //create a class first
         int data;  //data type
         Node next;  //reference var
@@ -46,7 +46,7 @@ public class j_LinkedList01 {
     public void print() {
         Node temp = head;
         while (temp != null) {
-            System.out.print(temp.data + " pointing to ");
+            System.out.print(temp.data + " -> ");
             temp = temp.next;
         }
         System.out.println("'null'");
@@ -329,7 +329,7 @@ public class j_LinkedList01 {
         }
     }
     public static void main(String args[]) {
-        j_LinkedList01 ll = new j_LinkedList01();
+        j_Singly_LinkedList01 ll = new j_Singly_LinkedList01();
         ll.print();
         ll.addFirst(2);
         ll.print();
@@ -359,6 +359,7 @@ public class j_LinkedList01 {
         ll.addLast(1);
         ll.addFirst(4);
         ll.addFirst(5);
+        ll.addFirst(6);
         ll.print();
         ll.head = ll.mergeSort(ll.head);
         ll.print();

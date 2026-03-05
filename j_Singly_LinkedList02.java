@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class j_LinkedList02 {
+public class j_Singly_LinkedList02 {
     public static class Node {
         int data;
         Node next;
@@ -57,7 +57,7 @@ public class j_LinkedList02 {
 
     }
     public static void main(String args[]) {
-        //here we nodes
+        //here we create the nodes
         Node first = new Node(1); 
         Node second = new Node(2);
         Node third = new Node(3);
