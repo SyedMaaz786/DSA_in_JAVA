@@ -59,11 +59,10 @@ public class j_Singly_LinkedList01 {
         }
         Node newNode = new Node(data);
         size ++;
-        Node temp = head;
-        int i = 0; //imp
-        while (i < idx-1) {  //imp
+
+        Node temp = head;  //Here temp stores the head value
+        for (int i=1; i<idx; i++){
             temp = temp.next;
-            i++;
         }
         newNode.next = temp.next;
         temp.next = newNode;
@@ -79,7 +78,7 @@ public class j_Singly_LinkedList01 {
         else if (size == 1) {
             int val = head.data;
             head = tail = null;
-            size = 0;  //when head and tail is referencing to null then, we are size assigning back to zero so that size is tracked correctly
+            size = 0;  //when head and tail is referencing to null then, we are assigning size back to zero so that size is tracked correctly
             return val;
         }
         //1st
