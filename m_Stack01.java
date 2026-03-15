@@ -175,12 +175,41 @@ public class m_Stack01 {
         // System.out.println(result);
 
 
+        // Stack<Integer> s = new Stack<>();
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+        // // 3, 2, 1
+        // reverseStack(s);
+        // // 1, 2, 3
+
+
+        // Next Greater Right O(n) - (imp)
+        int arr[] = {6, 8, 0, 1, 3};
         Stack<Integer> s = new Stack<>();
-        s.push(1);
-        s.push(2);
-        s.push(3);
-        // 3, 2, 1
-        reverseStack(s);
-        // 1, 2, 3
+        int nextGreater[] = new int[arr.length];
+
+        for(int i=arr.length-1; i>=0; i--){
+            // 1 - while 
+            while(s.isEmpty() != true && arr[s.peek()] <= arr[i]){
+                s.pop();
+            }
+
+            // 2 - if else
+            if(s.isEmpty()) {
+                nextGreater[i] = -1;
+            }
+            else {
+                nextGreater[i] = arr[s.peek()];
+            }
+
+            // 3 - push to stack
+            s.push(i);
+        }
+        for(int i=0; i<nextGreater.length; i++){
+            System.out.print(nextGreater[i] + " ");
+        }
+        System.out.println();
+        // for next greater left, next smaller right, next smaller left check notes for the conditions to be changed
     }
 }
