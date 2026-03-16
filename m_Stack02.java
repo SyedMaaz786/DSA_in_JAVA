@@ -89,6 +89,51 @@ public class m_Stack02 {
         }
 
     }
+
+
+    //maxArea of Histogram O(n) hard lvl problem
+    public static void maxArea(int arr[]){
+        int maxArea = 0;
+        int nsr[] = new int[arr.length];
+        int nsl[] = new int[arr.length];
+
+        //next smaller right 
+        Stack<Integer> s = new Stack<>();
+        for(int i=arr.length-1; i>=0; i--){
+            while(!s.isEmpty() && arr[s.peek()] >= arr[i]){  //just changed this condition to >
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsr[i] = arr.length;  //ie n check notes
+            }
+            else {
+                nsr[i] = s.peek();
+            }
+            s.push(i);
+        }
+        //next smaller left
+        s = new Stack<>();
+        for(int i=0; i<arr.length; i++){
+            while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsl[i] = -1; 
+            }
+            else {
+                nsl[i] = s.peek();
+            }
+            s.push(i);
+        }
+        //current area : width = j-i-1 ie nsr[i] - nsl[i] - 1
+        for(int i=0; i<arr.length; i++){
+            int height = arr[i];
+            int width = nsr[i] - nsl[i] - 1;
+            int currArea = height * width;
+            maxArea = Math.max(currArea, maxArea);
+        }
+        System.out.println("Max area in histogram is : " + maxArea);
+    }
     public static void main(String args[]){
         // String str = "({})[]"; //true
         // System.out.println(isValid(str));
@@ -100,11 +145,16 @@ public class m_Stack02 {
         // System.out.println(isDuplicate(str2));
 
 
-        int stocks[] = {100, 80, 60, 70, 60, 85, 100};
-        int span[] = new int[stocks.length];
-        stockSpan(stocks, span);
-        for(int i=0; i<span.length; i++){
-            System.out.println(span[i] + " ");
-        }
+        // int stocks[] = {100, 80, 60, 70, 60, 85, 100};
+        // int span[] = new int[stocks.length];
+        // stockSpan(stocks, span);
+        // for(int i=0; i<span.length; i++){
+        //     System.out.println(span[i] + " ");
+        // }
+
+
+        int arr[] = {2, 1, 5, 6, 2, 3}; //heights of histogram
+        maxArea(arr);
+
     }
 }
