@@ -6,7 +6,7 @@ public class m_Stack01 {
         static ArrayList<Integer> list = new ArrayList<>();
 
         // 1 - Empty fnx
-        public boolean isEmpty() {
+        public boolean isEmpty() {  //You can make the fnx static but it will give warning
             return list.size() == 0;
         }
 
