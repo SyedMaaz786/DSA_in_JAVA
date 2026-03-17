@@ -335,6 +335,53 @@ public class n_Queue01 {
         }
     }
 
+
+    //Queue reverse
+    public static void reverse(Queue<Integer> q){
+        Stack<Integer> s = new Stack<>();
+        while(!q.isEmpty()){
+            s.push(q.remove());  //q se nikalko s mai dalo
+        }
+        while(!s.isEmpty()){
+            q.add(s.pop()); //s se nikalko q mai dalo ,hoga reverse
+        }
+    }
+
+
+    //implementing stack using deque
+    static class StackB {
+        Deque<Integer> dq = new LinkedList<>();
+
+        public int push(int data){
+            dq.addLast(data);
+            return data;
+        }
+        public int pop(){
+            return dq.removeLast();
+        }
+        public int peek(){
+            return dq.getLast();
+        }
+    }
+
+
+    //implementing queue using deque
+    static class QueueF {
+        Deque<Integer> dq = new LinkedList<>();
+
+        public int add(int data){
+            dq.addLast(data);
+            return data;
+        } 
+        public int remove(){
+            return dq.removeFirst();
+        }
+        public int peek(){
+            return dq.getFirst();
+        }
+    }
+
+
     public static void main(String args[]){
         // QueueA q = new QueueA(5);
         // q.add(1);
@@ -412,19 +459,70 @@ public class n_Queue01 {
         // printNonRepeating(str);
 
 
-        Queue<Integer> q = new LinkedList<>();
+        // Queue<Integer> q = new LinkedList<>();
+        // q.add(1);
+        // q.add(2);
+        // q.add(3);
+        // q.add(4);
+        // q.add(5);
+        // q.add(6);
+        // q.add(7);
+        // q.add(8);
+        // interLeave(q);
+        // while(!q.isEmpty()){
+        //     System.out.print(q.remove() + " ");
+        // }
+        // System.out.println();
+
+
+        // Queue<Integer> q = new LinkedList<>();
+        // q.add(1);
+        // q.add(2);
+        // q.add(3);
+        // q.add(4);
+        // q.add(5);
+        // reverse(q);
+        // while(!q.isEmpty()){
+        //     System.out.print(q.remove() + " ");
+        // }
+        // System.out.println();
+
+
+        // //Deque
+        // Deque<Integer> dq = new LinkedList<>();
+        // dq.addFirst(3); // 2
+        // dq.addFirst(2); // 1 2
+        // dq.addFirst(1); // 1 2 3 
+        // dq.addLast(4); // 1 2 3 4
+        // dq.addLast(5); // 1 2 3 4 5
+        // dq.addLast(6); // 1 2 3 4 5 6
+        // System.out.println(dq);
+        // dq.removeFirst(); // 2 3 4 5 6
+        // dq.removeLast(); //2 3 4 5
+        // System.out.println(dq);
+        // System.out.println(dq.getFirst());
+        // System.out.println(dq.getLast());
+
+
+        // StackB s = new StackB();
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+        // System.out.println("Peek = " + s.peek());
+        // System.out.println(s.pop());
+        // System.out.println(s.pop());
+        // System.out.println(s.pop());
+
+
+        QueueF q = new QueueF();
         q.add(1);
         q.add(2);
         q.add(3);
-        q.add(4);
-        q.add(5);
-        q.add(6);
-        q.add(7);
-        q.add(8);
-        interLeave(q);
-        while(!q.isEmpty()){
-            System.out.print(q.remove() + " ");
-        }
-        System.out.println();
+        System.out.println(q.peek());
+        System.out.println(q.remove());
+        System.out.println(q.remove());
+        System.out.println(q.remove());
+        
+
     }
 }
