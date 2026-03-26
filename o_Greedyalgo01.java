@@ -2,7 +2,7 @@ import java.util.*;
 
 public class o_Greedyalgo01 {
     public static void main(String args[]) {
-    // //Activity Selection (if sorted on basis of end)
+    // //Activity Selection (if sorted on basis of end) O(n)
     //     int start[] = {1, 3, 0, 5, 8, 5};
     //     int end[] = {2, 4, 6, 7, 9, 9};
 
@@ -29,7 +29,7 @@ public class o_Greedyalgo01 {
 
 
 
-    // //Activity Selection (if not sorted)
+    // //Activity Selection (if not sorted) O(nlogn)
     //     int start[] = {1, 3, 0, 5, 8, 5};
     //     int end[] = {2, 4, 6, 7, 9, 9};
 
@@ -65,36 +65,51 @@ public class o_Greedyalgo01 {
 
 
 
-    //Fractional knapsack
-    int val[] = {60, 100, 120};
-    int weight[] = {10, 20, 30};
-    int W = 50;
+    // //Fractional knapsack
+    // int val[] = {60, 100, 120};
+    // int weight[] = {10, 20, 30};
+    // int W = 50;
 
-    double ratio[][] = new double[val.length][2]; //row , col
+    // double ratio[][] = new double[val.length][2]; //row , col
 
-    for(int i=0; i<val.length; i++){  // loop for storing the values in the 2d arr
-        ratio[i][0] = i;  // [0] for idx
-        ratio[i][1] = val[i]/(double)weight[i]; // [1] for ratio - (val/weight) is the form check notes
+    // for(int i=0; i<val.length; i++){  // loop for storing the values in the 2d arr
+    //     ratio[i][0] = i;  // [0] for idx
+    //     ratio[i][1] = val[i]/(double)weight[i]; // [1] for ratio - (val/weight) is the form check notes
+    // }
+
+    // //ascending order
+    // Arrays.sort(ratio, Comparator.comparingDouble(o -> o[1]));  // [1] sort ratio
+
+    // int capacity = W;
+    // int finalVal = 0;
+    // for(int i=ratio.length-1; i>=0; i--){ //reverse loop because we have sorted the ratio in ascending order but we need descending because, higher the ratio, utta accha item ki value
+    //     int idx = (int)ratio[i][0];
+    //     if(capacity >= weight[idx]){  //capacity is more then add items - Include full item
+    //         finalVal += val[idx];
+    //         capacity -= weight[idx];
+    //     }
+    //     else{ //capacity is less, then add only, how much capacity is left that much items - Include fractional item
+    //         finalVal += (ratio[i][1] * capacity);  //This is the formula - val*capacity
+    //         capacity = 0;
+    //         break;
+    //     }
+    // }
+    // System.out.println("Final value : " + finalVal);
+
+
+
+    //Min sum absolute difference pairs - Check lecture if dought (Subtract min A with min B to get lowest difference and max A with max B to get lowest difference) O(nlogn)
+    int A[] = {1, 2, 3};
+    int B[] = {2, 1, 3};
+
+    Arrays.sort(A);
+    Arrays.sort(B);
+
+    int minDiff = 0;
+    for(int i=0; i<A.length; i++){
+        minDiff += Math.abs(A[i] - B[i]); // abs means ignore -ve sign
     }
-
-    //ascending order
-    Arrays.sort(ratio, Comparator.comparingDouble(o -> o[1]));  // [1] sort ratio
-
-    int capacity = W;
-    int finalVal = 0;
-    for(int i=ratio.length-1; i>=0; i--){ //reverse loop 
-        int idx = (int)ratio[i][0];
-        if(capacity >= weight[idx]){  //capacity is more then add items - Include full item
-            finalVal += val[idx];
-            capacity -= weight[idx];
-        }
-        else{ //capacity is less, then add only, how much capacity is left that much items - Include fractional item
-            finalVal += (ratio[i][1] * capacity);  //This is the formula - val*capacity
-            capacity = 0;
-            break;
-        }
-    }
-    System.out.println("Final value : " + finalVal);
+    System.out.println("Min absolute difference of two pairs is : " + minDiff);
 
 
 
