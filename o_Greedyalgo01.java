@@ -113,22 +113,48 @@ public class o_Greedyalgo01 {
 
 
 
-    //Max length chain of pairs (Stare the code you will get it)
-    int pairs[][] = {{5, 24}, {39, 60}, {5, 28}, {27, 40}, {50, 90}};
+    // //Max length chain of pairs O(n) (Stare the code you will get it)
+    // int pairs[][] = {{5, 24}, {39, 60}, {5, 28}, {27, 40}, {50, 90}};
 
-    Arrays.sort(pairs, Comparator.comparingInt(o -> o[1])); //sorting [1] col 
+    // Arrays.sort(pairs, Comparator.comparingInt(o -> o[1])); //sorting [1] col 
 
-    int maxPairs = 1;
-    int pairEnd = pairs[0][1]; // [0] means {5,24} [1] means {24}
+    // int maxPairs = 1;
+    // int pairEnd = pairs[0][1]; // [0] means {5,24} [1] means {24}
 
-    for(int i=1; i<pairs.length; i++){
-        if(pairs[i][0] > pairEnd){
-            maxPairs++;
-            pairEnd = pairs[i][1];
+    // for(int i=1; i<pairs.length; i++){
+    //     if(pairs[i][0] > pairEnd){
+    //         maxPairs++;
+    //         pairEnd = pairs[i][1];
+    //     }
+    // }
+    // System.out.println("Max number of pairs not overlapping are : " + maxPairs);
+
+
+    
+    //Indian coins O(nlogn) (Stare the code it's easy) 
+    Integer coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 2000};
+
+    Arrays.sort(coins, Comparator.reverseOrder());  //We could have used lambda fnx and reversed the loop i-- but this is a easy way
+
+    int countOfCoins = 0;
+    int amount = 590;
+
+    ArrayList<Integer> ans = new ArrayList<>();
+
+    for(int i=0; i<coins.length; i++){
+        if(coins[i] <= amount){
+            while(coins[i] <= amount){
+                countOfCoins++;
+                ans.add(coins[i]);
+                amount -= coins[i];
+            }
         }
     }
-    System.out.println("Max number of pairs not overlapping are : " + maxPairs);
+    System.out.println("Total (min) coins used to pay the amount : "+ countOfCoins);
 
+    for(int i=0; i<ans.size(); i++){
+        System.out.print(ans.get(i) + " ");
+    }
 
 
     }
