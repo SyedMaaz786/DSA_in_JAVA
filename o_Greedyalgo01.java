@@ -131,30 +131,33 @@ public class o_Greedyalgo01 {
 
 
     
-    //Indian coins O(nlogn) (Stare the code it's easy) 
-    Integer coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 2000};
+    // //Indian coins O(nlogn) (Stare the code it's easy) 
+    // Integer coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 2000};
 
-    Arrays.sort(coins, Comparator.reverseOrder());  //We could have used lambda fnx and reversed the loop i-- but this is a easy way
+    // Arrays.sort(coins, Comparator.reverseOrder());  //We could have used lambda fnx and reversed the loop i-- but this is a easy way
 
-    int countOfCoins = 0;
-    int amount = 590;
+    // int countOfCoins = 0;
+    // int amount = 590;
 
-    ArrayList<Integer> ans = new ArrayList<>();
+    // ArrayList<Integer> ans = new ArrayList<>();
 
-    for(int i=0; i<coins.length; i++){
-        if(coins[i] <= amount){
-            while(coins[i] <= amount){
-                countOfCoins++;
-                ans.add(coins[i]);
-                amount -= coins[i];
-            }
-        }
-    }
-    System.out.println("Total (min) coins used to pay the amount : "+ countOfCoins);
+    // for(int i=0; i<coins.length; i++){
+    //     if(coins[i] <= amount){
+    //         while(coins[i] <= amount){
+    //             countOfCoins++;
+    //             ans.add(coins[i]);
+    //             amount -= coins[i];
+    //         }
+    //     }
+    // }
+    // System.out.println("Total (min) coins used to pay the amount : "+ countOfCoins);
 
-    for(int i=0; i<ans.size(); i++){
-        System.out.print(ans.get(i) + " ");
-    }
+    // for(int i=0; i<ans.size(); i++){
+    //     System.out.print(ans.get(i) + " ");
+    // }
+
+
+
 
 
     }
