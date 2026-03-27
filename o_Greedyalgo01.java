@@ -98,18 +98,36 @@ public class o_Greedyalgo01 {
 
 
 
-    //Min sum absolute difference pairs - Check lecture if dought (Subtract min A with min B to get lowest difference and max A with max B to get lowest difference) O(nlogn)
-    int A[] = {1, 2, 3};
-    int B[] = {2, 1, 3};
+    // //Min sum absolute difference pairs - Check lecture if dought (Subtract min A with min B to get lowest difference and max A with max B to get lowest difference) O(nlogn)
+    // int A[] = {1, 2, 3};
+    // int B[] = {2, 1, 3};
 
-    Arrays.sort(A);
-    Arrays.sort(B);
+    // Arrays.sort(A);
+    // Arrays.sort(B);
 
-    int minDiff = 0;
-    for(int i=0; i<A.length; i++){
-        minDiff += Math.abs(A[i] - B[i]); // abs means ignore -ve sign
+    // int minDiff = 0;
+    // for(int i=0; i<A.length; i++){
+    //     minDiff += Math.abs(A[i] - B[i]); // abs means ignore -ve sign
+    // }
+    // System.out.println("Min absolute difference of two pairs is : " + minDiff);
+
+
+
+    //Max length chain of pairs (Stare the code you will get it)
+    int pairs[][] = {{5, 24}, {39, 60}, {5, 28}, {27, 40}, {50, 90}};
+
+    Arrays.sort(pairs, Comparator.comparingInt(o -> o[1])); //sorting [1] col 
+
+    int maxPairs = 1;
+    int pairEnd = pairs[0][1]; // [0] means {5,24} [1] means {24}
+
+    for(int i=1; i<pairs.length; i++){
+        if(pairs[i][0] > pairEnd){
+            maxPairs++;
+            pairEnd = pairs[i][1];
+        }
     }
-    System.out.println("Min absolute difference of two pairs is : " + minDiff);
+    System.out.println("Max number of pairs not overlapping are : " + maxPairs);
 
 
 
