@@ -37,6 +37,42 @@ public class p_BinaryTrees02 {
         int rs = sum(root.right);
         return ls + rs + root.data;
     }
+    //Diameter of a tree O(n2), Approach1 
+    public static int diameter1(Node root){ //It's easy lecture if dought
+        if(root == null){
+            return 0;
+        }
+        int ld = diameter1(root.left); //simple 4 recursive calls
+        int lh = height(root.left);
+        int rd = diameter1(root.right);
+        int rh = height(root.right);
+        
+        int selfd = lh + rh + 1; //formula
+
+        return Math.max(Math.max(ld, rd), (selfd)); //inner max compares [ld , rd] and outer max compares [(ld,rd) , selfd]
+    }
+    //Diameter of a tree O(n), Approach2
+    static class Info{
+        int d;
+        int h;
+
+        public Info(int d , int h){
+            this.d = d;
+            this.h = h;
+        }
+    }
+    public static Info diameter2(Node root){ //Check lecture's dryrun if dought
+        if(root == null){
+            return new Info(0, 0);
+        }
+        Info leftInfo = diameter2(root.left);
+        Info rightInfo = diameter2(root.right);
+
+        int d = Math.max(Math.max(leftInfo.d, rightInfo.d), (leftInfo.h + rightInfo.h + 1));  //formula
+        int h = Math.max(leftInfo.h, rightInfo.h) + 1; //formula
+
+        return new Info(d, h);
+    }
     public static void main(String args[]){
         Node root = new Node(1);
         root.left = new Node(2);
@@ -47,6 +83,8 @@ public class p_BinaryTrees02 {
         root.right.right = new Node(7);
         // System.out.println(height(root));
         // System.out.println(count(root));
-        System.out.println(sum(root));
+        // System.out.println(sum(root));
+        // System.out.println(diameter1(root));
+        System.out.println(diameter2(root).d);
     }
 }
