@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class p_BinaryTrees02 {
     static class Node{
         int data;
@@ -104,6 +106,54 @@ public class p_BinaryTrees02 {
         // boolean rightAns = isSubtree(root.right, subRoot);
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot); //if either of the statement is true it returns true (Here this is a recursive call in the return statement itself) This is same as writing the above commented statement
     }
+    //Top View (You need to stare the code it's not that difficult, lecture if dought)
+    static class Info2{
+        int hd;
+        Node node;
+
+        public Info2(int hd, Node node){
+            this.hd = hd;
+            this.node = node;
+        }
+    }
+    public static void topView(Node root){
+        //level order traversal
+        Queue<Info2> q = new LinkedList<>();
+        HashMap<Integer, Node> map = new HashMap<>(); //key = hd, value = node
+
+        int min = 0, max = 0;
+        q.add(new Info2(0, root)); //initially hd = 0 , root is node value
+        q.add(null);
+
+        while(!q.isEmpty()){
+            Info2 curr = q.remove();
+            if(curr == null){
+                if(q.isEmpty()){
+                    break;
+                }
+                else{
+                    q.add(null);
+                }
+            }
+            else{
+                if(!map.containsKey(curr.hd)){ //first time hd is occuring (*imp - For bottom view just remove this if)
+                map.put(curr.hd, curr.node);
+                }
+                if(curr.node.left != null){  //it's easy as level order keep staring
+                q.add(new Info2(curr.hd-1, curr.node.left)); //and condition is also easy keep staring
+                min = Math.min(min, curr.hd-1);
+                }
+                if(curr.node.right != null){
+                q.add(new Info2(curr.hd+1, curr.node.right));
+                max = Math.max(max, curr.hd+1);
+                }
+            }
+        }
+        for(int i=min; i<=max; i++){
+            System.out.print(map.get(i).data + " ");
+        }
+        System.out.println();
+    }
     public static void main(String args[]){
         Node root = new Node(1);
         root.left = new Node(2);
@@ -119,9 +169,14 @@ public class p_BinaryTrees02 {
         // System.out.println(diameter2(root).d);
 
 
-        Node subRoot = new Node(2);
-        subRoot.left = new Node(4);
-        subRoot.right = new Node(5);
-        System.out.println(isSubtree(root, subRoot));
+        // Node subRoot = new Node(2);
+        // subRoot.left = new Node(4);
+        // subRoot.right = new Node(5);
+        // System.out.println(isSubtree(root, subRoot));
+
+
+        topView(root);
+
+
     }
 }
