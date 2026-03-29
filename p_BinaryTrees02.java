@@ -73,6 +73,37 @@ public class p_BinaryTrees02 {
 
         return new Info(d, h);
     }
+    //Subtree of another tree
+    //2nd
+    public static boolean isIdentical(Node node, Node subRoot){
+        if(node == null && subRoot == null){ //if both are null they are identical
+            return true;
+        }
+        else if(node == null || subRoot == null || node.data != subRoot.data){ //if anyone condition is not identical then return false
+            return false;
+        }
+        if(!isIdentical(node.left, subRoot.left)){ //if left side tree is not identical return false
+            return false;
+        }
+        if(!isIdentical(node.right, subRoot.right)){ //if right side tree is not identical return false
+            return false;
+        }
+        return true; //if none of the statements above were true then it is identical so return true
+    }
+    //1st
+    public static boolean isSubtree(Node root, Node subRoot){
+        if(root == null){
+            return false;
+        }
+        if(root.data == subRoot.data){
+            if(isIdentical(root, subRoot)){
+                return true;
+            }
+        }
+        // boolean leftAns = isSubtree(root.left, subRoot); //this is same as writing everything in the return statement it self whcih we have done below
+        // boolean rightAns = isSubtree(root.right, subRoot);
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot); //if either of the statement is true it returns true (Here this is a recursive call in the return statement itself) This is same as writing the above commented statement
+    }
     public static void main(String args[]){
         Node root = new Node(1);
         root.left = new Node(2);
@@ -85,6 +116,12 @@ public class p_BinaryTrees02 {
         // System.out.println(count(root));
         // System.out.println(sum(root));
         // System.out.println(diameter1(root));
-        System.out.println(diameter2(root).d);
+        // System.out.println(diameter2(root).d);
+
+
+        Node subRoot = new Node(2);
+        subRoot.left = new Node(4);
+        subRoot.right = new Node(5);
+        System.out.println(isSubtree(root, subRoot));
     }
 }
