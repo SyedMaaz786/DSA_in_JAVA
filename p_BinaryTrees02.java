@@ -154,7 +154,28 @@ public class p_BinaryTrees02 {
         }
         System.out.println();
     }
+    //kth level (very easy) O(1)
+    public static void kLevel(Node root, int level, int k){
+        if(root == null){
+            return;
+        }
+        if(level == k){
+            System.out.print(root.data + " ");
+            return;
+        }
+        else{
+            kLevel(root.left, level+1, k);
+            kLevel(root.right, level+1, k);
+        }
+    }
     public static void main(String args[]){
+        /*
+                    1
+                   / \
+                  2   3
+                 / \ / \
+                4  5 6  7
+        */
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
@@ -175,7 +196,11 @@ public class p_BinaryTrees02 {
         // System.out.println(isSubtree(root, subRoot));
 
 
-        topView(root);
+        // topView(root);
+
+        
+        int k = 2;
+        kLevel(root, 1, k);
 
 
     }
