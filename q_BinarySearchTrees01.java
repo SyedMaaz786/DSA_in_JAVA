@@ -161,6 +161,17 @@ public class q_BinarySearchTrees01 {
         preOrder(root.left);
         preOrder(root.right);
     }
+        //Sorted Array to balanced BST - O(n) (it's very easy)
+    public static Node createBST(int arr[], int st, int end){
+        if(st > end){
+            return null;
+        }
+        int mid = (st + end) / 2;
+        Node root = new Node(arr[mid]); //this will create a new node that will be the mid of arr as root node
+        root.left = createBST(arr, st, mid-1);
+        root.right = createBST(arr, mid+1, end);
+        return root; //remember below we must write preorder fnx 
+    }
     public static void main(String args[]){
         // int values[] = {5, 1, 3, 4, 2, 7};
         // Node root = null;
@@ -197,29 +208,34 @@ public class q_BinarySearchTrees01 {
         // }
 
 
-        //Normal BST
-        /*       
-                8
-               / \
-              5   10
-             / \    \
-            3   6    11
-        */
-        Node root = new Node(8);  
-        root.left = new Node(5);
-        root.right = new Node(10);
-        root.left.left = new Node(3);
-        root.left.right = new Node(6);
-        root.right.right = new Node(11);
-        //Mirror BST
-        /*
-                8
-               / \
-             10   5
-             /   / \
-            11  6   3
-        */
-        root = mirror(root);
+        // //Normal BST
+        // /*       
+        //         8
+        //        / \
+        //       5   10
+        //      / \    \
+        //     3   6    11
+        // */
+        // Node root = new Node(8);  
+        // root.left = new Node(5);
+        // root.right = new Node(10);
+        // root.left.left = new Node(3);
+        // root.left.right = new Node(6);
+        // root.right.right = new Node(11);
+        // //Mirror BST
+        // /*
+        //         8
+        //        / \
+        //      10   5
+        //      /   / \
+        //     11  6   3
+        // */
+        // root = mirror(root);
+        // preOrder(root);
+
+
+        int arr[] = {3, 5, 6, 8, 10, 11, 12};
+        Node root = createBST(arr, 0, arr.length-1);
         preOrder(root);
     }
 }
