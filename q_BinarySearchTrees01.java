@@ -128,14 +128,47 @@ public class q_BinarySearchTrees01 {
         printRoot2LeafPath(root.right, path);
         path.remove(path.size()-1); //backtracking (remove the last node when it becomes leaf node)
     }
-    public static void main(String args[]){
-        int values[] = {5, 1, 3, 4, 2, 7};
-        Node root = null;
-        for(int i=0; i<values.length; i++){
-            root = insert(root, values[i]);
+    // Validate BST
+    public static boolean isValidBST(Node root, Node min, Node max){
+        if(root == null){
+            return true;
         }
-        inOrder(root);
-        System.out.println();
+        if(min != null && min.data >= root.data){ //check in main fnx we are initialising min and max to null so, if min != null and min(ie left side) contains bigger value return false 
+            return false;
+        }
+        else if(max != null && max.data <= root.data){ //same as if bas condition uska reverse
+            return false;
+        }
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max); // for passing the values as min and max for recursion call remember like (min to root to max) and remember both should return true for a valid BST
+    }
+    // Mirror a BST - O(n) (it's very easy) notes for pseudo code 
+    public static Node mirror(Node root){
+        if(root == null){
+            return null;
+        }
+        Node leftST = mirror(root.left);
+        Node rightST = mirror(root.right);
+
+        root.left = rightST; //Swapping
+        root.right = leftST;
+        return root;
+    }
+    public static void preOrder(Node root){
+        if(root == null){
+            return;
+        }
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+    public static void main(String args[]){
+        // int values[] = {5, 1, 3, 4, 2, 7};
+        // Node root = null;
+        // for(int i=0; i<values.length; i++){
+        //     root = insert(root, values[i]);
+        // }
+        // inOrder(root);
+        // System.out.println();
 
 
         // if(search(root, 1)){
@@ -153,7 +186,40 @@ public class q_BinarySearchTrees01 {
         // printInOrder(root, 3, 5);
 
 
-        printRoot2LeafPath(root, new ArrayList<>());
+        // printRoot2LeafPath(root, new ArrayList<>());
 
+
+        // if(isValidBST(root, null, null)){
+        //     System.out.println("Valid");
+        // }
+        // else {
+        //     System.out.println("Not valid");
+        // }
+
+
+        //Normal BST
+        /*       
+                8
+               / \
+              5   10
+             / \    \
+            3   6    11
+        */
+        Node root = new Node(8);  
+        root.left = new Node(5);
+        root.right = new Node(10);
+        root.left.left = new Node(3);
+        root.left.right = new Node(6);
+        root.right.right = new Node(11);
+        //Mirror BST
+        /*
+                8
+               / \
+             10   5
+             /   / \
+            11  6   3
+        */
+        root = mirror(root);
+        preOrder(root);
     }
 }
