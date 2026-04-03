@@ -51,6 +51,39 @@ public class q_BinarySearchTrees01 {
             return search(root.right, key);
         }
     }
+    // Delete a node
+    public static Node delete(Node root, int val){
+        if(val < root.data){
+            root.left = delete(root.left, val);
+        }
+        else if(val > root.data){
+            root.right = delete(root.right, val);
+        }
+        else{
+            //case 1 - No child
+            if(root.left == null && root.right == null){
+                return null;
+            }
+            //case 2 - One child
+            if(root.left == null){
+                return root.right;
+            }
+            else if(root.right == null){
+                return root.left;
+            }
+            //case 3 - Two children (Inorder successor)
+            Node IS = findInorderSuccessor(root.right);
+            root.data = IS.data; //delete krna na wo node mai ab IS ki value dalko
+            root.right = delete(root.right, IS.data); //IS ku delete krdale 
+        }
+        return root;
+    }
+    public static Node findInorderSuccessor(Node root){
+        while(root.left != null){ //left most node at the right subtree (check notes) 
+            root = root.left;
+        }
+        return root;
+    }
     public static void main(String args[]){
         int values[] = {5, 1, 3, 4, 2, 7};
         Node root = null;
@@ -61,12 +94,16 @@ public class q_BinarySearchTrees01 {
         System.out.println();
 
 
-        if(search(root, 1)){
-            System.out.println("Found");
-        }
-        else {
-            System.out.println("Not found");
-        }
+        // if(search(root, 1)){
+        //     System.out.println("Found");
+        // }
+        // else {
+        //     System.out.println("Not found");
+        // }
+
+
+        root = delete(root, 1);
+        inOrder(root);
 
     }
 }
