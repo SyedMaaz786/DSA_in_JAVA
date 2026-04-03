@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class q_BinarySearchTrees01 {
     static class Node{
         int data;
@@ -101,6 +103,31 @@ public class q_BinarySearchTrees01 {
             printInOrder(root.right, k1, k2);
         }
     }
+    //Print root to leaf ka path
+    //6th
+    public static void printPath(ArrayList<Integer> path){
+        for(int i=0; i<path.size(); i++){
+            System.out.print(path.get(i) + " -> ");
+        }
+        System.err.println("Null");
+    }
+    //1st
+    public static void printRoot2LeafPath(Node root, ArrayList<Integer> path){
+        //5th
+        if(root == null){
+            return;
+        }
+        //2nd
+        path.add(root.data);
+        //4th
+        if(root.left == null && root.right == null){
+            printPath(path);
+        }
+        //3rd
+        printRoot2LeafPath(root.left, path);
+        printRoot2LeafPath(root.right, path);
+        path.remove(path.size()-1); //backtracking (remove the last node when it becomes leaf node)
+    }
     public static void main(String args[]){
         int values[] = {5, 1, 3, 4, 2, 7};
         Node root = null;
@@ -123,6 +150,10 @@ public class q_BinarySearchTrees01 {
         // inOrder(root);
 
 
-        printInOrder(root, 3, 5);
+        // printInOrder(root, 3, 5);
+
+
+        printRoot2LeafPath(root, new ArrayList<>());
+
     }
 }
