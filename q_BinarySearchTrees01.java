@@ -84,6 +84,23 @@ public class q_BinarySearchTrees01 {
         }
         return root;
     }
+    //Print in range (it's easy)
+    public static void printInOrder(Node root, int k1, int k2){
+        if(root == null){
+            return;
+        }
+        if(k1 <= root.data && k2 >= root.data){
+            printInOrder(root.left, k1, k2);
+            System.out.print(root.data + " ");
+            printInOrder(root.right, k1, k2);
+        }
+        else if(k1 < root.data){
+            printInOrder(root.left, k1, k2);
+        }
+        else{
+            printInOrder(root.right, k1, k2);
+        }
+    }
     public static void main(String args[]){
         int values[] = {5, 1, 3, 4, 2, 7};
         Node root = null;
@@ -102,8 +119,10 @@ public class q_BinarySearchTrees01 {
         // }
 
 
-        root = delete(root, 1);
-        inOrder(root);
+        // root = delete(root, 1);
+        // inOrder(root);
 
+
+        printInOrder(root, 3, 5);
     }
 }
