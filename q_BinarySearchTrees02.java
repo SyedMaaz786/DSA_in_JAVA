@@ -64,6 +64,7 @@ public class q_BinarySearchTrees02 {
         }
     }
     public static int maxBST = 0;
+    public static int maxBSTValue = -1;
     public static Info largestBST(Node root){
         if(root == null){
             return new Info(true, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
@@ -81,6 +82,7 @@ public class q_BinarySearchTrees02 {
         // valid BST
         if(leftInfo.isBST && rightInfo.isBST){
             maxBST = Math.max(maxBST, size); //size is updated
+            maxBSTValue = Math.max(maxBSTValue, root.data);
             return new Info(true, size, min, max);
         }
         else{
@@ -133,5 +135,6 @@ public class q_BinarySearchTrees02 {
         root.right.right.right = new Node(80);
         Info info = largestBST(root);
         System.out.println("Largest BST size is: " + maxBST);
+        System.out.println("Max Node Value in the given BST is : " + maxBSTValue);
     }
 }
