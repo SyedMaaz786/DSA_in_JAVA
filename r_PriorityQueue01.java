@@ -2,6 +2,7 @@ import java.util.PriorityQueue;
 
 public class r_PriorityQueue01 {
     public static void main(String args[]){
+        // How to create pq and perform add, remove, and peek - basics
         PriorityQueue<Integer> pq = new PriorityQueue<>(); //Priority queue arranges elements in ascending order lowest element highest priority
         pq.add(3); //O(logn)                   //for descending order just add comparator=reverse
         pq.add(2);
@@ -11,6 +12,6 @@ public class r_PriorityQueue01 {
             System.out.println(pq.peek()); //O(1)
             pq.remove(); //O(logn)
         }
+        
     }
-    
 }
