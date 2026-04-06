@@ -138,19 +138,35 @@ public class s_Heap01 {
         // System.out.println();
 
 
-        int pts[][] = {{3, 3}, {5, -1}, {-2, 4}};
-        int k = 2; 
-        //2nd
-        PriorityQueue<Point> pq = new PriorityQueue<>();
-        for(int i=0; i<pts.length; i++){
-            //4th
-            int distSq = pts[i][0]*pts[i][0] + pts[i][1]*pts[i][1]; //distSq = x^2 + y^2
-            //3rd
-            pq.add(new Point(pts[i][0], pts[i][1], distSq, i)); //pts[i][0] = x-axis and pts[i][1] = y-axis
+        // int pts[][] = {{3, 3}, {5, -1}, {-2, 4}};
+        // int k = 2; 
+        // //2nd
+        // PriorityQueue<Point> pq = new PriorityQueue<>();
+        // for(int i=0; i<pts.length; i++){
+        //     //4th
+        //     int distSq = pts[i][0]*pts[i][0] + pts[i][1]*pts[i][1]; //distSq = x^2 + y^2
+        //     //3rd
+        //     pq.add(new Point(pts[i][0], pts[i][1], distSq, i)); //pts[i][0] = x-axis and pts[i][1] = y-axis
+        // }
+        // //5th
+        // for(int i=0; i<k; i++){
+        //     System.out.println("Neighbour: " + pq.remove().idx);
+        // }
+
+
+        //Connect N ropes with minimum cost (it's very easy)
+        int ropes[] = {2, 3, 3, 4, 6};
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for(int i=0; i<ropes.length; i++){
+            pq.add(ropes[i]); //add ropes in pq
         }
-        //5th
-        for(int i=0; i<k; i++){
-            System.out.println("Neighbour: " + pq.remove().idx);
+        int cost = 0;
+        while(pq.size() > 1){ //until my pq contains one last ele
+            int min = pq.remove(); //this min and min2 gives 2 smallest ropes 
+            int min2 = pq.remove();
+            cost += min + min2; //add with cost initialised with zero above 
+            pq.add(min+min2);  //add combined min+min2 again in the pq 
         }
+        System.out.println("Cost of connecting n ropes: " + cost);
     }
 }
