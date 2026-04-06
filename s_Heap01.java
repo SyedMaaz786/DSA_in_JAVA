@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class s_Heap01 {
     //add in heap (this is min heap, for max heap just change the > in add while loop and in heapify if change it to <)
@@ -97,6 +98,25 @@ public class s_Heap01 {
             heapify(arr, 0, i);
         }
     }
+    //K Nearest Neighbors
+    //1st
+    static class Point implements Comparable<Point>{
+        int x;
+        int y;
+        int distSq;
+        int idx;
+        
+        public Point(int x, int y, int distSq, int idx){
+            this.x = x;
+            this.y = y;
+            this.distSq = distSq;
+            this.idx = idx;
+        }
+        @Override
+        public int compareTo(Point p2){
+            return this.distSq - p2.distSq;
+        }
+    }
     public static void main(String args[]){
         // Heap h = new Heap();
         // h.add(3);
@@ -109,12 +129,28 @@ public class s_Heap01 {
         // }
 
 
-        int arr[] = {1, 2, 4, 5, 3};
-        heapSort(arr);
-        //print
-        for(int i=0; i<arr.length; i++){
-            System.out.print(arr[i] + " ");
+        // int arr[] = {5, 4, 3, 2, 1};
+        // heapSort(arr);
+        // //print
+        // for(int i=0; i<arr.length; i++){
+        //     System.out.print(arr[i] + " ");
+        // }
+        // System.out.println();
+
+
+        int pts[][] = {{3, 3}, {5, -1}, {-2, 4}};
+        int k = 2; 
+        //2nd
+        PriorityQueue<Point> pq = new PriorityQueue<>();
+        for(int i=0; i<pts.length; i++){
+            //4th
+            int distSq = pts[i][0]*pts[i][0] + pts[i][1]*pts[i][1]; //distSq = x^2 + y^2
+            //3rd
+            pq.add(new Point(pts[i][0], pts[i][1], distSq, i)); //pts[i][0] = x-axis and pts[i][1] = y-axis
         }
-        System.out.println();
+        //5th
+        for(int i=0; i<k; i++){
+            System.out.println("Neighbour: " + pq.remove().idx);
+        }
     }
 }
