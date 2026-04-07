@@ -117,6 +117,40 @@ public class s_Heap01 {
             return this.distSq - p2.distSq;
         }
     }
+    //Weakest Soldier (this is class, code is in main fnx)
+    static class Row implements Comparable<Row>{
+        int soldiers;
+        int idx;
+
+        public Row(int soldiers, int idx){
+            this.soldiers = soldiers;
+            this.idx = idx;
+        }
+        @Override
+        public int compareTo(Row r2){
+            if(this.soldiers == r2.soldiers){
+                return this.idx - r2.idx;
+            }
+            else{
+                return this.soldiers - r2.soldiers;
+            }
+        }
+    }
+    //Sliding Window Maximum (this is class, code is in main fnx)
+    static class Pair implements Comparable<Pair>{
+        int val;
+        int idx;
+
+        public Pair(int val, int idx){
+            this.val = val;
+            this.idx = idx;
+        }
+        @Override
+        public int compareTo(Pair p2){
+            // return this.val - p2.val; // for ascending but we need descending so...
+            return p2.val - this.val; //descending 
+        }
+    }
     public static void main(String args[]){
         // Heap h = new Heap();
         // h.add(3);
@@ -154,19 +188,63 @@ public class s_Heap01 {
         // }
 
 
-        //Connect N ropes with minimum cost (it's very easy)
-        int ropes[] = {2, 3, 3, 4, 6};
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for(int i=0; i<ropes.length; i++){
-            pq.add(ropes[i]); //add ropes in pq
+        // //Connect N ropes with minimum cost (it's very easy)
+        // int ropes[] = {2, 3, 3, 4, 6};
+        // PriorityQueue<Integer> pq = new PriorityQueue<>();
+        // for(int i=0; i<ropes.length; i++){
+        //     pq.add(ropes[i]); //add ropes in pq
+        // }
+        // int cost = 0;
+        // while(pq.size() > 1){ //until my pq contains one last ele
+        //     int min = pq.remove(); //this min and min2 gives 2 smallest ropes 
+        //     int min2 = pq.remove();
+        //     cost += min + min2; //add with cost initialised with zero above 
+        //     pq.add(min+min2);  //add combined min+min2 again in the pq 
+        // }
+        // System.out.println("Cost of connecting n ropes: " + cost);
+
+
+        // //Weakest soldier (it's easy just two loops for rows and cols)
+        // int army[][] = {{1, 0, 0, 0},
+        //                 {1, 1, 1, 1},
+        //                 {1, 0, 0, 0},
+        //                 {1, 0, 0, 0}};
+        // int k = 2;
+        // PriorityQueue<Row> pq = new PriorityQueue<>();
+        // for(int i=0; i<army.length; i++){ //loop for rows
+        //     int count = 0;
+        //     for(int j=0; j<army[0].length; j++){ //loop for cols
+        //         if(army[i][j] == 1){ // if soldier is their count of soldier ++
+        //             count ++;
+        //         }
+        //     }
+        //     pq.add(new Row(count, i)); //add count and idx in pq
+        // }
+        // for(int i=0; i<k; i++){
+        //     System.out.println("Weakest are at Row: " + pq.remove().idx);
+        // }
+
+
+        //Sliding Window Maximum O(nlogk) (checking lecture is imp for drynrun and understanding)
+        int arr[] = {1, 3, -1, -3, 5, 3, 6, 7};
+        int k = 3; //window size
+        int res[] = new int[arr.length-k+1]; // Here we have created an arr exactly of length in which we can store our res (n-K+1) formula  
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        for(int i=0; i<k; i++){ //1st window
+            pq.add(new Pair(arr[i], i));
         }
-        int cost = 0;
-        while(pq.size() > 1){ //until my pq contains one last ele
-            int min = pq.remove(); //this min and min2 gives 2 smallest ropes 
-            int min2 = pq.remove();
-            cost += min + min2; //add with cost initialised with zero above 
-            pq.add(min+min2);  //add combined min+min2 again in the pq 
+        res[0] = pq.peek().val; //add max in res arr
+        for(int i=k; i<arr.length; i++){
+            while(pq.size() > 0 && pq.peek().idx <= (i-k)){ //this is very easy check lecture
+                pq.remove();
+            }
+            pq.add(new Pair(arr[i], i));
+            res[i-k+1] = pq.peek().val;
         }
-        System.out.println("Cost of connecting n ropes: " + cost);
+        //print res
+        for(int i=0; i<res.length; i++){
+            System.out.print(res[i] + " ");
+        }
+        System.err.println();
     }
 }
