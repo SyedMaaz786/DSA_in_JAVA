@@ -20,6 +20,7 @@ public class t_Hashing02 {
 
         @SuppressWarnings("unchecked")
         public HashMap() { //HashMap ka constructor
+            this.n = 0;
             this.N = 4;
             this.bucket = new LinkedList[4];
             for(int i=0; i<4; i++){
@@ -32,13 +33,14 @@ public class t_Hashing02 {
             int hc = key.hashCode();
             return Math.abs(hc) % N; //abs if -ve value convert it to +ve, % with N gives remainder less than its N and that is what we want
         }
+        
         //5th
         private int searchInLL(K key, int bi){
             LinkedList<Node> ll = bucket[bi];
             int di = 0;
             for(int i=0; i<ll.size(); i++){
                 Node node = ll.get(i);
-                if(node.key == key){ //while adding pairs check if key exists if exists return it's idx, ie dataidx(di)
+                if(node.key.equals(key)){ //while adding pairs check if key exists if exists return it's idx, ie dataidx(di)
                     return di;
                 }
                 di++;
@@ -55,10 +57,11 @@ public class t_Hashing02 {
             for(int i=0; i<bucket.length; i++){ //loop for traversing through my new bucket 
                 bucket[i] = new LinkedList<>(); //and initialising it with empty ll
             }
+            n = 0; //reset size
             for(int i=0; i<oldBucket.length; i++){ //this 2 loops for adding the nodes (pairs) in new bucket (stare it you will get)
                 LinkedList<Node> ll = oldBucket[i];
                 for(int j=0; j<ll.size(); j++){
-                    Node node = ll.get(i);
+                    Node node = ll.get(j);
                     put(node.key, node.value);
                 }
             }
@@ -83,6 +86,7 @@ public class t_Hashing02 {
                 rehash();
             }
         }
+        
         //containsKey 
         //8th
         public boolean containsKey(K key){ //it's easy, same as putfnx, if pair is their return true else return false
@@ -171,3 +175,4 @@ public class t_Hashing02 {
 
 
 }
+
