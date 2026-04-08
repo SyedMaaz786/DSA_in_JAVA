@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.TreeMap;
+import java.util.*;
 
 public class t_Hashing02 {
     //1st
@@ -154,7 +151,35 @@ public class t_Hashing02 {
         public boolean isEmpty(){
             return n == 0; //returns true if nodes bucket is empty
         }
-
+    }
+    //Valid Anagram O(n) - Check lecture and stare code 
+    public static boolean isAnagram(String s, String t){
+        if(s.length() != t.length()){
+            return false;
+        }
+        HashMap<Character, Integer> hm = new HashMap<>();
+        for(int i=0; i<s.length(); i++){
+            if(hm.containsKey(s.charAt(i))){
+                hm.put(s.charAt(i), hm.get(s.charAt(i)) + 1);
+            }
+            else {
+                hm.put(s.charAt(i), 1);
+            }
+        }
+        for(int i=0; i<t.length(); i++){
+            if(hm.get(t.charAt(i)) != null){
+                if(hm.get(t.charAt(i)) == 1){
+                    hm.remove(t.charAt(i));
+                }
+                else{
+                    hm.put(t.charAt(i), hm.get(t.charAt(i)) - 1);
+                }
+            }
+            else{
+                return false;
+            }
+        }
+        return hm.isEmpty();
     }
     public static void main(String args[]){
         // HashMap<String, Integer> hm = new HashMap<>();
@@ -182,12 +207,40 @@ public class t_Hashing02 {
         // System.out.println(lhm);
 
 
-        //TreeMap (Keys are sorted here)
-        TreeMap<String, Integer> tm = new TreeMap<>();
-        tm.put("Iran", 100);
-        tm.put("Abu Dabi", 200);
-        tm.put("US", 300);
-        System.out.println(tm);
+        // //TreeMap (Keys are sorted here)
+        // TreeMap<String, Integer> tm = new TreeMap<>();
+        // tm.put("Iran", 100);
+        // tm.put("Abu Dabi", 200);
+        // tm.put("US", 300);
+        // System.out.println(tm);
+
+
+        // //Majority Element (it's easy check lecture once)
+        // int arr[] = {1, 3, 2, 5, 1, 3, 1, 5, 1};
+
+        // java.util.HashMap<Integer, Integer> hm = new java.util.HashMap<>(); //i did like this because our code was using our custom HashMap we created above so their was an error and for that we used java's inbuilt hashmap using this syntax
+        // for(int i=0; i<arr.length; i++){
+        //     if(hm.containsKey(arr[i])){
+        //         hm.put(arr[i], hm.get(arr[i]) + 1);
+        //     }
+        //     else{
+        //         hm.put(arr[i], 1);
+        //     }
+        // }
+        // Set<Integer> keySet = hm.keySet();  //as HashMap doesn't allow to iterate on them directly we store keys in Set
+        // for (Integer key : keySet) {
+        //     if(hm.get(key) > arr.length/3){  //if any key is occuring more than 3 times print it
+        //         System.out.println(key);
+        //     }
+        // }
+
+
+        String s = "race";
+        String t = "care";
+        System.out.println(isAnagram(s, t));
+
+
+
     }
 }
 
