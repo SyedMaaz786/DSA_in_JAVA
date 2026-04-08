@@ -1,6 +1,19 @@
 import java.util.*;
 
 public class t_Hashing03 {
+    //Find itinerary for tickets
+    public static String startingPoint(HashMap<String, String> hm){ //O(n) lecture if dought stare it it's easy
+        HashMap<String, String> revhm = new HashMap<>(); //created a reversehashmap (revhm) 
+        for(String key: hm.keySet()){ 
+            revhm.put(hm.get(key), key); //here we puts value as key and key as value (from->to) & (to->from)
+        }
+        for(String key: hm.keySet()){
+            if(!revhm.containsKey(key)){
+                return key; //gives starting point
+            }
+        }
+        return null; 
+    }
     public static void main(String args[]){
         // //HashSet (Unordered)
         // HashSet<String> hs = new HashSet<>();
@@ -45,32 +58,46 @@ public class t_Hashing03 {
         // System.out.println("Answer: " + hs.size());
 
 
-        //Union and Intersection (it's very easy)
-        int arr1[] = {7, 3, 9};
-        int arr2[] = {6, 3, 9, 2, 9, 4};
-        HashSet<Integer> hs = new HashSet<>();
-        //Union
-        for(int i=0; i<arr1.length; i++){
-            hs.add(arr1[i]);
+        // //Union and Intersection (it's very easy)
+        // int arr1[] = {7, 3, 9};
+        // int arr2[] = {6, 3, 9, 2, 9, 4};
+        // HashSet<Integer> hs = new HashSet<>();
+        // //Union
+        // for(int i=0; i<arr1.length; i++){
+        //     hs.add(arr1[i]);
+        // }
+        // for(int i=0; i<arr2.length; i++){
+        //     hs.add(arr2[i]);
+        // }
+        // System.out.println("Union size: " + hs.size());
+        // System.out.println("Union elements: " + hs);
+        // //Intersection
+        // hs.clear(); //clearing it so that we can start intersection again on the same hs
+        // for(int i=0; i<arr1.length; i++){
+        //     hs.add(arr1[i]);
+        // }
+        // int count = 0;
+        // for(int i=0; i<arr2.length; i++){
+        //     if(hs.contains(arr2[i])){
+        //         count++;
+        //         System.out.println("Intersection element: " + arr2[i]);
+        //         hs.remove(arr2[i]);
+        //     }
+        // }
+        // System.out.println("Intersection size: " + count);
+
+
+        HashMap<String, String> hm = new HashMap<>();
+        hm.put("Chennai", "Bengaluru");
+        hm.put("Mumbai", "Delhi");
+        hm.put("Goa", "Chennai");
+        hm.put("Delhi", "Goa");
+        String start = startingPoint(hm);
+        System.out.print(start);
+        for(String key: hm.keySet()){ //stare it you will get
+            System.out.print(" -> " + hm.get(start)); //hm.get(start) gives value of hm
+            start = hm.get(start); //and that value now becomes start
         }
-        for(int i=0; i<arr2.length; i++){
-            hs.add(arr2[i]);
-        }
-        System.out.println("Union size: " + hs.size());
-        System.out.println("Union elements: " + hs);
-        //Intersection
-        hs.clear(); //clearing it so that we can start intersection again on the same hs
-        for(int i=0; i<arr1.length; i++){
-            hs.add(arr1[i]);
-        }
-        int count = 0;
-        for(int i=0; i<arr2.length; i++){
-            if(hs.contains(arr2[i])){
-                count++;
-                System.out.println("Intersection element: " + arr2[i]);
-                hs.remove(arr2[i]);
-            }
-        }
-        System.out.println("Intersection size: " + count);
+        System.out.println();
     }
 }

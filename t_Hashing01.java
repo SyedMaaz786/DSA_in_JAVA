@@ -36,10 +36,8 @@ public class t_Hashing01 {
         hm.put("Bhutan", 50);
 
         //iterate
-        Set<String> keys = hm.keySet();
-        System.out.println(keys);
-        for (String k : keys) {
-            System.out.println("key: " + k + ", value: " + hm.get(k));
+        for(String key: hm.keySet()){ 
+            System.out.println("key: " + key + ", value:" + hm.get(key)); //hm.get(key) → fetches the VALUE corresponding to that key
         }
 
     }
