@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.TreeMap;
 
 public class t_Hashing02 {
     //1st
@@ -155,24 +157,37 @@ public class t_Hashing02 {
 
     }
     public static void main(String args[]){
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("Syed", 23);
-        hm.put("Maaz", 24);
-        hm.put("Khan", 25);
+        // HashMap<String, Integer> hm = new HashMap<>();
+        // hm.put("Syed", 23);
+        // hm.put("Maaz", 24);
+        // hm.put("Khan", 25);
 
-        ArrayList<String> keys = hm.keySet(); //for keys only (this is imp, below one's not that imp)
-        for (String key : keys) {
-            System.out.println(key);
-        }
-        for (String key : hm.keySet()) { // we are passing key using keySet
-            int value = hm.get(key); //get gives us value
-            System.out.println("key: " + key + ", value: " + value);
-        }
-        System.out.println();
-        hm.printMap(); // for printing both key and value
+        // ArrayList<String> keys = hm.keySet(); //for keys only (this is imp, below one's not that imp)
+        // for (String key : keys) {
+        //     System.out.println(key);
+        // }
+        // for (String key : hm.keySet()) { // we are passing key using keySet
+        //     int value = hm.get(key); //get gives us value
+        //     System.out.println("key: " + key + ", value: " + value);
+        // }
+        // System.out.println();
+        // hm.printMap(); // for printing both key and value
+
+
+        // //LinkedHashMap
+        // LinkedHashMap<String, Integer> lhm = new LinkedHashMap<>();
+        // lhm.put("India", 200);
+        // lhm.put("China", 400);
+        // lhm.put("Dubai", 500);
+        // System.out.println(lhm);
+
+
+        //TreeMap (Keys are sorted here)
+        TreeMap<String, Integer> tm = new TreeMap<>();
+        tm.put("Iran", 100);
+        tm.put("Abu Dabi", 200);
+        tm.put("US", 300);
+        System.out.println(tm);
     }
-
-
-
 }
 
