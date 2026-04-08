@@ -182,6 +182,7 @@ public class t_Hashing02 {
         return hm.isEmpty();
     }
     public static void main(String args[]){
+        // HashMap (Unordered)
         // HashMap<String, Integer> hm = new HashMap<>();
         // hm.put("Syed", 23);
         // hm.put("Maaz", 24);
@@ -199,7 +200,7 @@ public class t_Hashing02 {
         // hm.printMap(); // for printing both key and value
 
 
-        // //LinkedHashMap
+        // //LinkedHashMap (Ordered)
         // LinkedHashMap<String, Integer> lhm = new LinkedHashMap<>();
         // lhm.put("India", 200);
         // lhm.put("China", 400);
