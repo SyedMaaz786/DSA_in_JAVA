@@ -87,17 +87,35 @@ public class t_Hashing03 {
         // System.out.println("Intersection size: " + count);
 
 
-        HashMap<String, String> hm = new HashMap<>();
-        hm.put("Chennai", "Bengaluru");
-        hm.put("Mumbai", "Delhi");
-        hm.put("Goa", "Chennai");
-        hm.put("Delhi", "Goa");
-        String start = startingPoint(hm);
-        System.out.print(start);
-        for(String key: hm.keySet()){ //stare it you will get
-            System.out.print(" -> " + hm.get(start)); //hm.get(start) gives value of hm
-            start = hm.get(start); //and that value now becomes start
+        // HashMap<String, String> hm = new HashMap<>();
+        // hm.put("Chennai", "Bengaluru");
+        // hm.put("Mumbai", "Delhi");
+        // hm.put("Goa", "Chennai");
+        // hm.put("Delhi", "Goa");
+        // String start = startingPoint(hm);
+        // System.out.print(start);
+        // for(String key: hm.keySet()){ //stare it you will get
+        //     System.out.print(" -> " + hm.get(start)); //hm.get(start) gives value of hm
+        //     start = hm.get(start); //and that value now becomes start
+        // }
+        // System.out.println();
+
+
+        //Largest Subarray with Sum 0 O(n) - (lecture video must watch for dryrun and understanding)
+        int arr[] = {15, -2, 2, -8, 1, 7, 10, 23};
+        HashMap<Integer, Integer> hm = new HashMap<>(); //store sum, idx 
+        int sum = 0;
+        int len = 0;
+        for(int i=0; i<arr.length; i++){
+            sum += arr[i];
+            if(hm.containsKey(sum)){
+                len = Math.max(len, i-hm.get(sum)); //hm.get(sum) dry run and see it will give the value from hm ie the idx value 
+            }
+            else{
+                hm.put(sum, i);
+            }
         }
-        System.out.println();
+        System.out.println("Largest Subarray with Sum 0: " + len);
+
     }
 }
