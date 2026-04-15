@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class v_Graph03 {
     static class Edge{
@@ -42,6 +43,33 @@ public class v_Graph03 {
         stack[curr] = false;
         return false;
     }
+    //Topological Sorting (using DFS) O(L+E) (it's easy)
+    //2nd
+    public static void topSort(ArrayList<Edge> graph[]){
+        boolean visited[] = new boolean[graph.length];
+        Stack<Integer> s = new Stack<>();
+
+        for(int i=0; i<graph.length; i++){
+            if(!visited[i]){
+                topSortUtil(graph, i, visited, s);
+            }
+        }
+        while(!s.isEmpty()){
+            System.out.print(s.pop() + " ");
+        }
+    }
+    //1st
+    public static void topSortUtil(ArrayList<Edge> graph[], int curr, boolean visited[], Stack<Integer> s){
+        visited[curr] = true;
+
+        for(int i=0; i<graph[curr].size(); i++){
+            Edge e = graph[curr].get(i);
+            if(!visited[e.dest]){
+                topSortUtil(graph, e.dest, visited, s);
+            }
+        }
+        s.push(curr);
+    }
     // static void createGraph(ArrayList<Edge> graph[]){
     //     for(int i=0; i<graph.length; i++){
     //         graph[i] = new ArrayList<>();
@@ -70,6 +98,9 @@ public class v_Graph03 {
         int V = 4;
         ArrayList<Edge> graph[] = new ArrayList[V];
         createGraph(graph);
-        System.out.println(isCycle(graph));
+        // System.out.println(isCycle(graph));
+
+
+        topSort(graph);
     }
 }
