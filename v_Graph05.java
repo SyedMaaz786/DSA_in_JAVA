@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class v_Graph05 {
     static class Edge{
@@ -65,7 +63,7 @@ public class v_Graph05 {
                 int v = e.dest;
                 int wt = e.wt;
 
-                if(curr.wt+wt < dist[v] && curr.stops <= k){ //modified relaxation check lecture once 
+                if(curr.wt+wt < dist[v] && curr.stops <= k){ //modified relaxation check lecture once (curr.wt handle's a corner case where stops are respected)
                     dist[v] = curr.wt+wt;
 
                     q.add(new Info(v, dist[v], curr.stops+1));
