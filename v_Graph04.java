@@ -137,7 +137,7 @@ public class v_Graph04 {
         }
         System.out.println();
     }
-    //Prim's Algorithm (MST) (it's easy cheack lecture for understanding and dryrun)
+    //Prim's Algorithm for MST (it's easy cheack lecture for understanding and dryrun)
     static class Pair2 implements Comparable<Pair2>{
         int vertex;
         int weight;

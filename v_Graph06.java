@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class v_Graph06 {
-    //Connecting Cities (we hvae used prims algo here) (it's easy lecture fir understanding and dryrun)
+    //Connecting Cities (we hvae used prims algo here) (it's easy lecture for understanding and dryrun)
     static class Edge implements Comparable<Edge>{
         int dest;
         int wt;
@@ -37,12 +37,55 @@ public class v_Graph06 {
         }
         return finalWeight;
     }
-    public static void main(String args[]){
-        int cities[][] = {{0,1,2,3,4},
-                          {1,0,5,0,7},
-                          {2,5,0,6,0},
-                          {3,0,6,0,0},
-                          {4,7,0,0,0}};
-        System.out.println(connectCities(cities));
+    //Disjoint Set Union (it's easy check lecture for understanding and lecture)
+    static int n = 7;
+    static int par[] = new int[n];
+    static int height[] = new int[n]; // no need to init this arr because is will be 0 default at the starting
+
+    public static void init(){ //fnx for init values in par with itself
+        for(int i=0; i<n; i++){
+            par[i] = i;
+        } 
+    }
+    public static int find(int x){
+        if(x == par[x]){
+            return x;
+        }
+        return par[x] = find(par[x]); //keep finding recursively until we get with oath compression
+    }
+    public static void union(int a, int b){ //this fnx check lecture 
+        int parA = find(a);
+        int parB = find(b);
+
+        if(height[parA] == height[parB]){
+            par[parB] = parA;
+            height[parA]++;
+        }
+        else if(height[parA] < height[parB]){
+            par[parA] = parB;
+        }
+        else{
+            par[parB] = parA;
+        }
+    }
+    public static void main(String args[]){ 
+        // int cities[][] = {{0,1,2,3,4},
+        //                   {1,0,5,0,7},
+        //                   {2,5,0,6,0},
+        //                   {3,0,6,0,0},
+        //                   {4,7,0,0,0}};
+        // System.out.println(connectCities(cities));
+
+
+        init();
+        System.out.println(find(2));
+        union(1, 3);
+        System.out.println(find(3));
+        union(2, 4);
+        union(3, 6);
+        union(1, 4);
+        System.out.println(find(3));
+        System.out.println(find(4));
+        union(1, 5);
     }
 }
