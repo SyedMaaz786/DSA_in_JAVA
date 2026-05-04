@@ -245,7 +245,7 @@ public class w_Dp01 {
     //     for(int i=1; i<=str1.length(); i++){
     //         for(int j=1; j<=str2.length(); j++){
     //             if(str1.charAt(i-1) == str2.charAt(j-1)){ //same
-    //                 dp[i][j] = dp[i-1][j-1] + 1; //up and left
+    //                 dp[i][j] = dp[i-1][j-1] + 1; //up and left (diagonally)
     //             }
     //             else{ //diff
     //                 int ans1 = dp[i-1][j]; //up
@@ -334,6 +334,29 @@ public class w_Dp01 {
                     int ans2 = dp[i-1][j] + 1; //del
                     int ans3 = dp[i-1][j-1] + 1; //replace
                     dp[i][j] = Math.min(ans1, Math.min(ans2, ans3));
+                }
+            }
+        }
+        return dp[str1.length()][str2.length()];
+    }
+    //String conversion
+    public static int stringConversion(String str1, String str2, int dp[][]){
+        for(int i=0; i<dp.length; i++){
+            dp[i][0] = 0;
+        }
+        for(int j=0; j<dp[0].length; j++){
+            dp[0][j] = 0;
+        }
+
+        for(int i=1; i<=str1.length(); i++){
+            for(int j=1; j<=str2.length(); j++){
+                if(str1.charAt(i-1) == str2.charAt(j-1)){ //same
+                    dp[i][j] = dp[i-1][j-1] + 1; //diag
+                }
+                else{
+                    int ans1 = dp[i][j-1]; //add
+                    int ans2 = dp[i-1][j]; //del
+                    dp[i][j] = Math.max(ans1, ans2);
                 }
             }
         }
@@ -435,9 +458,20 @@ public class w_Dp01 {
         // System.out.println(lis(arr1));
 
 
-        String str1 = "intention";
-        String str2 = "execution";
+        // String str1 = "intention";
+        // String str2 = "execution";
+        // int dp[][] = new int[str1.length()+1][str2.length()+1];
+        // System.out.println(editDistance(str1, str2, dp));
+
+
+        String str1 = "pear";
+        String str2 = "sea";
         int dp[][] = new int[str1.length()+1][str2.length()+1];
-        System.out.println(editDistance(str1, str2, dp));
+        int lcs = stringConversion(str1, str2, dp);
+        int del = str1.length() - lcs; // deletion
+        int add = str2.length() - lcs; // addition
+        System.out.println(del);
+        System.out.println(add);
+        System.out.println(del + add); //total operations
     }
 }
