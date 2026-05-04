@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class w_Dp01 {
     //Fibonacci using DP (recursion 2^n and DP O(n))
@@ -91,8 +92,8 @@ public class w_Dp01 {
             dp[0][j] = 0;
         }
 
-        for(int i=1; i<n+1; i++){
-            for(int j=1; j<C+1; j++){
+        for(int i=1; i<=n+1; i++){
+            for(int j=1; j<=C+1; j++){
                 if(wt[i-1] <= j){ //valid
                     //include
                     int ans1 = val[i-1] + dp[i-1][j-wt[i-1]];
@@ -116,8 +117,8 @@ public class w_Dp01 {
             dp[i][0] = true;
         }
         //i = item and j = sum 
-        for(int i=1; i<arr.length+1; i++){
-            for(int j=1; j<sum+1; j++){
+        for(int i=1; i<=arr.length+1; i++){
+            for(int j=1; j<=sum+1; j++){
                 //include (valid)
                 if(arr[i-1] <= j && dp[i-1][j-arr[i-1]] == true){
                     dp[i][j] = true;
@@ -141,8 +142,8 @@ public class w_Dp01 {
             dp[0][j] = 0;
         }
 
-        for(int i=1; i<val.length+1; i++){
-            for(int j=1; j<C+1; j++){
+        for(int i=1; i<=val.length+1; i++){
+            for(int j=1; j<=C+1; j++){
                 if(wt[i-1] <= j){ //valid
                     //include
                     int ans1 = val[i-1] + dp[i][j-wt[i-1]]; //dp[i] is the only change for unbounded knapsack
@@ -166,8 +167,8 @@ public class w_Dp01 {
             dp[0][j] = 0;
         }
 
-        for(int i=1; i<coins.length+1; i++){
-            for(int j=1; j<sum+1; j++){
+        for(int i=1; i<=coins.length+1; i++){
+            for(int j=1; j<=sum+1; j++){
                 if(coins[i-1] <= j){ //valid
                     //include
                     int ans1 = dp[i][j-coins[i-1]];
@@ -191,8 +192,8 @@ public class w_Dp01 {
             dp[0][j] = 0;
         }
 
-        for(int i=1; i<length.length+1; i++){
-            for(int j=1; j<rodLength+1; j++){
+        for(int i=1; i<=length.length+1; i++){
+            for(int j=1; j<=rodLength+1; j++){
                 if(length[i-1] <= j){ //valid
                     //include
                     int ans1 = price[i-1] + dp[i][j-length[i-1]];
@@ -207,53 +208,108 @@ public class w_Dp01 {
         }
         return dp[n][rodLength];
     }
-    // Longest common subsequence
-    //recursion
-    public static int lcs(String str1, String str2, int n, int m){
-        if(n == 0 || m == 0){
-            return 0;
-        }
-        if(str1.charAt(n-1) == str2.charAt(m-1)){ //same
-            return lcs(str1, str2, n-1, m-1) + 1;
-        }
-        else{ //diff
-            int ans1 = lcs(str1, str2, n-1, m);
-            int ans2 = lcs(str1, str2, n, m-1);
-            return Math.max(ans1, ans2);
-        }
-    }
-    //memoization
-    public static int lcs2(String str1, String str2, int dp[][], int n, int m){
-        if(n == 0 || m == 0){
-            return 0;
-        }
-        if(dp[n][m] != -1){
-            return dp[n][m];
-        }
-        if(str1.charAt(n-1) == str2.charAt(m-1)){ //same
-            return dp[n][m] = lcs2(str1, str2, dp, n-1, m-1) + 1;
-        }
-        else{//diff
-            int ans1 = lcs2(str1, str2, dp, n-1, m);
-            int ans2 = lcs2(str1, str2, dp, n, m-1);
-            return dp[n][m] = Math.max(ans1, ans2);
-        }
-    }
-    //tabulation
-    public static int lcs3(String str1, String str2, int dp[][], int n, int m){
+    // // Longest common subsequence
+    // //recursion
+    // public static int lcs(String str1, String str2, int n, int m){
+    //     if(n == 0 || m == 0){
+    //         return 0;
+    //     }
+    //     if(str1.charAt(n-1) == str2.charAt(m-1)){ //same
+    //         return lcs(str1, str2, n-1, m-1) + 1;
+    //     }
+    //     else{ //diff
+    //         int ans1 = lcs(str1, str2, n-1, m);
+    //         int ans2 = lcs(str1, str2, n, m-1);
+    //         return Math.max(ans1, ans2);
+    //     }
+    // }
+    // //memoization
+    // public static int lcs2(String str1, String str2, int dp[][], int n, int m){
+    //     if(n == 0 || m == 0){
+    //         return 0;
+    //     }
+    //     if(dp[n][m] != -1){
+    //         return dp[n][m];
+    //     }
+    //     if(str1.charAt(n-1) == str2.charAt(m-1)){ //same
+    //         return dp[n][m] = lcs2(str1, str2, dp, n-1, m-1) + 1;
+    //     }
+    //     else{//diff
+    //         int ans1 = lcs2(str1, str2, dp, n-1, m);
+    //         int ans2 = lcs2(str1, str2, dp, n, m-1);
+    //         return dp[n][m] = Math.max(ans1, ans2);
+    //     }
+    // }
+    // //tabulation (lecture for dryrun and understanding)
+    // public static int lcs3(String str1, String str2, int dp[][], int n, int m){
+    //     for(int i=1; i<=str1.length(); i++){
+    //         for(int j=1; j<=str2.length(); j++){
+    //             if(str1.charAt(i-1) == str2.charAt(j-1)){ //same
+    //                 dp[i][j] = dp[i-1][j-1] + 1; //up and left
+    //             }
+    //             else{ //diff
+    //                 int ans1 = dp[i-1][j]; //up
+    //                 int ans2 = dp[i][j-1]; //left
+    //                 dp[i][j] = Math.max(ans1, ans2);
+    //             }
+    //         }
+    //     }
+    //     return dp[n][m];
+    // }
+    //Longest common substring
+    public static int longestCommonSubstring(String str1, String str2, int dp[][]){
+        int ans = 0;
         for(int i=1; i<=str1.length(); i++){
             for(int j=1; j<=str2.length(); j++){
                 if(str1.charAt(i-1) == str2.charAt(j-1)){ //same
-                    dp[i][j] = dp[i-1][j-1] + 1;
+                    dp[i][j] = dp[i-1][j-1] + 1; 
+                    ans = Math.max(ans, dp[i][j]); //ans gives longest substring (ie continous)
+                }
+                else{
+                    dp[i][j] = 0; //set back to 0 if substring is breaking
+                }
+            }
+        }
+        return ans;
+    }
+    //Longest increasing subsequence
+    //2nd
+    public static int lcs(int arr1[], int arr2[]){
+        int dp[][] = new int[arr1.length+1][arr2.length+1];
+        for(int i=0; i<dp.length; i++){ //init 0th col and row with 0
+            for(int j=0; j<dp[0].length; j++){
+                dp[i][j] = 0;
+            }
+        }
+        
+        for(int i=1; i<=arr1.length; i++){
+            for(int j=1; j<=arr2.length; j++){
+                if(arr1[i-1] == arr2[j-1]){ //same
+                    dp[i][j] = dp[i-1][j-1] + 1; //check in the remaining rows + cols by going up and left
                 }
                 else{ //diff
-                    int ans1 = dp[i-1][j];
+                    int ans1 = dp[i-1][j]; 
                     int ans2 = dp[i][j-1];
                     dp[i][j] = Math.max(ans1, ans2);
                 }
             }
         }
-        return dp[n][m];
+        return dp[arr1.length][arr2.length];
+    }
+    //1st
+    public static int lis(int arr1[]){
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0; i<arr1.length; i++){
+            set.add(arr1[i]);
+        }
+        int arr2[] = new int[set.size()]; //another arr2[] we created of size set to store unique els
+        int i = 0;
+        for(int num : set){ //foreach loop to fill values in arr2[] 
+            arr2[i] = num;
+            i++;
+        }
+        Arrays.sort(arr2); //ascending
+        return lcs(arr1, arr2);
     }
     public static void main(String args[]){
         // int n = 5;
@@ -325,14 +381,29 @@ public class w_Dp01 {
         // System.out.println(lcs2(str1, str2, dp, str1.length(), str2.length()));
 
 
-        String str1 = "abcdge";
-        String str2 = "abedg";
-        int dp[][] = new int[str1.length()+1][str2.length()+1];
-        for(int i=0; i<dp.length; i++){
-            for(int j=0; j<dp[0].length; j++){
-                dp[i][j] = 0;
-            }
-        }
-        System.out.println(lcs3(str1, str2, dp, str1.length(), str2.length()));
+        // String str1 = "abcdge";
+        // String str2 = "abedg";
+        // int dp[][] = new int[str1.length()+1][str2.length()+1];
+        // for(int i=0; i<dp.length; i++){ //init oth col and row with 0
+        //     for(int j=0; j<dp[0].length; j++){
+        //         dp[i][j] = 0;
+        //     }
+        // }
+        // System.out.println(lcs3(str1, str2, dp, str1.length(), str2.length()));
+
+
+        // String str1 = "ABCDE";
+        // String str2 = "ABCCE";
+        // int dp[][] = new int [str1.length()+1][str2.length()+1];
+        // for(int i=0; i<dp.length; i++){  //init oth col and row with 0
+        //     for(int j=0; j<dp[0].length; j++){
+        //         dp[i][j] = 0;
+        //     }
+        // }
+        // System.out.println(longestCommonSubstring(str1, str2, dp));
+
+
+        int arr1[] = {50, 3, 10, 7, 40, 80};
+        System.out.println(lis(arr1));
     }
 }
