@@ -362,6 +362,32 @@ public class w_Dp01 {
         }
         return dp[str1.length()][str2.length()];
     }
+    //Wildcard matching (it's a hard lvl problem and includes too many cases, so lecture for understanding + dryrun)
+    public static boolean wildcardMatch(String s, String p, boolean dp[][]){
+        dp[0][0] = true; //init i=j=0 true
+        for(int i=1; i<s.length()+1; i++){
+            dp[i][0] = false; //if s = some value and j = "", then there is nothing to match so false
+        }
+        for(int j=1; j<p.length()+1; j++){
+            if(p.charAt(j-1) == '*'){
+                dp[0][j] = dp[0][j-1]; //if jth(ie last) char at p is *, then check for the rest p char
+            }
+        }
+        for(int i=1; i<s.length()+1; i++){
+            for(int j=1; j<p.length()+1; j++){
+                if(s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '?'){ //ith char == jth char || jth char == ?
+                    dp[i][j] = dp[i-1][j-1];
+                }
+                else if(p.charAt(j-1) == '*'){
+                    dp[i][j] = dp[i][j-1] || dp[i-1][j]; //match it with empty || match it with the last char 
+                }
+                else{
+                    dp[i][j] = false;
+                }
+            }
+        }
+        return dp[s.length()][p.length()];
+    }
     public static void main(String args[]){
         // int n = 5;
         // int dp[] = new int[n+1]; // 0, 0, 0, 0, 0, 0 (imp n+1 because we will store 0 also in fib, so it goes like 0,1,1,2,3 and so on)
@@ -464,14 +490,20 @@ public class w_Dp01 {
         // System.out.println(editDistance(str1, str2, dp));
 
 
-        String str1 = "pear";
-        String str2 = "sea";
-        int dp[][] = new int[str1.length()+1][str2.length()+1];
-        int lcs = stringConversion(str1, str2, dp);
-        int del = str1.length() - lcs; // deletion
-        int add = str2.length() - lcs; // addition
-        System.out.println(del);
-        System.out.println(add);
-        System.out.println(del + add); //total operations
+        // String str1 = "pear";
+        // String str2 = "sea";
+        // int dp[][] = new int[str1.length()+1][str2.length()+1];
+        // int lcs = stringConversion(str1, str2, dp);
+        // int del = str1.length() - lcs; // deletion
+        // int add = str2.length() - lcs; // addition
+        // System.out.println(del);
+        // System.out.println(add);
+        // System.out.println(del + add); //total operations
+
+
+        String s = "baaabab";
+        String p = "*****ba*****ab";
+        boolean dp[][] = new boolean[s.length()+1][p.length()+1];
+        System.out.println(wildcardMatch(s, p, dp));
     }
 }
