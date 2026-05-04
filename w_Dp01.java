@@ -311,6 +311,34 @@ public class w_Dp01 {
         Arrays.sort(arr2); //ascending
         return lcs(arr1, arr2);
     }
+    //Edit distance (it's easy, check lecture for understanding + dryrun)
+    public static int editDistance(String str1, String str2, int dp[][]){
+        for(int i=0; i<dp.length; i++){
+            for(int j=0; j<dp[0].length; j++){
+                if(i == 0){
+                    dp[i][j] = j; //init 0th row with 1,2,3...
+                }
+                if(j == 0){
+                    dp[i][j] = i; //init 0th col with 1,2,3...
+                }
+            }
+        }
+
+        for(int i=1; i<=str1.length(); i++){
+            for(int j=1; j<=str2.length(); j++){
+                if(str1.charAt(i-1) == str2.charAt(j-1)){ //same
+                    dp[i][j] = dp[i-1][j-1]; 
+                }
+                else{ //diff
+                    int ans1 = dp[i][j-1] + 1; //add
+                    int ans2 = dp[i-1][j] + 1; //del
+                    int ans3 = dp[i-1][j-1] + 1; //replace
+                    dp[i][j] = Math.min(ans1, Math.min(ans2, ans3));
+                }
+            }
+        }
+        return dp[str1.length()][str2.length()];
+    }
     public static void main(String args[]){
         // int n = 5;
         // int dp[] = new int[n+1]; // 0, 0, 0, 0, 0, 0 (imp n+1 because we will store 0 also in fib, so it goes like 0,1,1,2,3 and so on)
@@ -403,7 +431,13 @@ public class w_Dp01 {
         // System.out.println(longestCommonSubstring(str1, str2, dp));
 
 
-        int arr1[] = {50, 3, 10, 7, 40, 80};
-        System.out.println(lis(arr1));
+        // int arr1[] = {50, 3, 10, 7, 40, 80};
+        // System.out.println(lis(arr1));
+
+
+        String str1 = "intention";
+        String str2 = "execution";
+        int dp[][] = new int[str1.length()+1][str2.length()+1];
+        System.out.println(editDistance(str1, str2, dp));
     }
 }
