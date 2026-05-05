@@ -453,19 +453,61 @@ public class w_Dp01 {
     }
     //Matrix Chain Multiplication
     //recursion
-    public static int mcm(int arr[], int i, int j){ //i = starting pnt, j = ending pnt
+    public static int mcmRec(int arr[], int i, int j){ //i = starting pnt, j = ending pnt
         if(i == j){
             return 0;
         }
         int minCost = Integer.MAX_VALUE; //init minCost with +infinity
         for(int k=i; k<=j-1; k++){ //k is the iterator it will go from i to j-1 (till last of the arr[])
-            int cost1 = mcm(arr, i, k);
-            int cost2 = mcm(arr, k+1, j);
+            int cost1 = mcmRec(arr, i, k);
+            int cost2 = mcmRec(arr, k+1, j);
             int cost3 = arr[i-1] * arr[k] * arr[j]; // axbxd (check notes)
-            int finalCost = cost1 + cost2 + cost3;
-            minCost = Math.min(minCost, finalCost);
+            minCost = Math.min(minCost, cost1 + cost2 + cost3);
         }
         return minCost;
+    }
+    //memoization
+    public static int mcmMem(int arr[], int i, int j, int dp[][]){
+        if(i == j){
+            return 0;
+        }
+        if(dp[i][j] != -1){
+            return dp[i][j];
+        }
+        int minCost = Integer.MAX_VALUE;
+        for(int k=i; k<=j-1; k++){
+            int cost1 = mcmMem(arr, i, k, dp);
+            int cost2 = mcmMem(arr, k+1, j, dp);
+            int cost3 = arr[i-1] * arr[k] * arr[j];
+            minCost = Math.min(minCost, cost1 + cost2 + cost3);
+        }
+        return dp[i][j] = minCost;
+    }
+    //tabulation (this is less intuitive for mcm so go with memoization)
+    public static int memTab(int arr[], int dp[][]){
+        for(int len=2; len<=arr.length-1; len++){ //for the for conditions need to check lecture
+            for(int i=1; i<=arr.length-len; i++){
+                int j = i+len-1; //formula to get j (ie col)
+                dp[i][j] = Integer.MAX_VALUE; // init everycell with +infinity
+                for(int k=i; k<=j-1; k++){
+                    int cost1 = dp[i][k];
+                    int cost2 = dp[k+1][j];
+                    int cost3 = arr[i-1] * arr[k] * arr[j];
+                    dp[i][j] = Math.min(dp[i][j], cost1 + cost2 + cost3);
+                }
+            }
+        }
+        print(dp); //this is just to visualize the dp[][]
+        return dp[1][arr.length-1];
+    }
+    public static void print(int dp[][]){ //fnx just to visualize dp[][]
+        for(int i=0; i<dp.length; i++){
+            for(int j=0; j<dp[0].length; j++){
+                System.out.print(dp[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
     public static void main(String args[]){
         // int n = 5;
@@ -607,9 +649,21 @@ public class w_Dp01 {
         // System.out.println(mountainRanges(n, dp));
 
 
+        // //recursion
+        // int arr[] = {1, 2, 3, 4, 3};
+        // System.out.println(mcmRec(arr, 1, arr.length-1)); //init i will be 1 and j will be n-1
+        // //memoization
+        // int dp[][] = new int[arr.length][arr.length]; //size nxn because we want to store i and j (minCost), but we have only arr[] values 
+        // for(int i=0; i<arr.length; i++){  //actually we need a 2d arr of (n-1)x(n-1), but we created nxn, check tabulation lecture
+        //     Arrays.fill(dp[i], -1);
+        // }
+        // System.out.println(mcmMem(arr, 1, arr.length-1, dp));
+        //tabulation
         int arr[] = {1, 2, 3, 4, 3};
-        int n = arr.length;
-        System.out.println(mcm(arr, 1, n-1)); //init i will be 1 and j will be n-1
-
+        int dp[][] = new int[arr.length][arr.length];
+        for(int i=0; i<arr.length; i++){
+            dp[i][i] = 0; //same row and col meaning len=1 init with 0, check notes
+        }
+        System.out.println(memTab(arr, dp));
     }
 }
