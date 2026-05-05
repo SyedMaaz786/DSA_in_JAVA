@@ -418,12 +418,54 @@ public class w_Dp01 {
     public static int catalanTab(int n, int dp[]){
         dp[0] = 1;
         dp[1] = 1;
-        for(int i=2; i<=n; i++){
+        for(int i=2; i<n+1; i++){
             for(int j=0; j<i; j++){
                 dp[i] += dp[j] * dp[i-j-1];
             }
         }
         return dp[n];
+    }
+    //Count BST (same as catalan's)
+    public static int countBST(int n, int dp[]){
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i=2; i<n+1; i++){
+            for(int j=0; j<i; j++){
+                int left = dp[j]; //same as catalan, just assigned them left and right 
+                int right = dp[i-j-1];
+                dp[i] += left * right;
+            }
+        }
+        return dp[n];
+    }
+    //Mountain ranges (same as catalan's)
+    public static int mountainRanges(int n, int dp[]){
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i=2; i<n+1; i++){
+            for(int j=0; j<i; j++){
+                int inside = dp[j]; //same as catalan, just assigned them inside and outside 
+                int outside = dp[i-j-1];
+                dp[i] += inside * outside;
+            }
+        }
+        return dp[n];
+    }
+    //Matrix Chain Multiplication
+    //recursion
+    public static int mcm(int arr[], int i, int j){ //i = starting pnt, j = ending pnt
+        if(i == j){
+            return 0;
+        }
+        int minCost = Integer.MAX_VALUE; //init minCost with +infinity
+        for(int k=i; k<=j-1; k++){ //k is the iterator it will go from i to j-1 (till last of the arr[])
+            int cost1 = mcm(arr, i, k);
+            int cost2 = mcm(arr, k+1, j);
+            int cost3 = arr[i-1] * arr[k] * arr[j]; // axbxd (check notes)
+            int finalCost = cost1 + cost2 + cost3;
+            minCost = Math.min(minCost, finalCost);
+        }
+        return minCost;
     }
     public static void main(String args[]){
         // int n = 5;
@@ -553,5 +595,21 @@ public class w_Dp01 {
         // // System.out.println(catalanMem(n, dp));
         // //tab
         // System.out.println(catalanTab(n, dp));
+
+
+        // int n = 4;
+        // int dp[] = new int[n+1];
+        // System.out.println(countBST(n, dp));
+
+
+        // int n = 5;
+        // int dp[] = new int[n+1];
+        // System.out.println(mountainRanges(n, dp));
+
+
+        int arr[] = {1, 2, 3, 4, 3};
+        int n = arr.length;
+        System.out.println(mcm(arr, 1, n-1)); //init i will be 1 and j will be n-1
+
     }
 }
