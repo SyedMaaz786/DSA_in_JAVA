@@ -388,6 +388,43 @@ public class w_Dp01 {
         }
         return dp[s.length()][p.length()];
     }
+    //Catalan's number
+    //recursion
+    public static int catalanRec(int n){
+        if(n == 0 || n == 1){ //catalan 1 and 0 is 1, check notes
+            return 1;
+        }
+        int ans = 0;
+        for(int i=0; i<=n-1; i++){
+            ans += catalanRec(i) * catalanRec(n-i-1); //(n-i-1) pattern problems logic remember
+        }
+        return ans;
+    }
+    //memoization
+    public static int catalanMem(int n, int dp[]){
+        if(n == 0 || n == 1){
+            return 1;
+        }
+        if(dp[n] != -1){
+            return dp[n];
+        }
+        int ans = 0;
+        for(int i=0; i<=n-1; i++){
+            ans += catalanMem(i, dp) * catalanMem(n-i-1, dp);
+        }
+        return dp[n] = ans;
+    }
+    //tabulation
+    public static int catalanTab(int n, int dp[]){
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i=2; i<=n; i++){
+            for(int j=0; j<i; j++){
+                dp[i] += dp[j] * dp[i-j-1];
+            }
+        }
+        return dp[n];
+    }
     public static void main(String args[]){
         // int n = 5;
         // int dp[] = new int[n+1]; // 0, 0, 0, 0, 0, 0 (imp n+1 because we will store 0 also in fib, so it goes like 0,1,1,2,3 and so on)
@@ -501,9 +538,20 @@ public class w_Dp01 {
         // System.out.println(del + add); //total operations
 
 
-        String s = "baaabab";
-        String p = "*****ba*****ab";
-        boolean dp[][] = new boolean[s.length()+1][p.length()+1];
-        System.out.println(wildcardMatch(s, p, dp));
+        // String s = "baaabab";
+        // String p = "*****ba*****ab";
+        // boolean dp[][] = new boolean[s.length()+1][p.length()+1];
+        // System.out.println(wildcardMatch(s, p, dp));
+
+
+        // //rec
+        // int n = 4;
+        // System.out.println(catalanRec(n));
+        // //mem
+        // int dp[] = new int[n+1];
+        // // Arrays.fill(dp, -1);
+        // // System.out.println(catalanMem(n, dp));
+        // //tab
+        // System.out.println(catalanTab(n, dp));
     }
 }
