@@ -66,7 +66,7 @@ public class w_Dp01 {
             //exclude
             int ans2 = knapsackMem(val, wt, C, n-1, dp); //we are doing this ans1 and ans2 because what if the next upcoming wt if added will give more profit than the current wt
             dp[n][C] = Math.max(ans1, ans2); //this will give us the max value which we could get
-            return dp[n][C]; //store it first and then return (uppar ki line dekh dp[n][C])
+            return dp[n][C]; //store it first and then return 
         }
         else{
             dp[n][C] = knapsackMem(val, wt, C, n-1, dp); //invalid meaning wt is more than capacity
@@ -83,7 +83,7 @@ public class w_Dp01 {
     //     }
     //     System.out.println();
     // }
-    //tabulation (check lecture + very carefully, it's easy but stare + focus is required)
+    //tabulation (check lecture very carefully, it's easy but stare + focus is required)
     public static int knapsackTab(int val[], int wt[], int C, int n, int dp[][]){
         for(int i=0; i<dp.length; i++){ //init 0th col with 0
             dp[i][0] = 0;
@@ -509,6 +509,31 @@ public class w_Dp01 {
         }
         System.out.println();
     }
+    //Minimum partitioning
+    public static int minPartition(int nums[]){
+        int sum = 0;
+        for(int i=0; i<nums.length; i++){
+            sum += nums[i];            
+        }
+        int C = sum/2;
+        int dp[][] = new int[nums.length+1][C+1];
+        for(int i=1; i<nums.length+1; i++){
+            for(int j=1; j<C+1; j++){
+                if(nums[i-1] <= j){ //valid
+                    //include
+                    int ans1 = nums[i-1] + dp[i-1][j-nums[i-1]];
+                    //exclude
+                    int ans2 = dp[i-1][j];
+                    dp[i][j] = Math.max(ans1, ans2);
+                }else{
+                    dp[i][j] = dp[i-1][j];
+                }
+            }
+        }
+        int sum1 = dp[nums.length][C]; //contains half els (subset) because we divided it in line 518
+        int sum2 = sum - sum1;
+        return Math.abs(sum1 - sum2);
+    }
     public static void main(String args[]){
         // int n = 5;
         // int dp[] = new int[n+1]; // 0, 0, 0, 0, 0, 0 (imp n+1 because we will store 0 also in fib, so it goes like 0,1,1,2,3 and so on)
@@ -659,11 +684,15 @@ public class w_Dp01 {
         // }
         // System.out.println(mcmMem(arr, 1, arr.length-1, dp));
         //tabulation
-        int arr[] = {1, 2, 3, 4, 3};
-        int dp[][] = new int[arr.length][arr.length];
-        for(int i=0; i<arr.length; i++){
-            dp[i][i] = 0; //same row and col meaning len=1 init with 0, check notes
-        }
-        System.out.println(memTab(arr, dp));
+        // int arr[] = {1, 2, 3, 4, 3};
+        // int dp[][] = new int[arr.length][arr.length];
+        // for(int i=0; i<arr.length; i++){
+        //     dp[i][i] = 0; //same row and col meaning len=1 init with 0, check notes
+        // }
+        // System.out.println(memTab(arr, dp));
+
+
+        int nums[] = {1, 6, 11, 5};
+        System.out.println(minPartition(nums));
     }
 }
