@@ -534,6 +534,23 @@ public class w_Dp01 {
         int sum2 = sum - sum1;
         return Math.abs(sum1 - sum2);
     }
+    //Minimum array jumps (need to check lecture for understanding + stare + focus, it's easy)
+    public static int minArrJumps(int nums[], int dp[], int n){
+        dp[n-1] = 0; //init last idx value as 0
+        for(int i=n-2; i>=0; i--){ //reverse loop from last2nd as last was init with 0
+            int steps = nums[i]; 
+            int minJumps = Integer.MAX_VALUE;
+            for(int j=i+1; j<=i+steps && j<nums.length; j++){
+                if(dp[j] != -1){
+                    minJumps = Math.min(minJumps, dp[j]+1); //dp[j]+1 this is easy check lecture
+                }
+            }
+            if(minJumps != Integer.MAX_VALUE){
+                dp[i] = minJumps;
+            }
+        }
+        return dp[0]; // we are checking 0 -> n-1 so, dp[0] contains our sol which is a large problem, so we are printing at dp[0] idx what is the value ie minJumps which is stored in the dp[] arr
+    }
     public static void main(String args[]){
         // int n = 5;
         // int dp[] = new int[n+1]; // 0, 0, 0, 0, 0, 0 (imp n+1 because we will store 0 also in fib, so it goes like 0,1,1,2,3 and so on)
@@ -692,7 +709,14 @@ public class w_Dp01 {
         // System.out.println(memTab(arr, dp));
 
 
-        int nums[] = {1, 6, 11, 5};
-        System.out.println(minPartition(nums));
+        // int nums[] = {1, 6, 11, 5};
+        // System.out.println(minPartition(nums));
+
+
+        int nums[] = {2, 3, 1, 1, 4};
+        int n = nums.length;
+        int dp[] = new int[n];
+        Arrays.fill(dp, -1);
+        System.out.println(minArrJumps(nums, dp, n));
     }
 }
