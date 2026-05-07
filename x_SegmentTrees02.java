@@ -38,9 +38,9 @@ public class x_SegmentTrees02 {
         if(ui < si || ui > sj){ //non overlapping
             return;
         }
-        tree[sti] = Math.max(tree[sti], newVal);
+        tree[sti] = Math.max(tree[sti], newVal); //complete overlapping
         if(si != sj){
-            int mid = (si+sj)/2;
+            int mid = (si+sj)/2; //partial overlapping
             updateUtil(2*sti+1, si, mid, ui, newVal);
             updateUtil(2*sti+2, mid+1, sj, ui, newVal);
         }
