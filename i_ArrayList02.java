@@ -72,7 +72,7 @@ public class i_ArrayList02 {
 // }
 
 
-// // Container with max water 2 pointer approach O(n) - Check mam's lecture of dought and notes aswell
+// // Container with max water 2 pointer approach O(n) - Check mam's lecture if dought and notes aswell
 // public static int storeWater(ArrayList<Integer> height) {
 //     int maxWater = 0;
 //     int lp = 0;

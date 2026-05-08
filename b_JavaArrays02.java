@@ -59,10 +59,11 @@ public class b_JavaArrays02 {
 
 //     for (int i=0; i<arr.length; i++) {
 //         currSum = currSum + arr[i];
+//         maxSum = Math.max(currSum, maxSum);
 //         if (currSum < 0){
 //             currSum = 0;
 //         }
-//         maxSum = Math.max(currSum, maxSum);
+
 //     }
 //     System.out.println("Max subarray sum is: " + maxSum);
 // }
