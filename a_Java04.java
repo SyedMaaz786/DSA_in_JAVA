@@ -116,7 +116,7 @@ public class a_Java04 {
         //     isPrime = false;
         // }
         // for (int i=2; i<input; i++) {   //Here we are initialising i=2 because we need to remove the edge cases of a number being divided by 1 and itself, ie why we are not initialising i with 1 and condition i<input will kickout the another edge case of dividing by itself.
-        //     if (input%i==0) {           //To make code more optimised we can give i<Math.sqrt(input) this is for condition
+        //     if (input%i==0) {           //if it is getting divisible by other numbers, then its not a prime. To make code more optimised we can give i<Math.sqrt(input) this is for condition
         //         isPrime = false;
         //     }
         // }
