@@ -22,13 +22,12 @@ public class a_Java07 {
 // // Half-Pyramid
 // public static void half_pyr (int totRows, int totCols) { //dry run you will get it
 //     for (int i=1; i<=totRows; i++) {     //outer loop i for lines
-//         for (int j=1; j<=totCols; j++) { // inner loop j for stars
-//             if (j > totCols - i) {       //and keep staring this if condition you will get it 
-//                 System.out.print("*");    
-//             }
-//             else {
-//                 System.out.print(" ");
-//             }
+//         for (int j=1; j<=totCols-i; j++) { // inner loop j for spaces
+//             System.out.print(" ");
+//         }
+        
+//         for(int j=1; j<=i; j++){ //this loop for stars
+//             System.out.print("*");
 //         }
 //         System.out.println();
 //     }
@@ -38,16 +37,11 @@ public class a_Java07 {
 // }
 
 
-//// inverted half pyramid
+// // inverted half pyramid (with numbers)
 // public static void half_pyr_inv (int totRows, int totCols) { //dry run you will get it
 //     for (int i=1; i<=totRows; i++) {     
-//         for (int j=1; j<=totCols; j++) { 
-//             if (j <= totCols - i + 1) {  //just keep this if similar to above one just few changes    
+//         for (int j=1; j<=totCols-i+1; j++) { 
 //                 System.out.print(j);    
-//             }
-//             else {
-//                 System.out.print(" ");
-//             }
 //         }
 //         System.out.println();
 //     }
@@ -61,14 +55,9 @@ public class a_Java07 {
 // public static void floyds (int totRows, int totCols) { //dry run you will get it
 //     int num = 1; //counter to get next number
 //     for (int i=1; i<=totRows; i++) {    
-//         for (int j=1; j<=totCols; j++) { 
-//             if (j <= i) {       
-//                 System.out.print(num);
-//                 num ++;    
-//             }
-//             else {
-//                 System.out.print(" ");
-//             }
+//         for (int j=1; j<=i; j++) { 
+//                 System.out.print(num + " ");
+//                 num++;
 //         }
 //         System.out.println();
 //     }
@@ -81,11 +70,8 @@ public class a_Java07 {
 // //0-1 triangle pattern
 // public static void zeroToOne (int totRows, int totCols) {
 //     for (int i=1; i<=totRows; i++) {
-//         for (int j=1; j<=totCols; j++) {
-//             if (j <= i) {
-//                 System.out.print(((i+j) % 2 == 0) ? "1": "0");  //if even "1" else "0"
-//             } 
-            
+//         for (int j=1; j<=i; j++) {
+//                 System.out.print(((i+j) % 2 == 0) ? "1": "0");  //if even "1" else "0"            
 //         }
 //         System.out.println();
 //     }
@@ -206,14 +192,14 @@ public class a_Java07 {
 //     diamond(4);
 // }
 
-public static void change(int[] a) {
-    a[0] = 99;
-    a = new int[]{9,9,9};
-}
-public static void main(String args[]) {
-    int[] numb = {1,2,3,4};
-    change(numb);
-    System.out.println(numb[1]);
-}
+// public static void change(int[] a) {
+//     a[0] = 99;
+//     a = new int[]{9,9,9};
+// }
+// public static void main(String args[]) {
+//     int[] numb = {1,2,3,4};
+//     change(numb);
+//     System.out.println(numb[1]);
+// }
 
 }

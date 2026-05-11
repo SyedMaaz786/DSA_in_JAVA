@@ -1,20 +1,16 @@
 import java.util.*;
 
 public class j {
-    public static void main(String args[]){
-        Scanner sc = new Scanner(System.in);
-        int in = sc.nextInt();
-
-        boolean isPrime = true;
-        for(int i=2; i<in; i++){
-            if(in % i == 0){
-                isPrime = false;
-                System.out.println("no");
+    public static void zeroOne(int rows, int cols){
+        for(int i=1; i<=rows; i++){
+            for(int j=1; j<=i; j++){
+                System.out.print(((i+j) % 2 == 0) ? '1' : '0');
             }
+            System.out.println();
         }
-        if(isPrime){
-            System.out.println("yes");
-        }
+    }
+    public static void main(String args[]){
+        zeroOne(2,2);
     }
 
 }
