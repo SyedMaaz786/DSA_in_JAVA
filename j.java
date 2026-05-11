@@ -1,20 +1,18 @@
 import java.util.*;
 
 public class j {
-    public static void pairs(int numbers[]){
-        int tp = 0;
-        for(int i=0; i<numbers.length; i++){
-            for(int j=i+1; j<numbers.length; j++){
-                System.out.println(numbers[i] + "," + numbers[j]);
-                tp++;
+    public static boolean a(int arr[]){
+        for(int i=0; i<arr.length; i++){
+            for(int j=i+1; j<arr.length; j++){
+                if(arr[i] == arr[j]){
+                    return true;
+                }
             }
-            System.out.println();
         }
-        System.out.println(tp);
-        
+        return false;
     }
     public static void main(String args[]){
-        int numbers[] = {2, 3, 4, 5, 6, 7, 8, 9};
-        pairs(numbers);
+        int arr[] = {1,2,3,4};
+        System.out.println(a(arr)); 
     }
 }
