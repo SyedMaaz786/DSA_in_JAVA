@@ -193,7 +193,7 @@ public class b_JavaArrays02 {
 //             }
 //         }
 //         //swap 
-//         int temp = arr[smallestnum];
+//         int temp = arr[smallestnum]; //swapping is done outside inner loop because we will compare in the inner loop and swap only once if required outside it for better optimisation
 //         arr[smallestnum] = arr[i];
 //         arr[i] = temp;
 //     }

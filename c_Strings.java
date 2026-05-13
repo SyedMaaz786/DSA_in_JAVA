@@ -42,13 +42,13 @@ public class c_Strings {
     // public static boolean isPalindrome(String str) {
     //     int n = str.length();
     //     for (int i=0; i<n/2; i++) {  //goes till half length on the string to check, if all the elements on the left side are same as right side
-    //         if (str.charAt(i) == str.charAt(n-1-i)) {
-    //             System.out.println("It is a palindrome");
-    //             return true;
+    //         if (str.charAt(i) != str.charAt(n-1-i)) {
+    //             System.out.println("NOT a palindrome");
+    //             return false;
     //         }
     //     }
-    //     System.out.println("NOT a palindrome");
-    //     return false;
+    //     System.out.println("It is a palindrome");
+    //     return true;
     // }
     // public static void main(String args[]) {
     //     Scanner sc = new Scanner(System.in);
