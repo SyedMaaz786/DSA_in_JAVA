@@ -9,7 +9,7 @@ public class d_BitManipulation {
     // }
 
 
-    // //check if the number is odd or even (check notes for logic)
+    // //check if the number is odd or even (check notes from phone for logic)
     // public static void oddOrEven(int n) {
     //     int bitMask = 1;
     //     if ((n & bitMask) == 0) {
@@ -25,8 +25,8 @@ public class d_BitManipulation {
     //     oddOrEven(2);
     // }
 
-
-    // //get ith bit (check GPT for logic)
+    // //Don't scratch your head just remember the pattern/flow, this bit manupulation is our last priority
+    // //get ith bit (check lecture for logic, it's easy)
     // public static int getIthBit(int n, int i) {
     //     int bitMask = 1<<i;
     //     if ((n & bitMask) == 0) {
@@ -108,7 +108,7 @@ public class d_BitManipulation {
 
     // //isPowerOfTwo
     // public static boolean isPowerOfTwo(int n) {
-    //     return (n & (n-1)) == 0;
+    //     return (n & (n-1)) == 0; //this is a imp property check notes(new book) if dought
     // }
     // public static void main(String args[]) {
     //     System.out.println(isPowerOfTwo(4));
@@ -147,6 +147,34 @@ public class d_BitManipulation {
     // public static void main(String args[]) {
     //     System.out.println(fastExpo(2, 4));
     // }
+
+
+    //swap w/o using 3rd variable 
+    // public static void main(String args[]){
+    //     int x = 3;
+    //     int y = 4;
+    //     //swap
+    //     x = x^y; //(simply byheart this steps, it's easy, if asked swap w/o using 3rd variable use this, remember the property of xor, that it)
+    //     y = x^y;
+    //     x = x^y;
+    //     System.out.println(x);
+    //     System.out.println(y);
+    // }
+
+
+    // //covert uppercase characters to lower case using bit manipulation
+    // public static void main(String args[]){
+    //     for(char ch='A'; ch<='Z'; ch++){
+    //         System.out.print((char)(ch | ' '));
+    //     }
+    // }
+
+
+    //convert any number to -ve (we will use ~)
+    public static void main(String args[]){ //use this formula (~x = -(x+1))
+        int a = 5;
+        System.out.println(~4);
+    }
 
 
 
