@@ -32,13 +32,11 @@ public class e_OOP {
     // e1.salary[0] = 50000;
     // e1.salary[1] = 80000;
     
-    // Employee e2 = new Employee(e1);  //here we are passing e1 object as the parametere in the new e2 obj simply copying constructor
-    // e2.password = "xyz";
-    // System.out.println(e2.password);
-    // e1.salary[1] = 100000;
-    // for (int i=0; i<2; i++) {
-    //     System.out.println(e2.salary[i]);
-    // }
+    // Employee e2 = new Employee(e1);  //here we are passing e1 object as the parametere in the new e2 obj simply copying constructor values in e2
+    // e2.password = "xyz"; //here e2 will be changed but not e1 as it is pass by value
+    // System.out.println(e1.password);
+    // e2.salary[1] = 100000; //this is[] which is passed as reference so changes in this will reflect int he original arr as well
+    // System.out.println(e1.salary[1]);
 
     // Fish shark = new Fish();
     // shark.eat();
@@ -79,7 +77,7 @@ public class e_OOP {
     // s1.schoolName = "Presidency";  
     // System.out.println(s1.schoolName);
     // Students s2 = new Students();
-    // System.out.println(s2.schoolName); // s2 schoolname is also same because it was static
+    // System.out.println(s2.schoolName); // s2 schoolname is also same because it was static and if we change ot here it will get changes everywhere
     // System.out.println(s1.percentage(70, 80, 90));
 
     // B b = new B();
@@ -95,7 +93,7 @@ class Pen {
 
     //fnx (setters)
     void setColor(String newColor) {
-        color = newColor;
+        color = newColor; //or we can give it like this.color = newColor
     }
     void setTip(int newTip) {
         tip = newTip;
@@ -154,20 +152,19 @@ class Employee {
         this.empId = empId;
         System.out.println(empId);
     }
-    // // Shallow copy constructor (Same memory loc)
-    // Employee(Employee e1) {
+    // // you can consider this as copy constructor as well, Shallow copy constructor (Same memory loc) (changes made in the reference will make changes in the main arr aswell, as they share same memory)
+    // Employee(Employee e1) { //byheart this for copy constructor, we are passing Employee->constructor, Employee->datatype, e1-> variable name
     //     this.name = e1.name;
     //     this.empId = e1.empId;
     //     this.salary = e1.salary;
     // }
     //deep copy constructor (Different memory loc)
     Employee (Employee e1) {
-        salary = new int[2];
+        salary = new int[2]; //as we have created new arr for salary this will now point to their and changes will not be reflected in the main arr
         this.name = e1.name;
         this.empId = e1.empId;
-        for (int i=0; i<2; i++) {
-            this.salary[i] = e1.salary[i];
-        }    
+        this.salary[0] = e1.salary[0];
+        this.salary[1] = e1.salary[1];  
      }
 }
 
@@ -220,7 +217,7 @@ class Cat extends Animal {
 
 //Hybrid inheritance
 interface Pet {
-    public void play();
+    public void play(); //here we can't print because, Inside an interface, methods are only declared.
 }
 class Monkey extends Animal implements Pet{  // Also it is a ex of multiple inheritance because we are using properties of 2 classes
     public void play() {
