@@ -1,15 +1,26 @@
 import java.util.*;
 
 public class j {
-    public static String subString(String str, int si, int ei){
-        String subStr = "";
-        for(int i=si; i<ei; i++){
-            subStr += str.charAt(i);
+    public static String compressString(String str){
+        StringBuilder sb = new StringBuilder();
+        String newStr = "";
+        sb.append(newStr);
+
+        for(int i=0; i<str.length(); i++){
+            Integer count = 1;
+            while(i<str.length()-1 && str.charAt(i) == str.charAt(i+1)){
+                count++;
+                i++;
+            }
+            sb.append(str.charAt(i));
+            if(count > 1){
+                sb.append(count.toString()); 
+            }
         }
-        return subStr;
+        return sb.toString();
     }
     public static void main(String args[]){
-        String str = "Hello World";
-        System.out.println(subString(str, 0, 7));
+        String str = "aaaabbbccd";
+        System.out.println(compressString(str));
     }
 }

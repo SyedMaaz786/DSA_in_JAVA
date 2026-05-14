@@ -157,20 +157,28 @@ public class t_Hashing02 {
         if(s.length() != t.length()){
             return false;
         }
+        //1st
         HashMap<Character, Integer> hm = new HashMap<>();
+        //2nd
         for(int i=0; i<s.length(); i++){
+            //4th
             if(hm.containsKey(s.charAt(i))){
                 hm.put(s.charAt(i), hm.get(s.charAt(i)) + 1);
             }
+            //3rd
             else {
                 hm.put(s.charAt(i), 1);
             }
         }
+        //5th
         for(int i=0; i<t.length(); i++){
+            //6th
             if(hm.get(t.charAt(i)) != null){
+                //7th
                 if(hm.get(t.charAt(i)) == 1){
                     hm.remove(t.charAt(i));
                 }
+                //8th
                 else{
                     hm.put(t.charAt(i), hm.get(t.charAt(i)) - 1);
                 }
@@ -179,7 +187,7 @@ public class t_Hashing02 {
                 return false;
             }
         }
-        return hm.isEmpty();
+        return hm.isEmpty(); //if this is true then anagram stare you know this
     }
     public static void main(String args[]){
         // HashMap (Unordered)

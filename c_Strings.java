@@ -190,7 +190,7 @@ public class c_Strings {
     //         }
     //         sb.append(str.charAt(i));
     //         if (count > 1) {
-    //             sb.append(count.toString());
+    //             sb.append(count.toString()); //coverting count ex - 1 -> "1"
     //         }
     //     }
     //     return sb.toString();
