@@ -61,39 +61,35 @@ public class f_Recursion01 {
         }
         return firstOcc(arr, key, i+1);  
     }
-    //Last occurence index
+    //Last occurence index (only difference is recursive call at first)
     public static int lastOcc(int arr[], int key, int i) {  
         if (i == arr.length) {  //Base case
             return -1;
         }
-        int isFound = lastOcc(arr, key, i+1);
-        if (isFound == -1 && arr[i] == key) {
+        int ans = lastOcc(arr, key, i+1);
+        if (ans == -1 && arr[i] == key) {
             return i;
         }
-        return isFound;
+        return ans;
     }
     //print x power n
     public static int power(int x, int n) { //Where x is the base and n is the power
         if (n == 0) {  //Base case
             return 1;
         }
-        int xnm1 = power(x, n-1);
-        int xn = x * xnm1;
-        return xn;
+        return x * power(x, n-1);
     }
     //Optimised power code (Check notes if dought) Ologn
     public static int optimisedPower(int x, int n) {
         if (n == 0) { //Base case
             return 1;
         }
-        // if n is even
-        int halfPower = optimisedPower(x, n/2);
-        int halfPowersq = halfPower * halfPower;
-        // if n is odd
-        if (n % 2 == 1) {
-            halfPowersq = x * halfPowersq;
+        if(n % 2 == 0){ //even number
+            return optimisedPower(x, n/2) * optimisedPower(x, n/2);
         }
-        return halfPowersq;
+        else{ //odd number
+            return x * optimisedPower(x, n/2) * optimisedPower(x, n/2);
+        }
     }
     public static void main(String args[]) {
         // int n = 10;

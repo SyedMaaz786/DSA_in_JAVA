@@ -1,17 +1,11 @@
 public class f_Recursion02 {
-    //Tiling problem (Check notes of dought)
+    //Tiling problem (Check notes of dought) this is not optimised as it maked recursive call repeately for the same number so go with dp
     public static int placeTile(int n) {   //for 2 X n (length X Breadth)
         if (n == 0 || n == 1) { //Base case
-            return 1;
+            return 1; // if n == 0 , no tiles 1 way or n == 1 2x1 is the tile size and size of the box is 2x1 so number of ways = 1.
         }
         //implementation
-        //vertical tile placing
-        int fnm1 = placeTile(n-1);
-        //horizontal tile placing
-        int fnm2 = placeTile(n-2);
-        //total ways of fitting the tiles in the given area
-        int totWays = fnm1 + fnm2;
-        return totWays;
+        return placeTile(n-1) + placeTile(n-2); //1st recursive call if i place tile vertically(1 will be the space occupied) call for remaining space n-1 and similarly if i place the tile horizontally(2 will be the space occupied) call for remaining space n-2 
     }
     
     //Remove duplicates
@@ -63,10 +57,10 @@ public class f_Recursion02 {
         }
     }
     public static void main(String args[]) {
-        // System.out.println(placeTile(5));
+        System.out.println(placeTile(3));
         // String str = "aabbccddeeff";
         // removeDuplicates(str, 0, new StringBuilder(""), new boolean[26]);
         // System.out.println(friendsPairing(2));
-        printBinString(2, 0, "");
+        // printBinString(2, 0, "");
     }
 }
