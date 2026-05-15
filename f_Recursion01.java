@@ -22,38 +22,34 @@ public class f_Recursion01 {
         if (n == 0) {  //Base case
             return 1;
         }
-        int fnm1 = fact(n-1);  
-        int fn = n * fnm1;  //Values are calculated and printed while coming back
-        return fn;
+        return n * fact(n-1);  // n * (n-1)!
     }
     //Sum of first n natural numbers
     public static int sum(int n) {
         if (n == 1) {
             return 1;
         }
-        int snm1 = sum(n-1);
-        int sn = n + snm1;
-        return sn;
+        return n + sum(n-1);
     }
     //Fibonacci number
     public static int fib(int n) {
         if (n == 0 || n == 1) {
             return n;
         }
-        int fnm1 = fib(n-1);
-        int fnm2 = fib(n-2);
-        int fn = fnm1 + fnm2;
-        return fn;
+        return fib(n-1) + fib(n-2); //2 recursive calls
     }
-    //Check if arr is sorted
+    //Check if arr is sorted (prefer for loop(iteration) it is preferred
     public static boolean isSorted(int arr[], int i) {  //Where i is the index
+        //3rd
         if (i == arr.length-1) { //Base case
             return true;
         }
+        //2nd
         if (arr[i] > arr[i+1]) {
             return false;
         }
-        return isSorted(arr, i+1);
+        //1st
+        return isSorted(arr, i+1); //recursive call uske aage wale numbers ku
     }
     //First occurence index
     public static int firstOcc(int arr[], int key, int i) {
