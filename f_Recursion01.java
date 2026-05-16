@@ -77,7 +77,7 @@ public class f_Recursion01 {
         if (n == 0) {  //Base case
             return 1;
         }
-        return x * power(x, n-1);
+        return x * power(x, n-1); //simple (x*x^n-1) check notes
     }
     //Optimised power code (Check notes if dought) Ologn
     public static int optimisedPower(int x, int n) {

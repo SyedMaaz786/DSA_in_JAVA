@@ -15,7 +15,7 @@ public class j {
         }
     }
     public static void main(String args[]){
-        bin(2, 0, "");
+        System.out.println(15 / 10);
     }
 }
 
