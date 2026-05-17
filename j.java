@@ -1,21 +1,22 @@
 import java.util.*;
 
 public class j {
-    public static void bin(int n, int lp, String str){
-        if(n == 0){
-            System.out.println(str);
+    static int count = 0;
+    public static void findSubset(String str, StringBuilder sb, int i){
+        if(i == str.length()){
+            count++;
+            System.out.print(sb + " ");
             return;
         }
-        if(lp == 0){
-            bin(n-1, 0, str + "0");
-            bin(n-1, 1, str + "1");
-        }
-        else{
-            bin(n-1, 0, str + "0");
-        }
+        findSubset(str, sb.append(str.charAt(i)), i+1);
+        sb.deleteCharAt(sb.length()-1);
+        findSubset(str, sb, i+1);
     }
     public static void main(String args[]){
-        System.out.println(15 / 10);
+        String str = "abc";
+        findSubset(str, new StringBuilder(), 0);
+        System.out.println(count);
     }
+    
 }
 

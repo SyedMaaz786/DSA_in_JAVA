@@ -20,14 +20,14 @@ public class h_Backtracking {
     }
 
 
-    //Find subsets
+    //Find subsets (refer notes very important)
     public static void findSubsets(String str, String ans, int i) {  //we created a empty String ans inside which the values are stored
         //base case
         if (i == str.length()) {
             System.out.println(ans);
             return;
         }
-        //recursion
+        //recursion (each time both of this recursive calls are executed at a time, check recursion tree made in new notes)
         //Yes Choice
         findSubsets(str, ans + str.charAt(i), i+1);
         //No Choice
@@ -46,7 +46,7 @@ public class h_Backtracking {
         //Yes choice
         printSubsets(str, ans.append(str.charAt(i)), i+1);
         //Backtrack
-        ans.deleteCharAt(ans.length() - 1);  //This line is used because we used StringBuilder which is mutable and hence it will not create a new string object for next step (GPT)
+        ans.deleteCharAt(ans.length() - 1);  //same as subset1 and 2 on leetcode for ArrayList
         //No choice
         printSubsets(str, ans, i+1);
     }
