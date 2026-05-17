@@ -52,18 +52,23 @@ public class h_Backtracking {
     }
 
 
-    //find Permutations (For this explain the dry run in interview)
-    public static void findPermutations(String str, String ans) {
-        //base case 
-        if (str.length() == 0) {
-            System.out.println(ans);
+    //find Permutations (For this explain the dry run from notes in interview) (similar to subsets but string here)
+    public static void findPermutations(String str, StringBuilder sb, boolean used[]){ //we have used leetcode backtracking approach
+        if(sb.length() == str.length()){
+            System.out.println(sb.toString());
             return;
         }
-        //recursion
-        for (int i=0; i<str.length(); i++) {
-            char curr = str.charAt(i);
-            String newStr = str.substring(0, i) + str.substring(i + 1); //Check this line in GPT
-            findPermutations(newStr, ans + curr);
+        for(int i=0; i<str.length(); i++){
+            if(used[i]){ //used is true then skip
+                continue;
+            }
+            else{ 
+                used[i] = true; //make it true
+                sb.append(str.charAt(i)); //append that ele
+            }
+            findPermutations(str, sb, used); //recursive call
+            sb.deleteCharAt(sb.length()-1); //backtracking step
+            used[i] = false;
         }
     }
 
@@ -229,7 +234,10 @@ public class h_Backtracking {
         // String str = "abc";
         // printSubsets(str,new StringBuilder() , 0);
         // findSubsets(str, "", 0);
-        // findPermutations(str, "");
+        String str = "abc";
+        boolean used[] = new boolean[str.length()];
+        findPermutations(str, new StringBuilder(), used);
+        
         // int n = 4;
         // char board[][] = new char[n][n];
         // //Initializing value in board
@@ -248,23 +256,23 @@ public class h_Backtracking {
         // }
         // int n = 3, m = 3;
         // System.out.println(gridWays(0, 0, n, m));
-        int sudoku[][] = {
-        {0, 0, 8, 0, 0, 0, 0, 0, 0},
-        {4, 9, 0, 1, 5, 7, 0, 0, 2},
-        {0, 0, 3, 0, 0, 4, 1, 9, 0},
-        {1, 8, 5, 0, 6, 0, 0, 2, 0},
-        {0, 0, 0, 0, 2, 0, 0, 6, 0},
-        {9, 6, 0, 4, 0, 5, 3, 0, 0},
-        {0, 3, 0, 0, 7, 2, 0, 0, 4},
-        {0, 4, 9, 0, 3, 0, 0, 5, 7},
-        {8, 2, 7, 0, 0, 9, 0, 1, 3}
-        };
-        if(sudokuSolver(sudoku, 0, 0)) {
-            System.out.println("Solution exists");
-            printSudoku(sudoku);
-        }
-        else {
-            System.out.println("Solution doesn't exists");
-        }
+        // int sudoku[][] = {
+        // {0, 0, 8, 0, 0, 0, 0, 0, 0},
+        // {4, 9, 0, 1, 5, 7, 0, 0, 2},
+        // {0, 0, 3, 0, 0, 4, 1, 9, 0},
+        // {1, 8, 5, 0, 6, 0, 0, 2, 0},
+        // {0, 0, 0, 0, 2, 0, 0, 6, 0},
+        // {9, 6, 0, 4, 0, 5, 3, 0, 0},
+        // {0, 3, 0, 0, 7, 2, 0, 0, 4},
+        // {0, 4, 9, 0, 3, 0, 0, 5, 7},
+        // {8, 2, 7, 0, 0, 9, 0, 1, 3}
+        // };
+        // if(sudokuSolver(sudoku, 0, 0)) {
+        //     System.out.println("Solution exists");
+        //     printSudoku(sudoku);
+        // }
+        // else {
+        //     System.out.println("Solution doesn't exists");
+        // }
     }
 }
