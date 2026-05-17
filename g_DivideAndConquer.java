@@ -1,5 +1,6 @@
 public class g_DivideAndConquer {
     // //Merge Sort
+    // //1st
     // public static void mergeSort(int arr[], int si, int ei) {
     //     //Base case
     //     if (si >= ei) {
@@ -10,9 +11,10 @@ public class g_DivideAndConquer {
     //     mergeSort(arr, si, mid);   //left side calling
     //     mergeSort(arr, mid+1, ei);  //right side calling
         
-    //     merge(arr, si, mid, ei);
+    //     helper(arr, si, mid, ei);
     // }
-    // public static void merge(int arr[], int si, int mid, int ei) {
+    // //2nd
+    // public static void helper(int arr[], int si, int mid, int ei) {
     //     int temp[] = new int [ei-si+1]; //ex si = (0,3) ei = (4,6) -> 6-0+1=7 this creates a arr of length 7
     //     int i = si;  //iterator for left part
     //     int j = mid+1;  //iterator for right part
@@ -46,6 +48,7 @@ public class g_DivideAndConquer {
     //         arr[i] = temp[k];  //copy in arr[i] from temp[k]
     // }
     // }
+    // //3rd
     // public static void printArr( int arr[]) {
     //     for (int i=0; i<=arr.length-1; i++) {
     //         System.out.print(arr[i] + " ");
@@ -54,44 +57,48 @@ public class g_DivideAndConquer {
     // }
 
     
-    // //Quick Sort 
-    // public static void quickSort (int arr[], int si, int ei) {
-    //     //Base case
-    //     if (si >= ei) {
-    //         return;
-    //     }
-    //     //Last element
-    //     int pIdx = partition(arr, si, ei);  //pivot index
-    //     quickSort(arr, si, pIdx-1);  //left  pIdx-1 is the ending index for left
-    //     quickSort(arr, pIdx+1, ei);  //right pIdx+1 is the starting index for right
+    //Quick Sort 
+    //1st
+    public static void quickSort (int arr[], int si, int ei) {
+        //Base case
+        //4th
+        if (si >= ei) {
+            return;
+        }
+        //Last element
+        //3rd
+        int pIdx = helper(arr, si, ei);  //pivot index
+        quickSort(arr, si, pIdx-1);  //left  pIdx-1 is the ending index for left
+        quickSort(arr, pIdx+1, ei);  //right pIdx+1 is the starting index for right
 
-    // }
-    // public static int partition(int arr[], int si, int ei) {
-    //     int pivot = arr[ei];
-    //     int i = si-1; //iterator to make place for elements smaller than pivot
+    }
+    //2nd
+    public static int helper(int arr[], int si, int ei) {
+        int pivot = arr[ei];
+        int i = si-1; //iterator to make place for elements smaller than pivot
 
-    //     for (int j=si; j<ei; j++) {
-    //         if (arr[j] <= pivot) {
-    //             i++; 
-    //             //swap
-    //             int temp = arr[j];
-    //             arr[i] = arr[j];
-    //             arr[j] = temp; 
-    //         }
-    //     }
-    //     //swap
-    //     i++;  //used to increment i=-1 to next i = 0, 1, 2 and so on
-    //     int temp = pivot;  //here pivot is ei element check above
-    //     arr[ei] = arr[i];
-    //     arr[i] = temp;
-    //     return i;  //i = pIdx.
-    // }
-    // public static void printArr( int arr[]) {
-    // for (int i=0; i<=arr.length-1; i++) {
-    //     System.out.print(arr[i] + " ");
-    // }
-    //     System.out.println();
-    // }
+        for (int j=si; j<ei; j++) {
+            if (arr[j] <= pivot) {
+                i++; 
+                //swap
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp; 
+            }
+        }
+        //swap
+        i++;  //used to increment i=-1 to next i = 0, 1, 2 and so on
+        int temp = pivot;  //here pivot is ei element check above
+        arr[ei] = arr[i];
+        arr[i] = temp;
+        return i;  //i = pIdx.
+    }
+    public static void printArr( int arr[]) {
+    for (int i=0; i<=arr.length-1; i++) {
+        System.out.print(arr[i] + " ");
+    }
+        System.out.println();
+    }
 
 
     //Search in rotated sorted arr
@@ -130,16 +137,38 @@ public class g_DivideAndConquer {
         }
         
     }
+
+
+    //majority element
+    public static int majorityEls(int nums[]){
+        int n = nums.length;
+        int freq = 0;
+        int ans = 0;
+        for(int i=0; i<n; i++){
+            if(freq == 0){
+                ans = nums[i];
+            }
+            if(ans == nums[i]){
+                freq++;
+            }
+            else{
+                freq--;
+            }
+        }
+        return ans;
+    }
     public static void main(String args[]) {
         // int arr[] = {6,5,4,3,2,1};
         // mergeSort(arr, 0, arr.length-1);
         // printArr(arr);
         // quickSort(arr, 0, arr.length-1);
         // printArr(arr);
-        int arr[] = {4,5,6,7,0,1,2};
-        int target = 0;
-        int tarIdx = search(arr, target, 0, arr.length-1);
-        System.out.println(tarIdx);
+        // int arr[] = {4,5,6,7,0,1,2};
+        // int target = 0;
+        // int tarIdx = search(arr, target, 0, arr.length-1);
+        // System.out.println(tarIdx);
+        int nums[] = {2,2,1,1,1,2,2,1,1};
+        System.out.println(majorityEls(nums));
 
     }
 }
