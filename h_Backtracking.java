@@ -81,13 +81,13 @@ public class h_Backtracking {
                 return false;
             }
         }
-        //diagonal left
+        //diagonal left up
         for (int i=row-1, j=col-1; i>=0 && j>=0; i--, j--) {
             if (board[i][j] == 'Q') {
                 return false;
             }
         }
-        //diagonal right
+        //diagonal right up
         for (int i=row-1, j=col+1; i>=0 && j<board.length; i--, j++) {
             if (board[i][j] == 'Q') {
                 return false;
@@ -163,10 +163,10 @@ public class h_Backtracking {
         int way1 = gridWays(i+1, j, n, m); //going down
         int way2 = gridWays(i, j+1, n, m); //going right
         return way1 + way2;
-        }
+    }
 
     
-    //Sudoku 
+    //Sudoku  (for flow check leetcode)
     public static boolean isSafe(int sudoku[][], int row, int col, int digit) {
         //row
         for (int j=0; j<9; j++) {
@@ -198,8 +198,8 @@ public class h_Backtracking {
             return true;
         }
         //recursion
-        int nextRow = row, nextCol = col+1;
-        if(col+1 == 9) {
+        int nextRow = row, nextCol = col+1; //row is same col will be incremented
+        if(col+1 == 9) { //when we are about to cross the grid, go to next row now col will be from starting ie 0
             nextRow = row+1;
             nextCol = 0; 
         }
@@ -209,7 +209,7 @@ public class h_Backtracking {
         for (int digit=1; digit<=9; digit ++) {
             if(isSafe(sudoku, row, col, digit)){
                 sudoku[row][col] = digit;
-                //soln exists (GPT if dought)
+                //soln exists
                 if(sudokuSolver(sudoku, nextRow, nextCol)) {  //recursive fnx call
                     return true;
                 }
@@ -227,6 +227,40 @@ public class h_Backtracking {
         }
     }
 
+
+    //rat in a maze
+    public static void ratMaze(int maze[][]){
+        int n = maze.length;
+        boolean visited[][] = new boolean[n][n];
+        helper(maze, 0, 0, "", visited);
+    }
+    public static void helper(int maze[][], int row, int col, String path, boolean visited[][]){
+        int n = maze.length;
+        if(row < 0 || col < 0 || row >= n || col >= n){ //bc: out of bound
+            return;
+        }
+        if(maze[row][col] == 0){ //bc: blocked cell check question(we can't enter 0 cell)
+            return;
+        }
+        if(visited[row][col]){ //already visited
+            return;
+        }
+        if(row == n-1 && col == n-1){
+            System.out.println(path);
+            return;
+        }
+        visited[row][col] = true;
+        //down
+        helper(maze, row+1, col, path + "D", visited); 
+        //up
+        helper(maze, row-1, col, path + "U", visited);
+        //left
+        helper(maze, row, col-1, path + "L", visited);
+        //right 
+        helper(maze, row, col+1, path + "R", visited);
+        visited[row][col] = false; //backtracking step
+    }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
@@ -234,9 +268,9 @@ public class h_Backtracking {
         // String str = "abc";
         // printSubsets(str,new StringBuilder() , 0);
         // findSubsets(str, "", 0);
-        String str = "abc";
-        boolean used[] = new boolean[str.length()];
-        findPermutations(str, new StringBuilder(), used);
+        // String str = "abc";
+        // boolean used[] = new boolean[str.length()];
+        // findPermutations(str, new StringBuilder(), used);
         
         // int n = 4;
         // char board[][] = new char[n][n];
@@ -274,5 +308,10 @@ public class h_Backtracking {
         // else {
         //     System.out.println("Solution doesn't exists");
         // }
+        int maze[][] = { { 1, 0, 0, 0 },
+                         { 1, 1, 0, 1 },
+                         { 0, 1, 0, 0 },
+                         { 1, 1, 1, 1 } };
+        ratMaze(maze);
     }
 }
