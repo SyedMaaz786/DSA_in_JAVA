@@ -43,7 +43,7 @@ public class i_ArrayList02 {
     //     mainList.add(listt2);
     //     listt3.add(3); listt3.add(6); listt3.add(9);
     //     mainList.add(listt3);
-    //     System.out.println(mainList);
+    //     System.out.println(mainList); //this is enough to print the ArrayList
 
     //     for (int i=0; i<mainList.size(); i++) {
     //         ArrayList<Integer> currList = mainList.get(i);

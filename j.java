@@ -1,22 +1,26 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class j {
-    static int count = 0;
-    public static void findSubset(String str, StringBuilder sb, int i){
-        if(i == str.length()){
-            count++;
-            System.out.print(sb + " ");
-            return;
-        }
-        findSubset(str, sb.append(str.charAt(i)), i+1);
-        sb.deleteCharAt(sb.length()-1);
-        findSubset(str, sb, i+1);
-    }
     public static void main(String args[]){
-        String str = "abc";
-        findSubset(str, new StringBuilder(), 0);
-        System.out.println(count);
-    }
-    
-}
+        ArrayList<ArrayList<Integer>> mainList = new ArrayList<>();
 
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        ArrayList<Integer> list3 = new ArrayList<>();
+
+        list1.add(1); list1.add(2); list1.add(3);
+        list2.add(2); list2.add(4); list2.add(6);
+        list3.add(3); list3.add(6); list3.add(9);
+
+        mainList.add(list1); mainList.add(list2); mainList.add(list3);
+        System.out.println(mainList);
+
+        for(int i=0; i<mainList.size(); i++){
+            ArrayList<Integer> curr = mainList.get(i);
+            for(int j=0; j<curr.size(); j++){
+                System.out.print(curr.get(j));
+            }
+            System.err.println();
+        }
+    }
+}
