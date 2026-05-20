@@ -92,8 +92,8 @@ public class f_Recursion01 {
         }
     }
     public static void main(String args[]) {
-        // int n = 10;
-        // printDec(n);
+        int n = 10;
+        printDec(n);
         // printInc(n);
         // System.out.println(fact(n));
         // System.out.println(sum(n));
@@ -104,6 +104,6 @@ public class f_Recursion01 {
         // System.out.println(firstOcc(arr, 8, 0));
         // int arr[] = {2,4,6,8,6};
         // System.out.println(lastOcc(arr, 6, 0));
-        System.out.println(optimisedPower(2, 10));
+        // System.out.println(optimisedPower(2, 10));
     }
 }
