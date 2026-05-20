@@ -261,6 +261,46 @@ public class h_Backtracking {
         visited[row][col] = false; //backtracking step
     }
 
+
+    //knight tour
+    static int N = 8;
+
+    static int xMoves[] = {2, 1, -1, -2, -2, -1, 1, 2};
+    static int yMoves[] = {1, 2, 2, 1, -1, -2, -2, -1};
+
+    public static boolean isSafe(int board[][], int row, int col){
+        return (row >= 0 && col >= 0 && 
+                row < N && col < N &&
+                board[row][col] == -1);
+    }
+    public static boolean solveKnightTour(int board[][], int row, int col, int moveNo){
+        if(moveNo == N * N){ //bc: visited all cells
+            return true; 
+        }
+        for(int k=0; k<8; k++){
+            int nextRow = row + xMoves[k];
+            int nextCol = col + yMoves[k];
+
+            if(isSafe(board, nextRow, nextCol)){
+                board[nextRow][nextCol] = moveNo;
+
+                if(solveKnightTour(board, nextRow, nextCol, moveNo + 1)){ //recursive call
+                    return true;
+                }
+                board[nextRow][nextCol] = -1; //backtrack
+            }
+        }
+        return false;
+    } 
+    public static void printBoard(int board[][]){
+        for(int i=0; i<N; i++){
+            for(int j=0; j<N; j++){
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String args[]) {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
@@ -308,10 +348,23 @@ public class h_Backtracking {
         // else {
         //     System.out.println("Solution doesn't exists");
         // }
-        int maze[][] = { { 1, 0, 0, 0 },
-                         { 1, 1, 0, 1 },
-                         { 0, 1, 0, 0 },
-                         { 1, 1, 1, 1 } };
-        ratMaze(maze);
+        // int maze[][] = { { 1, 0, 0, 0 },
+        //                  { 1, 1, 0, 1 },
+        //                  { 0, 1, 0, 0 },
+        //                  { 1, 1, 1, 1 } };
+        // ratMaze(maze);
+        int board[][] = new int[N][N];
+        for(int i=0; i<N; i++){
+            for(int j=0; j<N; j++){
+                board[i][j] = -1;
+            }
+        }
+        board[0][0] = 0;
+        if(solveKnightTour(board, 0, 0, 1)){
+            printBoard(board);
+        }
+        else{
+            System.out.println("Solution doesn't exist");
+        }
     }
 }
