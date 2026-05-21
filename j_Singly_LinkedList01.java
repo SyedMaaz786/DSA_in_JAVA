@@ -51,7 +51,7 @@ public class j_Singly_LinkedList01 {
         }
         System.out.println("'null'");
     }
-    //fnx for adding elements at specific idx
+    //fnx for adding elements at specific idx (check new notes)
     public void add(int idx, int data) {
         if (idx == 0) {   //for idx = 0 it means head then call addFirst
             addFirst(data);
@@ -61,13 +61,15 @@ public class j_Singly_LinkedList01 {
         size ++;
 
         Node temp = head;  //Here temp stores the head value
-        for (int i=1; i<idx; i++){
+        int i = 0;
+        while(i < idx-1){ //idx-1 means prev
             temp = temp.next;
+            i++;
         }
         newNode.next = temp.next;
         temp.next = newNode;
     }
-    //fnx for removingFirst element from LL
+    //fnx for removingFirst element from LL (check new notes)
     public int removeFirst() {  
         //2nd
         if (size == 0) {
@@ -99,13 +101,14 @@ public class j_Singly_LinkedList01 {
             size = 0;
             return val;
         }
-        //prev : i = size-2 (GPT if dought)
-        Node prev = head;
-        for (int i=0; i<size-2; i++) {  
-            prev = prev.next;
+        //1st
+        Node temp = head; 
+        for (int i=0; i<size-2; i++) { //size-2 gives last node to be deleted
+            temp = temp.next;
         }
-        int val = prev.next.data; //this gives me my tail data ie last element
-        prev.next = null;
+        int val = temp.next.data; //this gives me my tail data ie last element
+        temp.next = null;
+        tail = temp;
         size --;
         return val;
     }
