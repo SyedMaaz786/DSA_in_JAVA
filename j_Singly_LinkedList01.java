@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 
+import org.w3c.dom.Node;
+
 public class j_Singly_LinkedList01 {
     public static class Node {  //create a class first
         int data;  //data type
@@ -128,28 +130,33 @@ public class j_Singly_LinkedList01 {
     }
 
     //recursive search
-    public int recSearch(Node head, int key) {
-        //base case
-        if (head == null) {
+    //1st
+    public int recSearch(int key){
+        return helper(head, key);
+    }
+    //2nd
+    public int helper(Node head, int key){
+        if(head == null){
             return -1;
         }
-        if (head.data == key) {
-            return 0;
+        if(head.data == key){
+            return 0; //0 because when key is found it will be at the 0th idx while backtracking
         }
-        //recursive call
-        int idx = recSearch(head.next, key);
-        if (idx == -1) {
+        int idx = helper(head.next, key); //recursive call from the next head
+        if(idx == -1){
             return -1;
         }
-        return idx + 1;
+        else{
+            return idx + 1; //very intuitive if idx was valid then add +1 so that idx is tracked correctly while coming back in the backtracking
+        }
     }
 
     //reverse a linked list O(n)
     public void reverse() {
         //initialising 3 var ie prev, curr, next
         Node prev = null;
-        Node curr = tail = head;
-        Node next;
+        Node curr = head;
+        Node next; //next we will declare in while loop
 
         while (curr != null) {  //byheart this steps
             //step1
@@ -161,12 +168,13 @@ public class j_Singly_LinkedList01 {
             //step4
             curr = next;
         }
-        head = prev;
+        head = prev; //at last curr == null so head is prev 
     }
 
     //delete nth node from the end
     public void deleteNthNode(int n) {
         //calculate size of the LL
+        //1st
         int sz = 0;
         Node temp = head;
         while (temp != null) {
@@ -174,11 +182,13 @@ public class j_Singly_LinkedList01 {
             sz++;
         }
         //corner case
+        //3rd
         if (n == sz) {
             head = head.next; //removeFirst
             return;
         }
         //sz-n -> Main formula to find the nth node which is to be deleted
+        //2nd
         int i = 1;
         int iToFind = sz-n;
         Node prev = head;
@@ -222,7 +232,7 @@ public class j_Singly_LinkedList01 {
         Node left = head;  //left is the head now for lefthalf
 
         //step3 - check if lefthalf == right half
-        while(right != null) {
+        while(right != null) { //meaning if right == null we have traversed all nodes, so we want to check till right != null and skip right == null
             if(left.data != right.data) {
                 return false;
             }
@@ -350,8 +360,7 @@ public class j_Singly_LinkedList01 {
         ll.print();
         System.out.println(ll.itrSearch(2));
         System.out.println(ll.itrSearch(10));
-        System.out.println(ll.recSearch(head, 2));
-        System.out.println(ll.recSearch(head, 10));
+        System.out.println(ll.recSearch(4));
         ll.reverse();
         ll.print();
         ll.deleteNthNode(2); //idx value to be passed
