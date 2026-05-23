@@ -52,7 +52,7 @@ public class j_Singly_LinkedList02 {
             slow = slow.next;
             fast = fast.next;
         }
-        //step3 - Remove cycle -> last.next=null
+        //step3 - Remove cycle -> lastnode.next=null
         prev.next = null;
 
     }
