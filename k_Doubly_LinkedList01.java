@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 public class k_Doubly_LinkedList01 {
     public class Node {
         int data;
@@ -98,8 +100,8 @@ public class k_Doubly_LinkedList01 {
     //reverse a DLL
     public void reverse() {
         //3 var, 4 steps
-        Node curr = head;  //This is also changed here in DLL
         Node prev = null;
+        Node curr = head;  
         Node next;
         while(curr != null) {
             next = curr.next;

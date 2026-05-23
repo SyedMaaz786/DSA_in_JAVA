@@ -54,7 +54,7 @@ public class j_Singly_LinkedList01 {
         System.out.println("'null'");
     }
     //fnx for adding elements at specific idx (check new notes)
-    public void add(int idx, int data) {
+    public void addSpecific(int idx, int data) {
         if (idx == 0) {   //for idx = 0 it means head then call addFirst
             addFirst(data);
             return;
@@ -112,6 +112,24 @@ public class j_Singly_LinkedList01 {
         temp.next = null;
         tail = temp;
         size --;
+        return val;
+    }
+    //fnx for removing at specifix idx
+    public int removeSpecific(int idx){
+        if(idx == 0){
+            return removeFirst();
+        }
+        if(idx == size - 1){
+            return removeLast();
+        }
+        Node temp = head;
+        int i = 0;
+        while(i < idx-1){
+            temp = temp.next;
+            i++;
+        }
+        int val = temp.next.data;
+        temp.next = temp.next.next;
         return val;
     }
 
@@ -315,9 +333,9 @@ public class j_Singly_LinkedList01 {
         }
         Node mid = slow; //before we were returning mid, because it used to be a diff fnx here we are just assigning mid as slow directly
         //step2 - reverse 2nd half (3 var, 4 steps)
+        Node prev = null;
         Node curr = mid.next;  //for 2nd half
         mid.next = null;  //both left and right have null now, they are divided now
-        Node prev = null;
         Node next;
         while(curr != null) {
             next = curr.next;
@@ -327,7 +345,7 @@ public class j_Singly_LinkedList01 {
         }
         //step3 - zigzag merge
         Node lh = head; //lh -> lefthead
-        Node rh = prev; //rh -> righthead
+        Node rh = prev; //rh -> righthead(ie the last node of rigthhalf)
         Node tempL, tempR;
         while(lh != null && rh != null) {
             //zigzag
@@ -351,7 +369,7 @@ public class j_Singly_LinkedList01 {
         ll.print();
         ll.addLast(4);
         ll.print();
-        ll.add(2, 9);
+        ll.addSpecific(2, 9);
         ll.print();
         System.out.println("LL size is: " + ll.size);
         ll.removeFirst();

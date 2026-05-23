@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 public class l_Circular_LinkedList01 {
     public class Node{
         int data;
@@ -64,59 +66,18 @@ public class l_Circular_LinkedList01 {
             return;
         }
         Node newNode = new Node(data);
+        
         Node temp = head;
-        for (int i=1; i<idx; i++) {
+        int i = 0;
+        while(i < idx-1){
             temp = temp.next;
+            i++;
         }
         newNode.next = temp.next;
         temp.next = newNode;
 
         size++;
     }
-
-    // add at specific idx circular singlt ll (if no addfirst and addlast fnx to call)
-    public void addSpec(int idx, int data){
-        if(idx < 0 || idx > size){
-            System.out.println("Invalid index");
-            return;
-        }
-        Node newNode = new Node(data);
-
-        // case 1: empty list
-        if(size == 0){
-        head = tail = newNode;
-        tail.next = head;
-        size++;
-        return;
-        }
-
-        // case 2: insert at beginning
-        if(idx == 0){
-        newNode.next = head;
-        head = newNode;
-        tail.next = head;
-        size++;
-        return;
-        }
-
-        Node temp = head;
-
-        for(int i = 1; i < idx; i++){
-        temp = temp.next;
-        }
-
-        // case 3 & 4: middle or end
-        newNode.next = temp.next;
-        temp.next = newNode;
-
-        if(idx == size){
-        tail = newNode;
-        }
-
-        tail.next = head;
-        size++;
-    }
-
 
 
     //remove first circular singly ll 
@@ -150,41 +111,37 @@ public class l_Circular_LinkedList01 {
             size = 0;
             return val;
         }
-        Node prev = head;
+        Node temp = head;
         for (int i=0; i<size-2; i++) {
-            prev = prev.next;
+            temp = temp.next;
         }
-        int val = prev.next.data; 
-        tail = prev;
+        int val = temp.next.data; 
+        tail = temp;
         tail.next = head;  //line for circular ll
         size--;
         return val;
     }
 
     //remove specific circular singly ll
-    public int removeSpecific(int idx) {
-        if(idx < 0 || idx >= size){
-            System.out.println("Invalid index");
+    public int removeSpecific(int idx){
+        if(size == 0){
+            System.out.println("CSLL is empty");
             return Integer.MIN_VALUE;
         }
-        if(size == 1){
-            int val = head.data;
-            head = tail = null;
-            size = 0;
-            return val;
+        if(idx == 0){
+            return removeFirst();
         }
-        Node prev = tail;
-        for(int i=0; i<idx; i++){
-            prev = prev.next;
+        if(idx == size - 1){
+            return removeLast();
         }
-        int val = prev.next.data;
-        if(prev.next == head){ //this is for removing 1st idx ele (ie 0th idx)
-            head = head.next;
+        Node temp = head;
+        int i = 0;
+        while(i < idx-1){
+            temp = temp.next;
+            i++;
         }
-        if(prev.next == tail){ //this is for removing last idx ele (ie nth idx)
-            tail = prev;       //and this is why we gave prev tail value above instead of head ask GPT if dought
-        }
-        prev.next = prev.next.next;
+        int val = temp.next.data;
+        temp.next = temp.next.next;
         size--;
         return val;
     }
@@ -214,8 +171,6 @@ public class l_Circular_LinkedList01 {
         cll.removeLast();
         cll.print();
         cll.addSpecific(2, 30);
-        cll.print();
-        cll.addSpec(0, 10);
         cll.print();
         cll.removeSpecific(2);
         cll.print();

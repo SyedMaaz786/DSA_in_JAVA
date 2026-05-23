@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import org.w3c.dom.Node;
+
 public class j {
     public class Node{
         int data;
@@ -115,6 +117,23 @@ public class j {
             return idx + 1;
         }
     }
+    public int removeSpecific(int idx){
+        if(idx == 0){
+            return removeFirst();
+        }
+        if(idx == size - 1){
+            return removeLast();
+        }
+        Node temp = head;
+        int i = 0;
+        while(i < idx-1){
+            temp = temp.next;
+            i++;
+        }
+        int val = temp.next.data;
+        temp.next = temp.next.next;
+        return val;
+    }
     public static void main(String args[]){
         j ll = new j();
         ll.addFirst(1);
@@ -125,6 +144,7 @@ public class j {
         System.out.println(ll.size);
         ll.removeFirst();
         ll.removeLast();
+        ll.removeSpecific(3);
         ll.print();
         System.out.println();
         System.out.println(ll.iterative(3));
