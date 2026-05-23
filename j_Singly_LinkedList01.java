@@ -358,42 +358,145 @@ public class j_Singly_LinkedList01 {
             rh = tempR;
         }
     }
+    
+    //oddeven ll arrangement
+    public Node oddEven(Node head){ //we will create 2 ll and merge them
+        if(head == null){ //bc
+            return null;
+        }
+
+        Node evenHead = null; //init with empty
+        Node evenTail = null;
+        Node oddHead = null;
+        Node oddTail = null;
+
+        Node curr = head;
+        while(curr != null){
+            //Even
+            if(curr.data % 2 == 0){
+                if(evenHead == null){ //1st even node
+                    evenHead = evenTail = curr;
+                }
+                else{ //2nd even node
+                    evenTail.next = curr;
+                    evenTail = curr;
+                }
+            }
+            //Odd
+            else{
+                if(oddHead == null){
+                    oddHead = oddTail = curr;
+                }
+                else{
+                    oddTail.next = curr;
+                    oddTail = curr;
+                }
+            }
+            curr = curr.next;
+        }
+        //if no even node
+        if(evenHead == null){
+            oddTail.next = null;
+            return oddHead;
+        }
+        //connect even + odd
+        evenTail.next = oddHead; //main thing of the code, but handling the even, odd whether they are coming 1st time or 2nd time is the mian thing we did above
+        //after connecting their will be a cycle to remove that
+        if(oddTail != null){ //edge case
+            oddTail.next = null; //to remove that cycle we connect oddTail.next to null and end the LL properly
+        }
+        return evenHead; //our final LL stars with even head so returning that means returning full updates LL
+    }
+
+    //swap nodes in a ll (check new notes + gpt prompt him problem statement, code, approach, explaination) 
+    public Node swapNodes(Node head, int x, int y){ //stare it you will get it
+        Node prevX = null;
+        Node currX = head;
+        while(currX != null && currX.data != x){ //find x
+            prevX = currX; //prevX mai currX se pehli ki jo value thi wo aajatiye
+            currX = currX.next; //currX moves forward
+        }
+        Node prevY = null;
+        Node currY = head;
+        while(currY != null && currY.data != y){ //find y
+            prevY = currY;
+            currY = currY.next;
+        }
+        if(currX == null || currY == null){ //x or y not found
+            return head;
+        }
+        if(prevX != null){ //if prev not null then connect previous nodes 
+            prevX.next = currY;
+        }
+        else{ //f prev is null then manually we made the currY as head
+            head = currY;
+        }
+        if(prevY != null){
+            prevY.next = currX;
+        }
+        else{
+            head = currX;
+        }
+        //swap next pointers
+        Node temp = currX.next;
+        currX.next = currY.next;
+        currY.next = temp;
+        
+        return head;
+    }
     public static void main(String args[]) {
         j_Singly_LinkedList01 ll = new j_Singly_LinkedList01();
-        ll.print();
-        ll.addFirst(2);
-        ll.print();
+        // ll.print();
+        // ll.addFirst(2);
+        // ll.print();
+        // ll.addFirst(1);
+        // ll.print();
+        // ll.addLast(3);
+        // ll.print();
+        // ll.addLast(4);
+        // ll.print();
+        // ll.addSpecific(2, 9);
+        // ll.print();
+        // System.out.println("LL size is: " + ll.size);
+        // ll.removeFirst();
+        // ll.print();
+        // ll.removeLast();
+        // ll.print();
+        // System.out.println(ll.itrSearch(2));
+        // System.out.println(ll.itrSearch(10));
+        // System.out.println(ll.recSearch(4));
+        // ll.reverse();
+        // ll.print();
+        // ll.deleteNthNode(2); //idx value to be passed
+        // ll.print();
+        // System.out.println(ll.checkPalindrome());
+        // //merge sort 
+        // ll.addLast(1);
+        // ll.addFirst(4);
+        // ll.addFirst(5);
+        // ll.addFirst(6);
+        // ll.print();
+        // ll.head = ll.mergeSort(ll.head);
+        // ll.print();
+        // ll.zigZag();
+        // ll.print();
+
+
+
+
         ll.addFirst(1);
-        ll.print();
+        ll.addLast(2);
         ll.addLast(3);
-        ll.print();
         ll.addLast(4);
+        // ll.print();
+        // head = ll.oddEven(head);
+        // ll.print();
+
+
+
+        ll.swapNodes(head, 2, 4);
         ll.print();
-        ll.addSpecific(2, 9);
-        ll.print();
-        System.out.println("LL size is: " + ll.size);
-        ll.removeFirst();
-        ll.print();
-        ll.removeLast();
-        ll.print();
-        System.out.println(ll.itrSearch(2));
-        System.out.println(ll.itrSearch(10));
-        System.out.println(ll.recSearch(4));
-        ll.reverse();
-        ll.print();
-        ll.deleteNthNode(2); //idx value to be passed
-        ll.print();
-        System.out.println(ll.checkPalindrome());
-        //merge sort 
-        ll.addLast(1);
-        ll.addFirst(4);
-        ll.addFirst(5);
-        ll.addFirst(6);
-        ll.print();
-        ll.head = ll.mergeSort(ll.head);
-        ll.print();
-        ll.zigZag();
-        ll.print();
+
     }
 }
 
