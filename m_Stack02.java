@@ -111,7 +111,7 @@ public class m_Stack02 {
             }
             s.push(i);
         }
-        //next smaller left
+        //next smaller left.
         s = new Stack<>();
         for(int i=0; i<arr.length; i++){
             while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
