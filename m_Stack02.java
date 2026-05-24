@@ -15,7 +15,7 @@ public class m_Stack02 {
             }
             //closing
             else {
-                if(s.isEmpty()){
+                if(s.isEmpty()){ //if str given by user contains all "))))" then stack will be empty, so return false
                     return false;
                 }
                 if( (s.peek() == '(' && ch == ')') //if ( == )
@@ -68,7 +68,7 @@ public class m_Stack02 {
 
 
     //Stack Span Problem
-    public static void stockSpan(int stocks[], int span[]){
+    public static void stockSpan(int stocks[], int span[]){ //it uses PGE-previous greater ele
         Stack<Integer> s = new Stack<>();
         span[0] = 1;  // 0th idx ie 1st day span is 1 
         s.push(0);

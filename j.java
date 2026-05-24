@@ -1,21 +1,37 @@
 import java.util.*;
 
 public class j {
-    public static String reverseString(String str){
+    public static boolean isValid(String str){
         Stack<Character> s = new Stack<>();
-        int idx = 0;
-        while(idx < str.length()){
-            s.push(str.charAt(idx));
-            idx++;
+        
+        for(int i=0; i<str.length(); i++){
+            char ch = str.charAt(i);
+
+            //opening
+            if(ch == '(' || ch == '[' || ch == '{'){
+                s.push(ch);
+            }
+            //closing
+            else{
+                if((s.peek() == '(' && ch == ')') 
+                || (s.peek() == '[' && ch == ']')
+                || (s.peek() == '{' && ch == '}')){
+                    s.pop();
+                }
+                else{
+                    return false;
+                }
+            }
         }
-        StringBuilder sb = new StringBuilder();
-        while(!s.isEmpty()){
-            sb.append(s.pop());
+        if(s.isEmpty()){
+            return true;
         }
-        return sb.toString();
+        else{
+            return false;
+        }
     }
     public static void main(String args[]){
-        String str = "syed maaz";
-        System.out.println(reverseString(str));
+        String str = "([]){";
+        System.out.println(isValid(str));
     }
 }
