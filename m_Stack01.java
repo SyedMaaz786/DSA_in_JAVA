@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Stack;
+
+import org.w3c.dom.Node;
 public class m_Stack01 {
     // Stack implementation with Arraylist
     static class StackA{
@@ -19,9 +21,7 @@ public class m_Stack01 {
             if (isEmpty() == true){
                 return -1;
             }
-            int top = list.get(list.size()-1); // gives the last in element ie top
-            list.remove(list.size()-1);
-            return top;
+            return list.remove(list.size()-1); //removes top ele
         }
         //4 - peek fnx  (this is nothing but top)
         public int peek() {
@@ -43,20 +43,24 @@ public class m_Stack01 {
                 this.next = null;
             }
         }
-        public static Node head = null;
+        public static Node head; //stack implementation happens only using head so no tail needed
+        public static int size;
 
         // 1 - Empty fnx
         public boolean isEmpty() {
             return head == null;
         }
-        // 2 - push fnx
+        // 2 - push fnx (easy check new notes)
         public void push(int data) {
+            //1st
             Node newNode = new Node(data);
-            if (isEmpty() == true){  
+            //3rd
+            if (isEmpty() == true){  //for adding 1st ele in stack
                 head = newNode;
                 return;
             }
-            newNode.next = head;  //when we add new node then we do this to place it at the starting
+            //2nd
+            newNode.next = head;  //when we add new node then we do this for linking 
             head = newNode;
         }
         // 3 - pop fnx 
@@ -64,7 +68,7 @@ public class m_Stack01 {
             if (isEmpty() == true){
                 return -1;
             }
-            int top = head.data;  // ex 3 -> 2 -> 1 (3 is the top and head so pop it meaning print it and then move to next to do the same)
+            int top = head.data;  // ex 3 -> 2 -> 1 (3 is the top and head.data will give 1st ele and then head.next goes to other ele, return that as pop operation)
             head = head.next;
             return top;
         }
@@ -80,18 +84,21 @@ public class m_Stack01 {
     // PushAtBottom
     public static void pushAtBottom (Stack<Integer> s, int data){
         //base case
+        //2nd
         if(s.isEmpty() == true){
             s.push(data);
             return;
         }
         //recursion
+        //1st
         int top = s.pop();  //stores the top value by removing it from our s obj 
         pushAtBottom(s, data); //recursive call
+        //3rd
         s.push(top); //backtrack, prints top values back in the stack
     }
 
 
-    //reverseString using stack
+    //reverseString using stack 
     public static String reverseString(String str){
         Stack<Character> s = new Stack<>();
         int idx = 0;
@@ -99,16 +106,15 @@ public class m_Stack01 {
             s.push(str.charAt(idx));
             idx++;
         }
-        StringBuilder result = new StringBuilder("");
-        while(s.isEmpty() != true){  //loop untill the stack we created above is empty
-            char curr = s.pop();
-            result.append(curr);
+        StringBuilder sb = new StringBuilder(); //sb because the fnx expects string as the return type
+        while(!s.isEmpty()){  //loop untill the stack we created above is empty
+            sb.append(s.pop());
         }
-        return result.toString();
+        return sb.toString();
     }
 
 
-    //reverse the stack
+    //reverse the stack (many ways are their to solve this ques, but calling pushAtBottom is optimised one)
     public static void reverseStack(Stack<Integer> s){
         //base case 
         if(s.isEmpty() == true){
@@ -117,12 +123,7 @@ public class m_Stack01 {
         //recursion
         int top = s.pop();  
         reverseStack(s);     //recursive call
-        pushAtBottom(s, top);  //backtrack, but here print the values from the bottom
-
-        //for printing 
-        while(s.isEmpty() != true){  //loop until stack is empty
-            System.out.println(s.pop());
-        }
+        pushAtBottom(s, top);  //backtrack, (here we have used pushAtBottom as a helper fnx) but here print the values from the bottom
     }
     public static void main(String args[]) {
         // StackA s = new StackA();
@@ -130,7 +131,7 @@ public class m_Stack01 {
         // s.push(2);
         // s.push(3); //last element to be pushed will be the 1st element which will be printed
 
-        // while(s.isEmpty() != true){  //loop untill stack gets empty
+        // while(!s.isEmpty()){  //loop untill stack gets empty
         //     System.out.println(s.peek());
         //     s.pop();
         // }
@@ -141,7 +142,7 @@ public class m_Stack01 {
         // s.push(2);
         // s.push(3); //last element to be pushed will be the 1st element which will be printed
 
-        // while(s.isEmpty() != true){  //loop untill stack gets empty
+        // while(!s.isEmpty()){  //loop untill stack gets empty
         //     System.out.println(s.peek());
         //     s.pop();
         // }
@@ -153,7 +154,7 @@ public class m_Stack01 {
         // s.push(2);
         // s.push(3); //last element to be pushed will be the 1st element which will be printed
 
-        // while(s.isEmpty() != true){  //loop untill stack gets empty
+        // while(!s.isEmpty()){  //loop untill stack gets empty
         //     System.out.println(s.peek());
         //     s.pop();
         // }
@@ -164,25 +165,25 @@ public class m_Stack01 {
         // s.push(2);
         // s.push(3);
         // pushAtBottom(s, 4);
-        // while(s.isEmpty() != true){
+        // while(!s.isEmpty()){
         //     System.out.println(s.peek());
         //     s.pop();
         // }
 
 
-        // String str = "abc";
-        // String result = reverseString(str);
-        // System.out.println(result);
+        // String str = "syed maaz";
+        // System.out.println(reverseString(str));
 
 
         // Stack<Integer> s = new Stack<>();
         // s.push(1);
         // s.push(2);
         // s.push(3);
-        // // 3, 2, 1
         // reverseStack(s);
-        // // 1, 2, 3
-
+        // while(!s.isEmpty()){
+        //     System.out.println(s.peek());
+        //     s.pop();
+        // }
 
         // Next Greater Right O(n) - (imp)
         int arr[] = {6, 8, 0, 1, 3};
@@ -191,11 +192,13 @@ public class m_Stack01 {
 
         for(int i=arr.length-1; i>=0; i--){
             // 1 - while 
-            while(s.isEmpty() != true && arr[s.peek()] <= arr[i]){
+            //2nd
+            while(!s.isEmpty() && arr[s.peek()] <= arr[i]){
                 s.pop();
             }
 
             // 2 - if else
+            //1st
             if(s.isEmpty()) {
                 nextGreater[i] = -1;
             }
