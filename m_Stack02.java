@@ -104,7 +104,7 @@ public class m_Stack02 {
                 s.pop();
             }
             if(s.isEmpty()){
-                nsr[i] = arr.length;  //ie n check notes
+                nsr[i] = arr.length;  //ie n check notes.
             }
             else {
                 nsr[i] = s.peek();
