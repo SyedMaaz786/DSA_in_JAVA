@@ -97,14 +97,14 @@ public class m_Stack02 {
         int nsr[] = new int[arr.length];
         int nsl[] = new int[arr.length];
 
-        //next smaller right 
+        //next smaller right.
         Stack<Integer> s = new Stack<>();
         for(int i=arr.length-1; i>=0; i--){
             while(!s.isEmpty() && arr[s.peek()] >= arr[i]){  //just changed this condition to >
                 s.pop();
             }
             if(s.isEmpty()){
-                nsr[i] = arr.length;  //ie n check notes.
+                nsr[i] = arr.length;  //ie n check notes.`
             }
             else {
                 nsr[i] = s.peek();
