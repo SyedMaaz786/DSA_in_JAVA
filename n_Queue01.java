@@ -1,15 +1,17 @@
 import java.util.*;
+
+import org.w3c.dom.Node;
 public class n_Queue01 {
 
     //Queue using Array
     static class QueueA {
-        static int arr[];
-        static int size;
-        static int rear;
+        int arr[];
+        int size;
+        int rear;
 
         QueueA(int n){  //constructor 
-            arr = new int[n]; 
-            size = n;
+            arr = new int[n]; //n is the size of the arr we will declare in main fnx
+            size = n; //so the size will be n simple
             rear = -1;  //starting rear with invalid idx ie before 0
         }
 
@@ -23,7 +25,7 @@ public class n_Queue01 {
                 System.out.println("Queue is full");
                 return;
             }
-            rear = rear + 1; //traversing each idx
+            rear = rear + 1; //traversing each idx (at first iteration as rear was init -1 it will go on 0th idx now)
             arr[rear] = data;  //adding value at each idx
         }
 
@@ -73,22 +75,22 @@ public class n_Queue01 {
             return rear == -1 && front == -1;
         }
         public boolean isFull() {
-            return (rear + 1) % size == front;
+            return (rear + 1) % size == front; //remember it like this as soon as we do rear+1 samnech front hayatho is full
         }
 
-        //add fnx O(1)
+        //add fnx O(1) - remember when the queue is 1234 and you want to add 5 at the 0th idx ie front you need to first remove one ele
         public void add(int data){
-            //2nd
+            //1st
             if(isFull()){
                 System.out.println("Queue is full");
                 return;
             }
-            //3rd
+            //2nd
             //add 1st element
             if(front == -1){  //special case
-                front = 0;
+                front = 0; //if front is -1 the move front to 0th idx and add ele their
             }
-            //1st
+            //3rd
             rear = (rear + 1) % size;
             arr[rear] = data;
         }
@@ -97,18 +99,18 @@ public class n_Queue01 {
         public int remove() {
             //3rd
             if(isEmpty()){
-                System.out.println("Queue is full");
+                System.out.println("Queue is empty");
                 return -1;
             }
             //1st
             int result = arr[front];
             //4th
             //removing last element
-            if(rear == front){ //special case
-                rear = front = -1;
+            if(rear == front){ //special case (check new notes)
+                rear = front = -1; //only 1 ele en queue after removing it set front and rear back to -1 ie how empty queue is represented at the starting
             }
             else {
-                front = (front + 1) % size;
+                front = (front + 1) % size; 
             }
             //2nd
             return result;
@@ -196,7 +198,7 @@ public class n_Queue01 {
         public boolean isEmpty(){
             return s1.isEmpty();
         }
-        //add fnx O(n)
+        //add fnx O(n) (you just need a view of lecture it's very easy)
         public void add(int data){
             while(!s1.isEmpty()){  //until s1 gets empty
                 s2.push(s1.pop());  //s2 mai dalna s1 se nikalko
@@ -225,7 +227,7 @@ public class n_Queue01 {
     }
 
 
-    //stack using 2 queue's (lecture if dought)
+    //stack using 2 queue's (need to check lecture + focus, especially for pop)
     static class QueueE {
         static Queue<Integer> q1 = new LinkedList<>();
         static Queue<Integer> q2 = new LinkedList<>();
@@ -235,7 +237,7 @@ public class n_Queue01 {
         }
         //push fnx O(1)
         public void push(int data){
-            if(!q1.isEmpty()){  //at any time only one queue should have elements
+            if(!q1.isEmpty()){  //jo bhi queue non empty hai(jisme already values hee) usme data add krna
                 q1.add(data);
             }
             else{
@@ -249,24 +251,28 @@ public class n_Queue01 {
                 return -1;
             }
             int top = -1;
-            //case 1 (Byheart case 1 you can right case 2) byheart in the sense logic is same check for 2 !empty and empty 
-            if(!q1.isEmpty()){
-                while(!q1.isEmpty()){
-                    top = q1.remove();
-                    if(q1.isEmpty()){
+            //case 1
+            if(!q1.isEmpty()){ //q1 mai ele haitho
+                while(!q1.isEmpty()){ //jaltak q1 empty ni hojata 
+                    top = q1.remove(); //q1 se ele nikalte jao
+                    if(q1.isEmpty()){ 
                         break;
                     }
-                    q2.add(top);
+                    else{
+                        q2.add(top); //q2 mai dalo
+                    }
                 }
             }
-            //case 2
+            //case 2 (vise versa of case 1)
             else{
                 while(!q2.isEmpty()){
                     top = q2.remove();
                     if(q2.isEmpty()){
                         break;
                     }
-                    q1.add(top);
+                    else{
+                        q1.add(top);
+                    }
                 }
             }
             return top;
