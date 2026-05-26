@@ -7,11 +7,10 @@ public class o_Greedyalgo01 {
     //     int end[] = {2, 4, 6, 7, 9, 9};
 
     //     //end time is sorted
-    //     int maxAct = 0;
     //     ArrayList<Integer> ans = new ArrayList<>();
 
     //     //1st activity 
-    //     maxAct = 1;
+    //     int maxAct = 1; 
     //     ans.add(0);
     //     int lastEnd = end[0];
     //     for(int i=1; i<end.length; i++){
@@ -42,7 +41,7 @@ public class o_Greedyalgo01 {
     //     }
 
     //     //lambda fnx -> shortform
-    //     Arrays.sort(activities, Comparator.comparingInt(o -> o[2])); //sort the 2nd idx ie end
+    //     Arrays.sort(activities, (a,b) -> a[2] - b[2]); //sort on the basis of end time, check new notes
 
     //     int maxAct=0;
     //     ArrayList<Integer> ans = new ArrayList<>();
@@ -66,8 +65,8 @@ public class o_Greedyalgo01 {
 
 
     // //Fractional knapsack
-    // int val[] = {60, 100, 120};
     // int weight[] = {10, 20, 30};
+    // int val[] = {60, 100, 120};
     // int W = 50;
 
     // double ratio[][] = new double[val.length][2]; //row , col
@@ -89,7 +88,7 @@ public class o_Greedyalgo01 {
     //         capacity -= weight[idx];
     //     }
     //     else{ //capacity is less, then add only, how much capacity is left that much items - Include fractional item
-    //         finalVal += (ratio[i][1] * capacity);  //This is the formula - val*capacity
+    //         finalVal += (ratio[i][1] * capacity);  //This is the formula - ratio*capacity
     //         capacity = 0;
     //         break;
     //     }
@@ -131,30 +130,28 @@ public class o_Greedyalgo01 {
 
 
     
-    // //Indian coins O(nlogn) (Stare the code it's easy) 
-    // Integer coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 2000};
+    //Indian coins O(nlogn) (Stare the code it's easy) 
+    Integer coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 2000};
 
-    // Arrays.sort(coins, Comparator.reverseOrder());  //We could have used lambda fnx and reversed the loop i-- but this is a easy way
+    Arrays.sort(coins, Comparator.reverseOrder());  //We could have used lambda fnx and reversed the loop i-- but this is a easy way
 
-    // int countOfCoins = 0;
-    // int amount = 590;
+    int countOfCoins = 0;
+    int amount = 590;
 
-    // ArrayList<Integer> ans = new ArrayList<>();
+    ArrayList<Integer> ans = new ArrayList<>();
 
-    // for(int i=0; i<coins.length; i++){
-    //     if(coins[i] <= amount){
-    //         while(coins[i] <= amount){
-    //             countOfCoins++;
-    //             ans.add(coins[i]);
-    //             amount -= coins[i];
-    //         }
-    //     }
-    // }
-    // System.out.println("Total (min) coins used to pay the amount : "+ countOfCoins);
+    for(int i=0; i<coins.length; i++){
+        while(coins[i] <= amount){
+            countOfCoins++;
+            ans.add(coins[i]);
+            amount -= coins[i];
+        }
+    }
+    System.out.println("Total (min) coins used to pay the amount : "+ countOfCoins);
 
-    // for(int i=0; i<ans.size(); i++){
-    //     System.out.print(ans.get(i) + " ");
-    // }
+    for(int i=0; i<ans.size(); i++){
+        System.out.print(ans.get(i) + " ");
+    }
 
 
 

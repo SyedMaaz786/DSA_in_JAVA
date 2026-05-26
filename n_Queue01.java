@@ -313,7 +313,7 @@ public class n_Queue01 {
             q.add(ch);
             freq[ch-'a']++;  //converts char to int and gives their freq and idx
 
-            while(!q.isEmpty() && freq[q.peek()-'a'] > 1){
+            while(!q.isEmpty() && freq[q.peek()-'a'] > 1){ //if freq is greater than 1, remove that ele form the q
                 q.remove();
             }
             if(q.isEmpty()){
@@ -327,9 +327,9 @@ public class n_Queue01 {
     }
 
 
-    //Interleave 2 halves of a queue O(n) (girls ki choti) GPT will explain very easy
-    public static void interLeave(Queue<Integer> q){
-        Queue<Integer> firstHalf = new LinkedList<>();
+    //Interleave 2 halves of a queue O(n) (girls ki choti) 
+    public static void interLeave(Queue<Integer> q){ //fnx param mai leri na wo main queue
+        Queue<Integer> firstHalf = new LinkedList<>(); //isme firsthalf ele aati bachte so og queue maich hati, as a result we got 2 queue equal ele divided in both
         int size = q.size();
 
         for(int i=0; i<size/2; i++){
@@ -387,6 +387,37 @@ public class n_Queue01 {
         }
     }
 
+
+    //Generate binary numbers (check new notes it's very easy)
+    public static void genBinNumb(int n){
+        Queue<String> q = new LinkedList<>();
+        q.add("1");
+
+        for(int i=0; i<n; i++){
+            String curr = q.remove();
+            System.out.println(curr+ " ");
+            q.add(curr + "0");
+            q.add(curr + "1");  
+        }
+    }
+
+
+    //Reversing the first K elements of a Queue (similar to interleave problem)
+    public static void reverseK(Queue<Integer> q, int k){
+        Stack<Integer> s = new Stack<>();
+
+        for(int i=0; i<k; i++){
+            s.push(q.remove());
+        }
+        while(!s.isEmpty()){
+            q.add(s.pop());
+        }
+        
+        int size = q.size();
+        for(int i=0; i<size/2; i++){
+            q.add(q.remove());
+        }
+    }
 
     public static void main(String args[]){
         // QueueA q = new QueueA(5);
@@ -520,14 +551,35 @@ public class n_Queue01 {
         // System.out.println(s.pop());
 
 
-        QueueF q = new QueueF();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        System.out.println(q.peek());
-        System.out.println(q.remove());
-        System.out.println(q.remove());
-        System.out.println(q.remove());
+        // QueueF q = new QueueF();
+        // q.add(1);
+        // q.add(2);
+        // q.add(3);
+        // System.out.println(q.peek());
+        // System.out.println(q.remove());
+        // System.out.println(q.remove());
+        // System.out.println(q.remove());
+
+
+        // int n = 5;
+        // genBinNumb(n);
+
+
+        Queue<Integer> q = new LinkedList<>();
+        q.add(10);
+        q.add(20);
+        q.add(30);
+        q.add(40);
+        q.add(50);
+        q.add(60);
+        q.add(70);
+        q.add(80);
+        q.add(90);
+        q.add(100);
+
+        int k = 5;
+        reverseK(q, k);
+        System.out.println(q);
         
 
     }
