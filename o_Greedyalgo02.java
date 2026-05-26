@@ -47,7 +47,7 @@ public class o_Greedyalgo02 { //we made a class of job because we wanted to impl
 public static void main(String args[]){
     int jobsInfo[][] = {{4, 20}, {1, 10}, {1, 40}, {1, 30}};
 
-    Arrays.sort(jobsInfo, (a,b) -> b[1] - a[1]); //descending profit based sorting because more profit we want first
+    Arrays.sort(jobsInfo, (a,b) -> b[1] - a[1]); //descending profit based sorting because more profit we want first.
     int time = 0;
     int profit = 0; //optional
 
