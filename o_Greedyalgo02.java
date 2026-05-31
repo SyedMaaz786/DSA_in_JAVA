@@ -68,44 +68,44 @@ public static void main(String args[]){
 }
 
 
-    // //Chocola problem - Hard level problem (But it is easy stare the code check notes and lecture)
-    // public static void main(String args[]){
-    // int rows = 4, cols = 6;
-    // Integer verCost[] = {2, 1, 3, 1, 4};
-    // Integer horCost[] = {4, 1, 2};
+    //Chocola problem - Hard level problem (But it is easy stare the code check notes and lecture)
+    public static void main(String args[]){
+    int rows = 4, cols = 6;
+    Integer verCost[] = {2, 1, 3, 1, 4};
+    Integer horCost[] = {4, 1, 2};
 
-    // Arrays.sort(verCost, Collections.reverseOrder()); //sort it in descending order because we need to perform expensive cuts first
-    // Arrays.sort(horCost, Collections.reverseOrder());
+    Arrays.sort(verCost, Collections.reverseOrder()); //sort it in descending order because we need to perform expensive cuts first
+    Arrays.sort(horCost, Collections.reverseOrder());
 
-    // int v = 0, h = 0;
-    // int vp = 1, hp = 1;
-    // int cost = 0;
+    int v = 0, h = 0;
+    int vp = 1, hp = 1;
+    int cost = 0;
 
-    // while(v < verCost.length && h < horCost.length){
-    //     if(verCost[v] < horCost[h]){ //horizontal cut
-    //         cost += (horCost[h] * vp); //horizontal cut marne k time po kitte vp aati sab ku touch hota usse * with vp
-    //         hp++;
-    //         h++;
-    //     }
-    //     else{ //vertical cuts
-    //         cost += (verCost[v] * hp);
-    //         vp++;
-    //         v++;
-    //     }
-    // }
-    // //Kitte hor bachge usse ek loop
-    // while(h < horCost.length){
-    //     cost += (horCost[h] * vp);
-    //     hp++;
-    //     h++;
-    // }
-    // //kitte ver bachge usse ek loop
-    // while(v < verCost.length){
-    //     cost += (verCost[v] * hp);
-    //     vp++;
-    //     v++;
-    // }
-    // System.out.println("Min cost of cuts : " + cost);
+    while(v < verCost.length && h < horCost.length){
+        if(verCost[v] < horCost[h]){ //horizontal cut
+            cost += (horCost[h] * vp); //horizontal cut marne k time po kitte vp aati sab ku touch hota usse * with vp
+            hp++;
+            h++;
+        }
+        else{ //vertical cuts
+            cost += (verCost[v] * hp);
+            vp++;
+            v++;
+        }
+    }
+    //Kitte hor bachge usse ek loop
+    while(h < horCost.length){
+        cost += (horCost[h] * vp);
+        hp++;
+        h++;
+    }
+    //kitte ver bachge usse ek loop
+    while(v < verCost.length){
+        cost += (verCost[v] * hp);
+        vp++;
+        v++;
+    }
+    System.out.println("Min cost of cuts : " + cost);
 
     // }
 }

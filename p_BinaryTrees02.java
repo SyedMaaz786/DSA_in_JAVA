@@ -19,7 +19,7 @@ public class p_BinaryTrees02 {
         }
         int lh = height(root.left);
         int rh = height(root.right);
-        return Math.max(lh, rh) + 1;  //return statement changes for every problem 
+        return Math.max(lh, rh) + 1;  //+1 because we are doing 1234 based lvl traversal not 01234 based 
     }
     //Count of nodes in a tree O(n)
     public static int count(Node root){
@@ -28,16 +28,14 @@ public class p_BinaryTrees02 {
         }
         int lc = count(root.left);
         int rc = count(root.right);
-        return lc + rc + 1;
+        return lc + rc + 1; //+1 is the root node himself
     }
     //Sum of nodes in a tree O(n)
     public static int sum(Node root){
         if(root == null){
-            return 0;
+            return 0; 
         }
-        int ls = sum(root.left);
-        int rs = sum(root.right);
-        return ls + rs + root.data;
+        return sum(root.left) + sum(root.right) + root.data; //leftnode + rightnode + rootnode itself = tot sum of the nodes
     }
     //Diameter of a tree O(n2), Approach1 
     public static int diameter1(Node root){ //It's easy lecture if dought

@@ -1,37 +1,35 @@
-import java.util.*;
-
 public class j {
-    public static boolean isValid(String str){
-        Stack<Character> s = new Stack<>();
-        
-        for(int i=0; i<str.length(); i++){
-            char ch = str.charAt(i);
+    static class Node{
+        int data;
+        Node left;
+        Node right;
 
-            //opening
-            if(ch == '(' || ch == '[' || ch == '{'){
-                s.push(ch);
-            }
-            //closing
-            else{
-                if((s.peek() == '(' && ch == ')') 
-                || (s.peek() == '[' && ch == ']')
-                || (s.peek() == '{' && ch == '}')){
-                    s.pop();
-                }
-                else{
-                    return false;
-                }
-            }
-        }
-        if(s.isEmpty()){
-            return true;
-        }
-        else{
-            return false;
+        public Node(int data){
+            this.data = data;
+            this.left = left;
+            this.right = right;
         }
     }
+    static class BinaryTree{
+        static int idx = -1;
+        
+        public static Node buildTree(int nodes[]){
+            idx++;
+            if(nodes[idx] == -1){
+                return null;
+            }
+            Node newNode = new Node(nodes[idx]);
+            newNode.left = buildTree(nodes);
+            newNode.right = buildTree(nodes);
+
+            return newNode;
+        }
+    }
+
     public static void main(String args[]){
-        String str = "([]){";
-        System.out.println(isValid(str));
+        int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+        BinaryTree tree = new BinaryTree();
+        Node root = tree.buildTree(nodes);
+        System.out.println(root.data);
     }
 }

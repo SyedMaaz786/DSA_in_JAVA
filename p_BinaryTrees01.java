@@ -73,13 +73,14 @@ public class p_BinaryTrees01 {
             if(root == null){
                 return ;
             }
+            //1st
             Queue<Node> q = new LinkedList<>();
             q.add(root);
             q.add(null); //for printing nextline
 
             while(!q.isEmpty()){
                 Node currNode = q.remove();
-                //1st
+            
                 if(currNode == null){
                     System.out.println();
                     //5th
