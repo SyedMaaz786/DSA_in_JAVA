@@ -1,5 +1,7 @@
 import java.util.*;
 
+import org.w3c.dom.Node;
+
 public class p_BinaryTrees02 {
     static class Node{
         int data;
@@ -47,7 +49,7 @@ public class p_BinaryTrees02 {
         int rd = diameter1(root.right);
         int rh = height(root.right);
         
-        int selfd = lh + rh + 1; //formula
+        int selfd = lh + rh + 1; //formula +1 here also because we are doing 123 based lvl traversal
 
         return Math.max(Math.max(ld, rd), (selfd)); //inner max compares [ld , rd] and outer max compares [(ld,rd) , selfd]
     }
@@ -68,7 +70,7 @@ public class p_BinaryTrees02 {
         Info leftInfo = diameter2(root.left);
         Info rightInfo = diameter2(root.right);
 
-        int d = Math.max(Math.max(leftInfo.d, rightInfo.d), (leftInfo.h + rightInfo.h + 1));  //formula
+        int d = Math.max(Math.max(leftInfo.d, rightInfo.d), (leftInfo.h + rightInfo.h + 1));  //formula (leftInfo.h + rightInfo.h + 1) this is nothing but selfd
         int h = Math.max(leftInfo.h, rightInfo.h) + 1; //formula
 
         return new Info(d, h);
@@ -116,7 +118,7 @@ public class p_BinaryTrees02 {
     }
     public static void topView(Node root){
         //level order traversal
-        Queue<Info2> q = new LinkedList<>();
+        Queue<Info2> q = new LinkedList<>(); //because lvl order traversal
         HashMap<Integer, Node> map = new HashMap<>(); //key = hd, value = node
 
         int min = 0, max = 0;
@@ -139,7 +141,7 @@ public class p_BinaryTrees02 {
                 }
                 if(curr.node.left != null){  //it's easy as level order keep staring
                 q.add(new Info2(curr.hd-1, curr.node.left)); //and condition is also easy keep staring
-                min = Math.min(min, curr.hd-1);
+                min = Math.min(min, curr.hd-1); //as hd goes left update min
                 }
                 if(curr.node.right != null){
                 q.add(new Info2(curr.hd+1, curr.node.right));
