@@ -173,7 +173,7 @@ public class p_BinaryTrees02 {
         if(root == null){
             return false;
         }
-        //2nd
+        //3rd
         path.add(root);
     
         if(root.data == n){
@@ -199,6 +199,7 @@ public class p_BinaryTrees02 {
         getPath(root, n2, path2);
 
         // last common ancestor
+        //2nd
         int i=0;
         for(; i<path1.size() && i<path2.size(); i++){
             if(path1.get(i) != path2.get(i)){
@@ -251,7 +252,7 @@ public class p_BinaryTrees02 {
     }
     //2nd
     public static int minDist(Node root, int n1, int n2){
-        Node lca = lca2(root, n1, n2);
+        Node lca = lca2(root, n1, n2); //this problem is implemented using lca code as helper fnx
         int dist1 = lcaDist(lca, n1);
         int dist2 = lcaDist(lca, n2);
         return dist1 + dist2;
@@ -270,7 +271,7 @@ public class p_BinaryTrees02 {
         if(leftDist == -1 && rightDist == -1){
             return -1;
         }
-        int max = Math.max(leftDist, rightDist);
+        int max = Math.max(leftDist, rightDist); //valid value (imp - check gpt tell why max here)
         if(max+1 == k){
             System.out.println(root.data);
         }
