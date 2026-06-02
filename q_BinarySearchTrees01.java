@@ -55,7 +55,10 @@ public class q_BinarySearchTrees01 {
     }
     // Delete a node
     public static Node delete(Node root, int val){
-        if(val < root.data){
+        if(root == null){[
+            return null;
+        ]}
+        if(val < root.data){ //first search the node we want to delete
             root.left = delete(root.left, val);
         }
         else if(val > root.data){
