@@ -14,19 +14,19 @@ public class q_BinarySearchTrees01 {
     }
     // Create BTS
     public static Node insert(Node root, int val){
-        //1st
+        //2nd
         if(root == null){
-            root = new Node(val);
+            root = new Node(val); //depending on the value it goes and puts the new valu either left or right
             return root;
         }
-        //3rd
+        //1st
         if(val < root.data){
             root.left = insert(root.left, val);
         }
         else {
             root.right = insert(root.right, val);
         }
-        //2nd
+        //3rd
         return root;
     }
     public static void inOrder(Node root){ //for checking if our BTS is created correct note: if the values are printing in acsending sorted order then it is correct
