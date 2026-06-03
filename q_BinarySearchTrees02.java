@@ -19,7 +19,7 @@ public class q_BinarySearchTrees02 {
         preOrder(root.left);
         preOrder(root.right);
     }
-    //Convert BST to balanced BST
+    //Convert BST to balanced BST (check Leetcode once for mature code)
     //2nd
     public static void getInOrder(Node root, ArrayList<Integer> inorder){
         if(root == null){
