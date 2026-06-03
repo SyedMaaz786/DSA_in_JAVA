@@ -65,22 +65,23 @@ public class q_BinarySearchTrees02 {
     }
     public static int maxBST = 0;
     public static int maxBSTValue = -1;
+
     public static Info largestBST(Node root){
         if(root == null){
             return new Info(true, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
         }
-        Info leftInfo = largestBST(root.left);
-        Info rightInfo = largestBST(root.right);
-        int size = leftInfo.size + rightInfo.size + 1;
-        int min = Math.min(root.data, Math.min(leftInfo.min, rightInfo.min));
-        int max = Math.max(root.data, Math.max(leftInfo.max, rightInfo.max));
+        Info left = largestBST(root.left);
+        Info right = largestBST(root.right);
+        int size = left.size + right.size + 1;
+        int min = Math.min(root.data, Math.min(left.min, right.min));
+        int max = Math.max(root.data, Math.max(left.max, right.max));
 
         // not valid BST
-        if(leftInfo.max >= root.data || rightInfo.min <= root.data){
+        if(left.max >= root.data || right.min <= root.data){
             return new Info(false, size, min, max);
         }
         // valid BST
-        if(leftInfo.isBST && rightInfo.isBST){
+        if(left.isBST && right.isBST){
             maxBST = Math.max(maxBST, size); //size is updated
             maxBSTValue = Math.max(maxBSTValue, root.data);
             return new Info(true, size, min, max);
