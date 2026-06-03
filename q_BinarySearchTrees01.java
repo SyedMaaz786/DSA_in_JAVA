@@ -55,9 +55,9 @@ public class q_BinarySearchTrees01 {
     }
     // Delete a node
     public static Node delete(Node root, int val){
-        if(root == null){[
+        if(root == null){
             return null;
-        ]}
+        }
         if(val < root.data){ //first search the node we want to delete
             root.left = delete(root.left, val);
         }
@@ -142,19 +142,22 @@ public class q_BinarySearchTrees01 {
         else if(max != null && max.data <= root.data){ //same as if bas condition uska reverse
             return false;
         }
-        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max); // for passing the values as min and max for recursion call remember like (min to root to max) and remember both should return true for a valid BST
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max); // here 1st call min to root because min will keep changing but root is 8 which is the max for left subtree vice versa on the right side where, root will be same 8 and max will keep changing  
     }
-    // Mirror a BST - O(n) (it's very easy) notes for pseudo code 
+    // Mirror a BST - O(n) (it's very easy) swapping logic(check leetcode) 
     public static Node mirror(Node root){
         if(root == null){
             return null;
         }
-        Node leftST = mirror(root.left);
-        Node rightST = mirror(root.right);
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
 
-        root.left = rightST; //Swapping
-        root.right = leftST;
+        mirror(root.left);
+        mirror(root.right);
+
         return root;
+        
     }
     public static void preOrder(Node root){
         if(root == null){
@@ -164,7 +167,9 @@ public class q_BinarySearchTrees01 {
         preOrder(root.left);
         preOrder(root.right);
     }
-        //Sorted Array to balanced BST - O(n) (it's very easy)
+
+    
+    //Sorted Array to balanced BST - O(n) (it's very easy)
     public static Node createBST(int arr[], int st, int end){
         if(st > end){
             return null;
@@ -225,6 +230,8 @@ public class q_BinarySearchTrees01 {
         // root.left.left = new Node(3);
         // root.left.right = new Node(6);
         // root.right.right = new Node(11);
+        // preOrder(root);
+        // System.out.println();
         // //Mirror BST
         // /*
         //         8
