@@ -2,103 +2,108 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class s_Heap01 {
-    //add in heap (this is min heap, for max heap just change the > in add while loop and in heapify if change it to <)
-    static class Heap{
-        ArrayList<Integer> arr = new ArrayList<>();
+//     //add in heap (this is min heap, for max heap just change the > in add while loop and in heapify if change it to <)
+//     static class Heap{
+//         ArrayList<Integer> arr = new ArrayList<>();
 
-        public void add(int data){ //O(logn)
-            arr.add(data);
-            int x = arr.size()-1; // x is child idx
-            int y = (x-1)/2; // y is parent idx (formula)
-            while(arr.get(x) < arr.get(y)){ //agar mere child(x) ki value parent(y) se kam hatiye usse swap krna kivo katho min uppar aana
-                //swap
-                int temp = arr.get(x);
-                arr.set(x, arr.get(y));
-                arr.set(y, temp);
+//         public void add(int data){ //O(logn)
+//             arr.add(data);
+//             int x = arr.size()-1; // x is child idx
+//             int y = (x-1)/2; // y is parent idx (formula)
+//             while(arr.get(x) < arr.get(y)){ //agar mere child(x) ki value parent(y) se kam hatiye usse swap krna kivo katho min uppar aana
+//                 //swap
+//                 int temp = arr.get(x);
+//                 arr.set(x, arr.get(y));
+//                 arr.set(y, temp);
 
-                x = y; //updating child and parent after swapping
-                y = (x-1)/2;
-            }
-        }
-        //peek in heap
-        public int peek(){
-            return arr.get(0); //returns the root value which is min 
-        }
-        //remove in heap (this is a little difficult lecture for dryrun and understanding)
-        private void heapify(int i){
-            int left = 2*i+1;
-            int right = 2*i+2;
-            int minIdx = i;
-            if(left < arr.size() && arr.get(minIdx) > arr.get(left)){ //these 2 if are if the idx goes out of bound
-                minIdx = left;
-            }
-            if(right < arr.size() && arr.get(minIdx) > arr.get(right)){
-                minIdx = right;
-            }
-            if(minIdx != i){ //if the root value after removing is greater meaning if it violated the min heap property where the root should be min then swap
-                //swap
-                int temp = arr.get(i);
-                arr.set(i, arr.get(minIdx));
-                arr.set(minIdx, temp);
+//                 x = y; //updating child and parent after swapping
+//                 y = (x-1)/2;
+//             }
+//         }
+//         //peek in heap
+//         public int peek(){
+//             return arr.get(0); //returns the root value which is min 
+//         }
+//         //remove in heap (check new notes + code here)
+//         //2nd
+//         private void heapify(int i){
+//             int left = 2*i+1;
+//             int right = 2*i+2;
+//             int minIdx = i; //at first we assume the min node idx is i ie root
+//             if(left < arr.size() && arr.get(left) < arr.get(minIdx)){ //these 2 if are to check idx outofbound && if any new node value on left or right is min then we update the minIdx 
+//                 minIdx = left;  
+//             }
+//             if(right < arr.size() && arr.get(right) < arr.get(minIdx)){
+//                 minIdx = right;
+//             }
+//             if(minIdx != i){ //if the root value after removing is greater meaning if it violated the min heap property where the root should be min then swap (if minIdx was changed with left or right vlaue in 2 if's above then swap because it have now violated the min heap property)
+//                 //swap
+//                 int temp = arr.get(i);
+//                 arr.set(i, arr.get(minIdx));
+//                 arr.set(minIdx, temp);
 
-                heapify(minIdx); // recursive call for next nodes
-            }
-        }
-        public int remove(){
-            int data = arr.get(0);
-            //step1 - swap first & last
-            int temp = arr.get(0);
-            arr.set(0, arr.get(arr.size()-1));
-            arr.set(arr.size()-1, temp);
-            //step2 - delete last
-            arr.remove(arr.size()-1);
-            //step3 - heapify
-            heapify(0);
+//                 heapify(minIdx); // recursive call for next nodes
+//             }
+//         }
+//         //1st
+//         public int remove(){
+//             //step1 - store root
+//             int data = arr.get(0); //store root
+//             //step2 - swap first & last
+//             int temp = arr.get(0); //temp mai 0th idx ki value dal 
+//             arr.set(0, arr.get(arr.size()-1)); //0th idx khali hai usme lastidx ki value dal
+//             arr.set(arr.size()-1, temp); //abb lastidx khali hai usme 0th idx ki value temp dal dal
+//             //step3 - delete last
+//             arr.remove(arr.size()-1);
+//             //step4 - heapify
+//             heapify(0);
 
-            return data;
-        }
-        //isEmpty
-        public boolean isEmpty(){
-            return arr.size() == 0; //if arr.size() == 0 return true else false
-        }
-    }
-    //Heap sort - Ascending order, O(nlogn) ( notes and lecture for understanding and dryrun)
-    public static void heapify(int arr[], int i, int n){
-        int left = 2*i+1;
-        int right = 2*i+2;
-        int maxIdx = i;
-        if(left < n && arr[maxIdx] < arr[left]){
-            maxIdx = left;
-        }
-        if(right < n && arr[maxIdx] < arr[right]){
-            maxIdx = right;
-        }
-        if(maxIdx != i){
-            //swap
-            int temp = arr[i];
-            arr[i] = arr[maxIdx];
-            arr[maxIdx] = temp;
+//             return data;
+//         }
+//         //isEmpty
+//         public boolean isEmpty(){
+//             return arr.size() == 0; //if arr.size() == 0 return true else false
+//         }
+//     }
+//     //Heap sort - Ascending order, O(nlogn) ( notes and lecture for understanding and dryrun)
+//     //2nd
+//     public static void heapify(int arr[], int i, int n){
+//         int left = 2*i+1;
+//         int right = 2*i+2;
+//         int maxIdx = i;
+//         if(left < n && arr[left] < arr[maxIdx]){
+//             maxIdx = left;
+//         }
+//         if(right < n && arr[right] < arr[maxIdx]){
+//             maxIdx = right;
+//         }
+//         if(maxIdx != i){
+//             //swap
+//             int temp = arr[i];
+//             arr[i] = arr[maxIdx];
+//             arr[maxIdx] = temp;
 
-            heapify(arr, maxIdx, n);
-        }
-    }
-    public static void heapSort(int arr[]){
-        //step1 - build maxHeap
-        int n = arr.length;
-        for(int i=n/2; i>=0; i--){
-            heapify(arr, i, n);
-        }
-        //step2 - push largest at end
-        for(int i=n-1; i>=0; i--){
-            //swap
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
+//             heapify(arr, maxIdx, n); //recursive call for next nodes
+//         }
+//     }
+//     //1st
+//     public static void heapSort(int arr[]){
+//         //step1 - build maxHeap (non-leaf nodes)
+//         int n = arr.length;
+//         for(int i=n/2; i>=0; i--){ //this will start from mid and go till si which will give us the non-leaf nodes which we need
+//             heapify(arr, i, n);
+//         }
+//         //step2 - push largest at end
+//         for(int i=n-1; i>=0; i--){
+//             //swap
+//             int temp = arr[0];
+//             arr[0] = arr[i];
+//             arr[i] = temp;
 
-            heapify(arr, 0, i);
-        }
-    }
-    //K Nearest Neighbors
+//             heapify(arr, 0, i); //again call from 0 ie root se i tak jo bi idx i ki value hatiye
+//         }
+//     }
+    //K Nearest Neighbors (this is class, code is in main fnx)
     //1st
     static class Point implements Comparable<Point>{
         int x;
@@ -129,7 +134,7 @@ public class s_Heap01 {
         @Override
         public int compareTo(Row r2){
             if(this.soldiers == r2.soldiers){
-                return this.idx - r2.idx;
+                return this.idx - r2.idx; //weakest idx will be returned
             }
             else{
                 return this.soldiers - r2.soldiers;
@@ -137,18 +142,30 @@ public class s_Heap01 {
         }
     }
     //Sliding Window Maximum (this is class, code is in main fnx)
-    static class Pair implements Comparable<Pair>{
+    static class Window implements Comparable<Window>{
         int val;
         int idx;
 
-        public Pair(int val, int idx){
+        public Window(int val, int idx){
             this.val = val;
             this.idx = idx;
         }
         @Override
-        public int compareTo(Pair p2){
-            // return this.val - p2.val; // for ascending but we need descending so...
-            return p2.val - this.val; //descending 
+        public int compareTo(Window w2){
+            // return this.val - w2.val; // for ascending but we need descending so...
+            return w2.val - this.val; //descending 
+        }
+    }
+    //K’th largest element in a stream (this is class, code is in main fnx)
+    static class Element implements Comparable<Element>{
+        int val;
+
+        public Element(int val){
+            this.val = val;
+        }
+        @Override
+        public int compareTo(Element e2){
+            return this.val - e2.val; //min heap
         }
     }
     public static void main(String args[]){
@@ -212,39 +229,59 @@ public class s_Heap01 {
         // int k = 2;
         // PriorityQueue<Row> pq = new PriorityQueue<>();
         // for(int i=0; i<army.length; i++){ //loop for rows
-        //     int count = 0;
+        //     int soldier = 0; //after 1st row traversal the soldier is set back to 0 as it is declared inside the outer for loop, so it's scope is only in outer for loop
         //     for(int j=0; j<army[0].length; j++){ //loop for cols
-        //         if(army[i][j] == 1){ // if soldier is their count of soldier ++
-        //             count ++;
+        //         if(army[i][j] == 1){ // if soldier is their soldier ++
+        //             soldier ++;
         //         }
         //     }
-        //     pq.add(new Row(count, i)); //add count and idx in pq
+        //     pq.add(new Row(soldier, i)); //add soldier and idx in pq, of custom row class type
         // }
         // for(int i=0; i<k; i++){
         //     System.out.println("Weakest are at Row: " + pq.remove().idx);
         // }
 
 
-        //Sliding Window Maximum O(nlogk) (checking lecture is imp for drynrun and understanding)
-        int arr[] = {1, 3, -1, -3, 5, 3, 6, 7};
-        int k = 3; //window size
-        int res[] = new int[arr.length-k+1]; // Here we have created an arr exactly of length in which we can store our res (n-K+1) formula  
-        PriorityQueue<Pair> pq = new PriorityQueue<>();
-        for(int i=0; i<k; i++){ //1st window
-            pq.add(new Pair(arr[i], i));
-        }
-        res[0] = pq.peek().val; //add max in res arr
-        for(int i=k; i<arr.length; i++){
-            while(pq.size() > 0 && pq.peek().idx <= (i-k)){ //this is very easy check lecture
+        // //Sliding Window Maximum O(nlogk) (checking lecture is imp for drynrun and understanding)
+        // int arr[] = {1, 3, -1, -3, 5, 3, 6, 7};
+        // int k = 3; //window size
+        // int res[] = new int[arr.length-k+1]; // Here we have created an arr exactly of length in which we can store our res (n-K+1) formula  
+        // PriorityQueue<Window> pq = new PriorityQueue<>();
+        // for(int i=0; i<k; i++){ //1st window
+        //     pq.add(new Pair(arr[i], i)); //add val, idx in pq
+        // }
+        // res[0] = pq.peek().val; //add max in res arr
+        // for(int i=k; i<arr.length; i++){ //next window remember main while loop is responsible for next window's correct starting 
+        //     while(pq.size() > 0 && pq.peek().idx <= (i-k)){ //pq.peek().idx <= (i-k), this is nothing but when we move 1 idx forward ans our window is now of size 3 this line it to remove that 0th idx so that our window is now correctly moved forward 
+        //         pq.remove();
+        //     }
+        //     pq.add(new Pair(arr[i], i));
+        //     res[i-k+1] = pq.peek().val;
+        // }
+        // //print res
+        // for(int i=0; i<res.length; i++){
+        //     System.out.print(res[i] + " ");
+        // }
+        // System.err.println();
+
+
+        //K’th largest element in a stream (it's very easy check GPT)
+        int stream[] = {10, 20, 11, 70, 50, 40, 100, 5};
+        int k = 3;
+        PriorityQueue<Element> pq = new PriorityQueue<>();
+        for(int i=0; i<stream.length; i++){
+            pq.add(new Element(stream[i]));
+            if(pq.size() > k){
                 pq.remove();
             }
-            pq.add(new Pair(arr[i], i));
-            res[i-k+1] = pq.peek().val;
+            if(pq.size() < k){
+                System.out.print("NA" + " ");
+            }
+            else{
+                System.out.print(pq.peek().val + " ");
+            }
         }
-        //print res
-        for(int i=0; i<res.length; i++){
-            System.out.print(res[i] + " ");
-        }
-        System.err.println();
+
+
     }
 }
