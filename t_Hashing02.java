@@ -1,5 +1,7 @@
 import java.util.*;
 
+import org.w3c.dom.Node;
+
 public class t_Hashing02 {
     //1st
     static class HashMap<K,V> { //Here K,V are generic meaning key and value can be string,int,boolean,double or any type
@@ -15,27 +17,27 @@ public class t_Hashing02 {
         //2nd
         private int n; //n
         private int N; //N (buckets.length)
-        private LinkedList<Node> bucket[]; 
+        private LinkedList<Node> bucket[]; //arr of LL
 
         @SuppressWarnings("unchecked")
         public HashMap() { //HashMap ka constructor
-            this.n = 0;
-            this.N = 4;
+            this.n = 0; 
+            this.N = 4; //arr(bucket) size
             this.bucket = new LinkedList[4];
-            for(int i=0; i<4; i++){
+            for(int i=0; i<4; i++){ //for loop to create LL at each idx
                 this.bucket[i] = new LinkedList<>();
             }
         }
         //Hashfnx
         //3rd
         private int hashFnx(K key){
-            int hc = key.hashCode();
+            int hc = key.hashCode(); //hashCode fnx returns the hashCode format, ex- india -> 96358(hashCode)
             return Math.abs(hc) % N; //abs if -ve value convert it to +ve, % with N gives remainder less than its N and that is what we want
         }
         
         //5th
         private int searchInLL(K key, int bi){
-            LinkedList<Node> ll = bucket[bi];
+            LinkedList<Node> ll = bucket[bi]; //ll is not creating a new LinkedList. It is simply a reference variable pointing to an already existing LinkedList stored at index bi of the bucket arr
             int di = 0;
             for(int i=0; i<ll.size(); i++){
                 Node node = ll.get(i);
@@ -61,7 +63,7 @@ public class t_Hashing02 {
                 LinkedList<Node> ll = oldBucket[i];
                 for(int j=0; j<ll.size(); j++){
                     Node node = ll.get(j);
-                    put(node.key, node.value);
+                    put(node.key, node.value); //this is our custom put fnx we created and we are calling it here
                 }
             }
 
@@ -77,7 +79,7 @@ public class t_Hashing02 {
                 node.value = value; //then update the value
             }
             else{
-                bucket[bi].add(new Node(key, value)); //naitho add the new pair in the bucket
+                bucket[bi].add(new Node(key, value)); //naitho add the new pair(LL) in the bucket(arr)
                 n++;
             }
             double lambda = (double)n/N;
@@ -173,7 +175,7 @@ public class t_Hashing02 {
         //5th
         for(int i=0; i<t.length(); i++){
             //6th
-            if(hm.get(t.charAt(i)) != null){
+            if(hm.get(t.charAt(i)) != null){ //key should be present
                 //7th
                 if(hm.get(t.charAt(i)) == 1){
                     hm.remove(t.charAt(i));
@@ -224,7 +226,7 @@ public class t_Hashing02 {
         // System.out.println(tm);
 
 
-        // //Majority Element (it's easy check lecture once)
+        // //Majority Element (This is majority ele II, but for majority ele I more optimised is moore's algo check LC for that)
         // int arr[] = {1, 3, 2, 5, 1, 3, 1, 5, 1};
 
         // java.util.HashMap<Integer, Integer> hm = new java.util.HashMap<>(); //i did like this because our code was using our custom HashMap we created above so their was an error and for that we used java's inbuilt hashmap using this syntax
@@ -236,8 +238,8 @@ public class t_Hashing02 {
         //         hm.put(arr[i], 1);
         //     }
         // }
-        // Set<Integer> keySet = hm.keySet();  //as HashMap doesn't allow to iterate on them directly we store keys in Set
-        // for (Integer key : keySet) {
+        // Set<Integer> ks = hm.keySet();  //as HashMap doesn't allow to iterate on them directly we store keys in Set
+        // for (Integer key : ks) {
         //     if(hm.get(key) > arr.length/3){  //if any key is occuring more than 3 times print it
         //         System.out.println(key);
         //     }
