@@ -2,13 +2,13 @@ import java.util.*;
 
 public class t_Hashing03 {
     //Find itinerary for tickets
-    public static String startingPoint(HashMap<String, String> hm){ //O(n) lecture if dought stare it it's easy
-        HashMap<String, String> map = new HashMap<>(); //created a reversehashmap (revhm) 
-        for(String key: hm.keySet()){ 
-            map.put(hm.get(key), key); //here we puts value as key and key as value (from->to) & (to->from)
+    public static String startingPoint(HashMap<String, String> map1){ //O(n) lecture if dought stare it it's easy
+        HashMap<String, String> map2 = new HashMap<>(); //created a reversehashmap (revhm) 
+        for(String key: map1.keySet()){ 
+            map2.put(map1.get(key), key); //here we puts value as key and key as value (from->to) becomes (to->from)
         }
-        for(String key: hm.keySet()){
-            if(!map.containsKey(key)){
+        for(String key: map1.keySet()){
+            if(!map2.containsKey(key)){
                 return key; //gives starting point
             }
         }
@@ -87,18 +87,17 @@ public class t_Hashing03 {
         System.out.println("Intersection size: " + count);
 
 
-        HashMap<String, String> hm = new HashMap<>();
-        hm.put("Chennai", "Bengaluru");
-        hm.put("Mumbai", "Delhi");
-        hm.put("Goa", "Chennai");
-        hm.put("Delhi", "Goa");
-        String start = startingPoint(hm);
+        HashMap<String, String> map1 = new HashMap<>();
+        map1.put("Chennai", "Bengaluru");
+        map1.put("Mumbai", "Delhi");
+        map1.put("Goa", "Chennai");
+        map1.put("Delhi", "Goa");
+        String start = startingPoint(map1); //this gives starting point ie mumbai by calling the starting fnx we created above
         System.out.print(start);
-        for(String key: hm.keySet()){ //stare it you will get
-            System.out.print(" -> " + hm.get(start)); //hm.get(start) gives value of hm
-            start = hm.get(start); //and that value now becomes start
+        for(int i=0; i<map1.size(); i++){
+            System.out.print("->" + map1.get(start)); //this is value from map1
+            start = map1.get(start); //start becomes value now for next iteration
         }
-        System.out.println();
 
 
         //Largest Subarray with Sum 0 O(n) - (lecture video must watch for dryrun and understanding)
