@@ -39,14 +39,14 @@ public class u_Trie01 {
         }
         return curr.eow == true;
     }
-    //Word Break Problem O(L)
+    //Word Break Problem O(L) (search GPT recursive call + lecture for for loop init from 1)
     public static boolean wordBreak(String key){
         if(key.length() == 0){
             return true;
         }
         for(int i=1; i<=key.length(); i++){
-            if(search(key.substring(0, i)) && //0, i (meaning 0idx se 1idx check loop is starting from 1)
-               wordBreak(key.substring(i))){ //recursive call
+            if(search(key.substring(0, i)) && //search call will check whether the key part exist's in the trie (0,i) means ele between 0 to ith idx
+               wordBreak(key.substring(i))){ //wordBreak fnx will break the word and give recursively till last word (i) means ele after ith idx
                 return true;
             }
         }
