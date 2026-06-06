@@ -53,7 +53,9 @@ public class u_Trie02 {
             if(curr.children[idx] == null){
                 return false;
             }
-            curr = curr.children[idx];
+            else{
+                curr = curr.children[idx];
+            }
         }
         return true;
     }
@@ -74,8 +76,7 @@ public class u_Trie02 {
     public static String ans = "";
     public static void longestWord(Node root, StringBuilder temp){
         if(root == null){
-            return;
-        }
+            return;        }
         for(int i=0; i<26; i++){
             if(root.children[i] != null && root.children[i].eow == true){
                 char ch = (char)(i+'a');

@@ -16,8 +16,8 @@ public class u_Trie01 {
     //Insert in trie O(L) L-length of the word
     public static void insert(String word){
         Node curr = root; //init curr with root
-        for(int lvl=0; lvl<word.length(); lvl++){
-            int idx = word.charAt(lvl) - 'a'; //gives idx of that particular letter
+        for(int i=0; i<word.length(); i++){
+            int idx = word.charAt(i) - 'a'; //gives idx of that particular letter
             if(curr.children[idx] == null){ //agar wo letter ka idx null haya konbi nai hee wahan tho add krna use new node dalko
                 curr.children[idx] = new Node();
             }
@@ -28,8 +28,8 @@ public class u_Trie01 {
     //Search in trie O(L) 
     public static boolean search (String key){
         Node curr = root;
-        for(int lvl=0; lvl<key.length(); lvl++){
-            int idx = key.charAt(lvl) - 'a';
+        for(int i=0; i<key.length(); i++){
+            int idx = key.charAt(i) - 'a';
             if(curr.children[idx] == null){
                 return false;
             }
