@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 public class u_Trie02 {
     static class Node{
         Node children[] = new Node[26];
@@ -14,7 +16,7 @@ public class u_Trie02 {
     public static Node root = new Node();
     
 
-    //Uniquely Identified O(L) (lecture for unserdtanding and dryrun also insert and class Node is diff here)
+    //Uniquely Identified O(L) (lecture for understanding and dryrun also insert and class Node is diff here)
     //1st
     public static void insert(String word){
         Node curr = root;
@@ -32,16 +34,17 @@ public class u_Trie02 {
     }
     //2nd
     public static void findPrefix(Node root, String ans){
-        if(root == null){
+        Node curr = root; //here we could have directly used root var but we assigned root to curr and used to maintain the template of trie code, here curr is just another var referencing to root that's it
+        if(curr == null){
             return;
         }
-        if(root.freq == 1){ //if freq is 1 print 
+        if(curr.freq == 1){ //if freq is 1 print 
             System.out.println(ans);
             return;
         }
-        for(int i=0; i<root.children.length; i++){
-            if(root.children[i] != null){ //if their is a valid data
-                findPrefix(root.children[i], ans+(char)(i+'a')); //recursive call (ans+(char)(i+'a') this converts idx to char)
+        for(int i=0; i<26; i++){
+            if(curr.children[i] != null){ //if their is a valid data
+                findPrefix(curr.children[i], ans+(char)(i+'a')); //recursive call (ans+(char)(i+'a') this converts idx to char)
             }
         }
     }
@@ -59,32 +62,34 @@ public class u_Trie02 {
         }
         return true;
     }
-    //Unique Substrings (check lecture for understanding and dryrun also notes) it's easy
+    //Unique Substrings (check lecture for understanding and dryrun + old notes and new notes aswell) it's easy
     public static int countNodes(Node root){
-        if(root == null){
+        Node curr = root;
+        if(curr == null){
             return 0;
         }
         int count = 0;
         for(int i=0; i<26; i++){
-            if(root.children[i] != null){
-                count += countNodes(root.children[i]); //recursive call
+            if(curr.children[i] != null){ //we will skip all the idx were null is their ex for app, at 0th idx recursive call for 'a' then skip all coming idx 'p' will be at idx 15 so next resursive call with idx 15 were char is 'p'
+                count += countNodes(curr.children[i]); //recursive call for only who is having valid value as we will traverse all 26 idx
             }
         }
-        return count + 1;
+        return count + 1; //+1 mai khud ku add krna count k sath
     }
     //Longest word with all prefixes (it's easy check lecture for understanding and dryrun)
-    public static String ans = "";
+    public static String ans = ""; //this String type and var is immutable new obj is crteated if we try to make any changes, rie why while backtracking we delete the char from temp which is type StringBuilder and which is mutable meaning changes are made in the same obj
     public static void longestWord(Node root, StringBuilder temp){
-        if(root == null){
+        Node curr = root;
+        if(curr == null){
             return;        }
         for(int i=0; i<26; i++){
-            if(root.children[i] != null && root.children[i].eow == true){
+            if(curr.children[i] != null && curr.children[i].eow == true){
                 char ch = (char)(i+'a');
                 temp.append(ch);
-                if(temp.length() > ans.length()){
+                if(temp.length() > ans.length()){ //this line is responsible for lexicographically higher word 1st 
                     ans = temp.toString();
                 }
-                longestWord(root.children[i], temp); //recursive call
+                longestWord(curr.children[i], temp); //recursive call
                 temp.deleteCharAt(temp.length()-1); //backtrack 
             }
         }
