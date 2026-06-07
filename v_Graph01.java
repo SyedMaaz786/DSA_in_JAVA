@@ -61,7 +61,7 @@ public class v_Graph01 {
             }
         }
     }
-    //Has Path O(V+E)
+    //Has Path O(V+E) (mostly similar as dfs)
     public static boolean hasPath(ArrayList<Edge> graph[], int src, int dest, boolean visited[]){
         //2nd
         if(src == dest){
