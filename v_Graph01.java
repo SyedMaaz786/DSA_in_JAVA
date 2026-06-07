@@ -21,7 +21,7 @@ public class v_Graph01 {
             }
         }
     }
-    //Breadth First Search in graph O(V+E) (check notes for explaination)
+    //Breadth First Search in graph O(V+E) (check notes for explaination + lecture just for a glance)
     public static void bfsUtil(ArrayList<Edge> graph[], boolean visited[]){
         Queue<Integer> q = new LinkedList<>();
         q.add(0); //source 0
@@ -48,7 +48,7 @@ public class v_Graph01 {
             }
         }
     }
-    //Depth First Search in graph O(V+E) (check notes for explaination)
+    //Depth First Search in graph O(V+E) (check notes for explaination + lecture just for a glance)
     public static void dfsUtil(ArrayList<Edge> graph[], int curr, boolean visited[]){
         //visit
         System.out.print(curr + " ");
