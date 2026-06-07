@@ -67,8 +67,8 @@ public class v_Graph01 {
         if(src == dest){
             return true;
         }
-        visited[src] = true;
         //1st
+        visited[src] = true;
         for(int i=0; i<graph[src].size(); i++){
             Edge e = graph[src].get(i);
             if(!visited[e.dest] && hasPath(graph, e.dest, dest, visited)){ //e.dest = neighbor (if neighbor is not visited then recursive call, in recursive call src is my neighbor(e.dest) and dest is same as dest)
