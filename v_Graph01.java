@@ -21,10 +21,9 @@ public class v_Graph01 {
             }
         }
     }
-    //Breadth First Search in graph O(V+E)
+    //Breadth First Search in graph O(V+E) (check notes for explaination)
     public static void bfsUtil(ArrayList<Edge> graph[], boolean visited[]){
         Queue<Integer> q = new LinkedList<>();
-        // boolean visited[] = new boolean[graph.length]; //This visited stays here if only plain bfs and fnx name will be bfs not bfsUtil
         q.add(0); //source 0
 
         while(!q.isEmpty()){
@@ -44,10 +43,12 @@ public class v_Graph01 {
     public static void dfs(ArrayList<Edge> graph[]){
         boolean visited[] = new boolean[graph.length];
         for(int i=0; i<graph.length; i++){
-            dfsUtil(graph, i, visited);
+            if(!visited(i)){
+                dfsUtil(graph, i, visited);   
+            }
         }
     }
-    //Depth First Search in graph O(V+E)
+    //Depth First Search in graph O(V+E) (check notes for explaination)
     public static void dfsUtil(ArrayList<Edge> graph[], int curr, boolean visited[]){
         //visit
         System.out.print(curr + " ");
@@ -92,7 +93,7 @@ public class v_Graph01 {
                4
         */
        int V = 5; //vertex
-       ArrayList<Edge> graph[] = new ArrayList[V]; //empty arraylist
+       ArrayList<Edge> graph[] = new ArrayList[V]; 
 
        for(int i=0; i<V; i++){ //loop for creating new arraylist to store s,d,w of that particular edge
         graph[i] = new ArrayList<>();
@@ -120,7 +121,7 @@ public class v_Graph01 {
 
     //    //printing 2's neighbors
     //    for(int i=0; i<graph[2].size(); i++){
-    //     Edge e = graph[2].get(i); // gets s,d,w
+    //     Edge e = graph[2].get(i); //gets s,d,w
     //     System.out.println(e.dest);
     //    }
 
