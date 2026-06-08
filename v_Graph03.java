@@ -45,40 +45,40 @@ public class v_Graph03 {
         stack[curr] = false; //backtracking 
         return false;
     }
-    // //Topological Sorting (using DFS) O(L+E) (it's easy)
-    // //2nd
-    // public static void topSort(ArrayList<Edge> graph[]){
-    //     boolean visited[] = new boolean[graph.length];
-    //     Stack<Integer> s = new Stack<>();
+    //Topological Sorting (using DFS) O(L+E) (same as cycle detection using DFS, it's easy)
+    //1st
+    public static void topSort(ArrayList<Edge> graph[]){
+        boolean visited[] = new boolean[graph.length];
+        Stack<Integer> s = new Stack<>(); //we are using stack here because of its LIFO property
 
-    //     for(int i=0; i<graph.length; i++){
-    //         if(!visited[i]){
-    //             topSortUtil(graph, i, visited, s);
-    //         }
-    //     }
-    //     while(!s.isEmpty()){
-    //         System.out.print(s.pop() + " ");
-    //     }
-    // }
-    // //1st
-    // public static void topSortUtil(ArrayList<Edge> graph[], int curr, boolean visited[], Stack<Integer> s){
-    //     visited[curr] = true;
+        for(int i=0; i<graph.length; i++){
+            if(!visited[i]){
+                topSortUtil(graph, i, visited, s);
+            }
+        }
+        while(!s.isEmpty()){
+            System.out.print(s.pop() + " "); //here we get sorted ele 
+        }
+    }
+    //2nd
+    public static void topSortUtil(ArrayList<Edge> graph[], int curr, boolean visited[], Stack<Integer> s){
+        visited[curr] = true;
 
-    //     for(int i=0; i<graph[curr].size(); i++){
-    //         Edge e = graph[curr].get(i);
-    //         if(!visited[e.dest]){
-    //             topSortUtil(graph, e.dest, visited, s);
-    //         }
-    //     }
-    //     s.push(curr);
-    // }
-    //Topological Sorting (using BFS) O(L+E) (lecture for understanding and dryrun)
+        for(int i=0; i<graph[curr].size(); i++){
+            Edge e = graph[curr].get(i);
+            if(!visited[e.dest]){
+                topSortUtil(graph, e.dest, visited, s);
+            }
+        }
+        s.push(curr);
+    }
+    //Topological Sorting (using BFS) O(L+E) (imp lecture for understanding and dryrun)
     //2nd
     public static void calcIndeg(ArrayList<Edge> graph[], int indeg[]){
         for(int i=0; i<graph.length; i++){
             for(int j=0; j<graph[i].size(); j++){
                 Edge e = graph[i].get(j);
-                indeg[e.dest]++;
+                indeg[e.dest]++; //neighbors will get incremented by 1 as the edge is going toward the neighbor meaning indegree ++
             }
         }
     }
@@ -109,13 +109,13 @@ public class v_Graph03 {
     }
     //All paths from source to destination TC-exponential O(2^V × V) (it's easy lecture for understanding and dryrun)
     public static void printAllPath(ArrayList<Edge> graph[], int src, int dest, String path){
-        if(src == dest){
+        if(src == dest){ //if src == dest, path exists
             System.out.print(path + dest);
             return;
         }
-        for(int i=0; i<graph[src].size(); i++){
+        for(int i=0; i<graph[src].size(); i++){ //get neighbors 
             Edge e = graph[src].get(i);
-            printAllPath(graph, e.dest, dest, path + src);
+            printAllPath(graph, e.dest, dest, path + src); //recursive call now src is neighbor, path mai src add krdal last mai path dekhna usse
         }
     }
     // static void createGraph(ArrayList<Edge> graph[]){
