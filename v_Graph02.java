@@ -31,7 +31,7 @@ public class v_Graph02 {
         graph[4].add(new Edge(4, 3));
     }
     // Cycle Detection (Undirected DFS) O(V+E) (it's easy, lecture for understanding and dryrun)
-    //2nd
+    //1st (for all the other components if present)
     public static boolean detectCycle(ArrayList<Edge> graph[]){
         boolean visited[] = new boolean[graph.length];
         for(int i=0; i<graph.length; i++){
@@ -43,7 +43,7 @@ public class v_Graph02 {
         }
         return false;
     }
-    //1st
+    //2nd (same as DFS code)
     public static boolean detectCycleUtil(ArrayList<Edge> graph[], boolean visited[], int curr, int par){
         visited[curr] = true;
 
