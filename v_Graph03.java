@@ -14,7 +14,7 @@ public class v_Graph03 {
         }
     }
     // Cycle Detection (Directed Graph DFS) (lecture for understanding and dryrun)
-    //2nd
+    //1st
     public static boolean isCycle(ArrayList<Edge> graph[]){
         boolean visited[] = new boolean[graph.length];
         boolean stack[] = new boolean[graph.length];
@@ -28,7 +28,7 @@ public class v_Graph03 {
         }
         return false;
     }
-    //1st
+    //2nd
     public static boolean isCycleUtil(ArrayList<Edge> graph[], int curr, boolean visited[], boolean stack[]){
         visited[curr] = true;
         stack[curr] = true;
@@ -42,7 +42,7 @@ public class v_Graph03 {
                 return true;
             }
         }
-        stack[curr] = false;
+        stack[curr] = false; //backtracking 
         return false;
     }
     // //Topological Sorting (using DFS) O(L+E) (it's easy)
