@@ -157,13 +157,13 @@ public class v_Graph04 {
         boolean visited[] = new boolean[graph.length];
         PriorityQueue<Pair2> pq = new PriorityQueue<>();
         pq.add(new Pair2(0, 0));
-        int finalWeight = 0; //total weight
+        int TotWeight = 0; //total weight
 
         while(!pq.isEmpty()){
             Pair2 curr = pq.remove();
             if(!visited[curr.vertex]){
                 visited[curr.vertex] = true;
-                finalWeight += curr.weight;
+                TotWeight += curr.weight;
 
                 for(int i=0; i<graph[curr.vertex].size(); i++){
                     Edge e = graph[curr.vertex].get(i);
@@ -172,7 +172,7 @@ public class v_Graph04 {
             }
 
         }
-        System.out.println("Total(min) weight of MST: " + finalWeight);
+        System.out.println("Total(min) weight of MST: " + TotWeight);
     }
     public static void main(String args[]){
         // int V = 6;

@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class v_Graph06 {
-    //Connecting Cities (we hvae used prims algo here) (it's easy lecture for understanding and dryrun)
+    //Connecting Cities (we have used prims algo here) (it's easy lecture for understanding and dryrun)
     static class Edge implements Comparable<Edge>{
         int dest;
         int wt;

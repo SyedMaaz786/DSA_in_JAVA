@@ -6,10 +6,10 @@ public class v_Graph05 {
         int dest;
         int wt;
 
-        public Edge(int s, int d, int w){
-            this.src = s;
-            this.dest = d;
-            this.wt = w;
+        public Edge(int src, int dest, int wt){
+            this.src = src;
+            this.dest = dest;
+            this.wt = wt;
         }
     }
     //Cheapest Flights within K stops (lecture for understanding and dryrun)
@@ -19,24 +19,23 @@ public class v_Graph05 {
             graph[i] = new ArrayList<>();
         }
         for(int i=0; i<flights.length; i++){
-            int src = flights[i][0];
-            int dest = flights[i][1];
+            int u = flights[i][0];
+            int v = flights[i][1];
             int wt = flights[i][2];
 
-            Edge e = new Edge(src, dest, wt);
-            graph[src].add(e); //adjacency list representation (for a particular src store its dest + wt)
+            graph[u].add(new Edge(u, v, wt));
         }
     }
     //3rd
     static class Info{
         int vertex;
-        int wt;
+        int cost;
         int stops;
 
-        public Info(int v, int w, int s){
-            this.vertex = v;
-            this.wt = w;
-            this.stops = s;
+        public Info(int vertex, int cost, int stops){
+            this.vertex = vertex;
+            this.cost = cost;
+            this.stops = stops;
         }
     }
     //2nd
@@ -63,20 +62,15 @@ public class v_Graph05 {
                 int v = e.dest;
                 int wt = e.wt;
 
-                if(curr.wt+wt < dist[v] && curr.stops <= k){ //modified relaxation check lecture once (curr.wt handle's a corner case where stops are respected)
-                    dist[v] = curr.wt+wt;
+                if(curr.cost+wt < dist[v] && curr.stops <= k){ //modified relaxation check lecture once (curr.wt handle's a corner case where stops are respected)
+                    dist[v] = curr.cost+wt;
 
                     q.add(new Info(v, dist[v], curr.stops+1));
                 }
             }
         }
         //dist of my dest
-        if(dist[dest] == Integer.MAX_VALUE){
-            return -1;
-        }
-        else {
-            return dist[dest];
-        }
+        return dist[dest] == Integer.MAX_VALUE ? -1 : dist[dest];
     }
     public static void main(String args[]){
         int V = 4;
