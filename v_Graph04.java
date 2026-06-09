@@ -76,8 +76,8 @@ public class v_Graph04 {
     }
     public static void dijkstra(ArrayList<Edge> graph[], int src){
         int dist[] = new int[graph.length];
-        for(int i=0; i<graph.length; i++){
-            if(i != src){  //stare or lecture you will get (konsa idx mere src k equal nai hata use infinity se init krna)
+        for(int i=0; i<dist.length; i++){
+            if(i != src){  //stare or lecture you will get (konsa idx mere src k equal nai hata meaning, starting idx ku chodko sabku infinity se init krna)
                 dist[i] = Integer.MAX_VALUE; // infinity se initialise krna sabku
             }
         }
@@ -88,19 +88,21 @@ public class v_Graph04 {
             Pair curr = pq.remove();
             if(!visited[curr.node]){ //if not visted
                 visited[curr.node] = true; // visited ku banadal true
-            }
-            for(int i=0; i<graph[curr.node].size(); i++){
-                Edge e = graph[curr.node].get(i);
-                int u = e.src;
-                int v = e.dest;
-                int wt = e.wt;
 
-                //relaxation
-                if(dist[u]+wt < dist[v]){ //formula remember this notes mai bi likhko hu
-                    dist[v] = dist[u]+wt;
-                    pq.add(new Pair(v, dist[v])); //pq mai add krna node bi path
+                for(int i=0; i<graph[curr.node].size(); i++){ //neighbors loop
+                    Edge e = graph[curr.node].get(i);
+                    int u = e.src;
+                    int v = e.dest;
+                    int wt = e.wt;
+
+                    //relaxation
+                    if(dist[u] + wt < dist[v]){ //formula remember this notes mai bi likhko hu
+                        dist[v] = dist[u] + wt;
+                        pq.add(new Pair(v, dist[v])); //pq mai add krna node bi path
+                    }
                 }
             }
+            
         }
         //print shortest distance 
         for(int i=0; i<dist.length; i++){
