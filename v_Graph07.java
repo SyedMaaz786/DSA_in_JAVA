@@ -76,54 +76,52 @@ public class v_Graph07 {
     //FloodFill Algorithm (it's easy check lecture for understanding and dryrun)
     //2nd
     public static void helper(int[][] image, int sr, int sc, int color, boolean visited[][], int orgCol){
-        if(sr < 0 || sc < 0 || sr >= image.length || sc >= image[0].length || visited[sr][sc] || image[sr][sc] != orgCol){ // it's easy - lecture if dought
+        if(sr < 0 || sc < 0 || sr >= image.length || sc >= image[0].length ||
+            visited[sr][sc] || image[sr][sc] != orgCol){ // it's easy - lecture if dought
             return;
         }
 
         image[sr][sc] = color; //fill color + visited true
         visited[sr][sc] = true;
 
-        //left
-        helper(image, sr, sc+1, color, visited, orgCol);
-        //right
-        helper(image, sr, sc-1, color, visited, orgCol);
         //up
         helper(image, sr-1, sc, color, visited, orgCol);
         //down
         helper(image, sr+1, sc, color, visited, orgCol);
+        //left
+        helper(image, sr, sc-1, color, visited, orgCol);
+        //right
+        helper(image, sr, sc+1, color, visited, orgCol);
+        
     }
     //1st
     public static int[][] floodFill(int[][] image, int sr, int sc, int color){
-        int orgCol = image[sr][sc];
-        if(orgCol == color){
-            return image;
-        }
-
+        int orgCol = image[sr][sc]; //this sets orgColor 1 
         boolean visited[][] = new boolean[image.length][image[0].length];
         helper(image, sr, sc, color, visited, orgCol);
         return image;
     }
     public static void main(String args[]){
-        int V = 4;
-        ArrayList<Edge> edges = new ArrayList<>();
-        createGraph(edges);
-        kruskals(edges, V);
+        // int V = 4;
+        // ArrayList<Edge> edges = new ArrayList<>(); //here graph is edge list 
+        // createGraph(edges);
+        // kruskals(edges, V);
 
 
-        // int[][] image = {{1, 1, 1},
-        //                  {1, 1, 0},
-        //                  {1, 0, 1}};
-        // int sr = 1;
-        // int sc = 1;
-        // int color = 2;
+        int[][] image = {{1, 1, 1},
+                         {1, 1, 0},
+                         {1, 0, 1}};
+        int sr = 1;
+        int sc = 1;
+        int color = 2;
 
-        // floodFill(image, sr, sc, color);
-        // //print
-        // for(int i=0; i<image.length; i++){
-        //     for(int j=0; j<image[0].length; j++){
-        //         System.out.print(image[i][j] + " ");
-        //     }
-        //     System.out.println();
-        // }
+        floodFill(image, sr, sc, color);
+        //print
+        for(int i=0; i<image.length; i++){
+            for(int j=0; j<image[0].length; j++){
+                System.out.print(image[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
