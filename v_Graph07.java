@@ -17,7 +17,7 @@ public class v_Graph07 {
             return this.wt - e2.wt;
         }
     }
-    static void createGraph(ArrayList<Edge> edges){
+    static void createGraph(ArrayList<Edge> edges){ //here graph is implemented using edge list
         //edges
         edges.add(new Edge(0, 1, 10));
         edges.add(new Edge(0, 2, 15));
@@ -65,7 +65,7 @@ public class v_Graph07 {
             Edge e = edges.get(i);
             int parA = find(e.src); // src = a
             int parB = find(e.dest); // dest = b
-            if(parA != parB){ // if set1 is not equal to set2 then no cycle, if no cycle enter if loop
+            if(parA != parB){ // if set1 is not equal to set2 then no cycle.
                 union(e.src, e.dest);
                 finalWeight += e.wt;
                 count++;
@@ -104,26 +104,26 @@ public class v_Graph07 {
         return image;
     }
     public static void main(String args[]){
-        // int V = 4;
-        // ArrayList<Edge> edges = new ArrayList<>();
-        // createGraph(edges);
-        // kruskals(edges, V);
+        int V = 4;
+        ArrayList<Edge> edges = new ArrayList<>();
+        createGraph(edges);
+        kruskals(edges, V);
 
 
-        int[][] image = {{1, 1, 1},
-                         {1, 1, 0},
-                         {1, 0, 1}};
-        int sr = 1;
-        int sc = 1;
-        int color = 2;
+        // int[][] image = {{1, 1, 1},
+        //                  {1, 1, 0},
+        //                  {1, 0, 1}};
+        // int sr = 1;
+        // int sc = 1;
+        // int color = 2;
 
-        floodFill(image, sr, sc, color);
-        //print
-        for(int i=0; i<image.length; i++){
-            for(int j=0; j<image[0].length; j++){
-                System.out.print(image[i][j] + " ");
-            }
-            System.out.println();
-        }
+        // floodFill(image, sr, sc, color);
+        // //print
+        // for(int i=0; i<image.length; i++){
+        //     for(int j=0; j<image[0].length; j++){
+        //         System.out.print(image[i][j] + " ");
+        //     }
+        //     System.out.println();
+        // }
     }
 }

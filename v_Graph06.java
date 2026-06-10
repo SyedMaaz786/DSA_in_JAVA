@@ -37,7 +37,7 @@ public class v_Graph06 {
         }
         return finalWeight;
     }
-    //Disjoint Set Union (it's easy check lecture for understanding and lecture)
+    //Disjoint Set Union (imp - check lecture for understanding and lecture)
     static int n = 7;
     static int par[] = new int[n];
     static int height[] = new int[n]; // no need to init this arr because is will be 0 default at the starting
@@ -51,9 +51,9 @@ public class v_Graph06 {
         if(x == par[x]){
             return x;
         }
-        return par[x] = find(par[x]); //keep finding recursively until we get with oath compression
+        return par[x] = find(par[x]); //keep finding recursively until we get with path compression
     }
-    public static void union(int a, int b){ //this fnx check lecture 
+    public static void union(int a, int b){ //check lecture once and stare run the pipeline in mind you got this in the 2nd time
         int parA = find(a);
         int parB = find(b);
 
